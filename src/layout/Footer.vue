@@ -55,11 +55,11 @@
         <p>Get the exclusive app and save more</p>
         <div class="download-sec">
             <div>
-              <img src="@/assets/qrcode.jpg" alt="Download QR Code" class="qr-code"/>
+              <img src="@/assets/footer/qrcode.jpg" alt="Download QR Code" class="qr-code"/>
             </div>
             <div class="store-links">
-              <img src="@/assets/playstore.png" alt="Play Store" class="store-link"/>
-              <img src="@/assets/appstore.png" alt="App Store" class="store-link"/>
+              <img src="@/assets/footer/playstore.png" alt="Play Store" class="store-link"/>
+              <img src="@/assets/footer/appstore.png" alt="App Store" class="store-link"/>
             </div>
         </div>
         <!-- <div class="social-icons">
