@@ -12,7 +12,7 @@
 
 <script>
 import AppNavbar from "./Navbar.vue";
-import AppFooter from "./Footer.vue";
+import AppFooter from "./AppFooter.vue";
 
 export default {
   name: "MainLayout",
