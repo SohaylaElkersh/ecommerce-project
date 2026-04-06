@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <div class="container footer__content">
-
       <div class="footer__brand">
         <h2>Exclusive</h2>
         <h4>Subscribe</h4>
@@ -62,12 +62,13 @@
               <img src="@/assets/footer/appstore.png" alt="App Store" class="store-link"/>
             </div>
         </div>
-        <!-- <div class="social-icons">
-            <font-awesome-icon icon="facebook" class="social-icon"/>
-            <font-awesome-icon icon="twitter" class="social-icon"/>
-            <font-awesome-icon icon="instagram" class="social-icon"/>
-            <font-awesome-icon icon="linkedin" class="social-icon"/>
-        </div> -->
+        <div class="social-icons">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-linkedin-in"></i>
+
+        </div>
       </div>
 
     </div>
@@ -210,17 +211,17 @@ export default {
   height: auto;
 }
 
-/* .social-icon {
-  margin-right: 10px;
-  font-size: 20px;
-  color: #ccc;
-  cursor: pointer;
-  transition: color 0.2s;
+.social-icon {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
-.social-icon:hover {
-  color: #fff; 
-} */
+.social-icons i {
+  margin-right: 25px;
+  color: #fff;
+  font-size: 20px;
+}
 
 .footer__bottom {
   text-align: center;

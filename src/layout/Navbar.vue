@@ -7,9 +7,9 @@
       </div>
 
       <nav class="navbar__links">
-        <a href="#">Home</a>
-        <a href="#">Contact</a>
-        <a href="#">About</a>
+        <router-link to="/">Home</router-link>
+        <router-link to="/contact">Contact</router-link>
+        <router-link to="/about">About</router-link>
       </nav>
 
       <div class="navbar__actions">
@@ -66,6 +66,7 @@ export default {
   position: sticky;
   top: 0;
   z-index: 100;
+  margin-bottom: 50px;
 }
 
 .container {
@@ -87,9 +88,17 @@ export default {
 }
 
 .navbar__links a {
-  margin: 0 20px;
+  display: inline-block;
+  margin: 0 30px;
   text-decoration: none;
   color: #333;
+  transition: transform 0.5s ease, color 0.5s ease;
+}
+
+.navbar__links a:hover {
+  color: #000;
+  text-decoration: underline;
+  transform: scale(1.1);
 }
 
 .navbar__actions {
@@ -110,6 +119,7 @@ export default {
   color: #888;
   font-size: 14px;
   outline: none;
+  border-radius: 4px;
 }
 
 .search-icon {

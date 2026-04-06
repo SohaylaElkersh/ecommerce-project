@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .notfound {
   text-align: center;
   padding: 100px;
