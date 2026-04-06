@@ -2,7 +2,7 @@
     <div class="main">
         <div class="card">
             <div class="icon">
-                <img width="50" height="50" src="../assets/icons/icons8-delivery-50.png" alt="delivery"/>
+                <img width="50" height="50" src="../../assets/icons/icons8-delivery-50.png" alt="delivery"/>
             </div>
             <div class="content">
                 <h2>FREE AND FAST DELIVERY</h2>
@@ -12,7 +12,7 @@
 
         <div class="card">
             <div class="icon">
-               <img width="50" height="50" src="../assets/icons/icons8-customer-service-50.png" alt="headset--v1"/>
+               <img width="50" height="50" src="../../assets/icons/icons8-customer-service-50.png" alt="headset--v1"/>
             </div>
             <div class="content">
                 <h2>24/7 CUSTOMER SERVICE</h2>
@@ -22,7 +22,7 @@
 
         <div class="card">
             <div class="icon">
-                <img width="50" height="50" src="../assets/icons/icons8-guarantee-50.png" alt="guarantee"/>
+                <img width="50" height="50" src="../../assets/icons/icons8-guarantee-50.png" alt="guarantee"/>
             </div>
             <div class="content">
                 <h2>MONEY BACK GUARANTEE</h2> 

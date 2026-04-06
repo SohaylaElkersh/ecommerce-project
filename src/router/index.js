@@ -4,9 +4,10 @@ import Router from 'vue-router'
 import MainLayout from '@/layout/MainLayout.vue'
 import HomePage from '@/views/HomePage.vue'
 import NotFound from '@/views/NotFound.vue'
-import AboutPage from '@/views/AboutPage.vue'
-import ContactPage from '@/views/ContactPage.vue'
 import ExploreProducts from '@/views/ExploreProducts.vue'
+import AboutUs from '@/views/AboutUs.vue'
+import ContactUs from '@/views/ContactUs.vue'
+import ProductDetails from '@/views/ProductDetails.vue'
 
 Vue.use(Router)
 
@@ -23,15 +24,19 @@ export default new Router({
         },
         {
           path: '/about',
-          component: AboutPage
+          component: AboutUs
         },
         {
           path: '/contact',
-          component: ContactPage
+          component: ContactUs
         },
         {
           path: '/explore',
           component: ExploreProducts
+        },
+        {
+          path: '/product/:id',
+          component: ProductDetails
         },
         {
           path: '*',

@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: "ContactPage"
+  name: "ContactUs"
 }
 </script>
 
@@ -53,7 +53,6 @@ export default {
     width: 50%;
     border-radius: 4px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    
 }
 
 .contact-img img {
@@ -150,10 +149,17 @@ export default {
     background-color: #db4444;
     color: #fff;
     border-radius: 4px;
+    transition: all 0.5s ease;
+
 }
 
 .btn a {
     color: #fff;
     text-decoration: none;   
+}
+
+.btn:hover {
+    background-color: #c03939;
+    transform: translateY(-5px);
 }
 </style>

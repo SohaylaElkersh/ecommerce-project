@@ -41,5 +41,11 @@ export default {
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
+  transition: all 0.5s ease;
+}
+
+.notfound .btn:hover {
+  background-color: #c03939;
+  transform: translateY(-5px);
 }
 </style>

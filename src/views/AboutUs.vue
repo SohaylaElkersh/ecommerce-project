@@ -11,10 +11,10 @@
 import StorySection from '@/components/about/StorySection.vue';
 import StatsSection from '@/components/about/StatsSection.vue';
 import TeamSection from '@/components/about/TeamSection.vue';   
-import QualitySection from '@/layout/QualitySection.vue';
+import QualitySection from '@/layout/shared/QualitySection.vue';
 
 export default {
-  name: 'AboutPage',
+  name: 'AboutUs',
   components: {
     StorySection,
     StatsSection,

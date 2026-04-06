@@ -9,8 +9,8 @@
       <nav class="navbar__links">
         <router-link to="/">Home</router-link>
         <router-link to="/explore">Explore</router-link>
-        <router-link to="/contact">Contact</router-link>
-        <router-link to="/about">About</router-link>
+        <router-link to="/contact">Contact Us</router-link>
+        <router-link to="/about">About Us</router-link>
       </nav>
 
       <div class="navbar__actions">
@@ -90,7 +90,7 @@ export default {
 
 .navbar__links a {
   display: inline-block;
-  margin: 0 30px;
+  margin: 0 25px;
   text-decoration: none;
   color: #333;
   transition: transform 0.5s ease, color 0.5s ease;

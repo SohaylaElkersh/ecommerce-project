@@ -202,7 +202,6 @@ export default {
   flex-direction: column;
   gap: 3px;
   margin: 10px 0;
-  align-items: left;
 }
 
 .store-link {
