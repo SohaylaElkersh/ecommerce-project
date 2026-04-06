@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <div class="card" v-for="(member, index) in team" :key="index">
       <img :src="member.image" alt="">
       <h4>{{ member.name }}</h4>
@@ -24,7 +23,7 @@ export default {
     return {
       team
     };
-  },
+  }
 }
 </script>
 

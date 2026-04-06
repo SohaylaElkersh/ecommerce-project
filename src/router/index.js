@@ -6,6 +6,7 @@ import HomePage from '@/views/HomePage.vue'
 import NotFound from '@/views/NotFound.vue'
 import AboutPage from '@/views/AboutPage.vue'
 import ContactPage from '@/views/ContactPage.vue'
+import ExploreProducts from '@/views/ExploreProducts.vue'
 
 Vue.use(Router)
 
@@ -27,6 +28,10 @@ export default new Router({
         {
           path: '/contact',
           component: ContactPage
+        },
+        {
+          path: '/explore',
+          component: ExploreProducts
         },
         {
           path: '*',

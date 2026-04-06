@@ -27,7 +27,9 @@ export default {
 .layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* full viewport height */
+  min-height: 100vh; 
+  padding: 0;
+  margin: 0;
 }
 
 .layout__main {
