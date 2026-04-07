@@ -32,7 +32,7 @@
                         <div class="plus" @click="incrementQuantity"><i class="fa-solid fa-plus"></i></div>
                     </div>
                     <div>
-                        <button class="buy">Buy Now</button>
+                        <button class="cart">Add to Cart</button>
                         <button class="love"><i class="fa-regular fa-heart"></i></button>
                     </div>
                 </div>
@@ -177,7 +177,7 @@ export default {
 .product-info {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 5px;
   align-items: flex-start;
   justify-content: flex-start;
   border-bottom: #555 solid 2px;
@@ -189,8 +189,8 @@ export default {
 }
 
 .product-info .category {
-  font-size: 18px;
-  margin: 15px 0 0 0;
+  font-size: 15px;
+  margin: 12px 0 0 0;
 }
 
 .product-info .category a {
@@ -207,7 +207,6 @@ export default {
 .product-info .rating .stars {
   font-size: x-large;
   color: rgb(244, 192, 60);
-  padding-bottom: 5px;
   margin: 0;
 }
 
@@ -240,6 +239,7 @@ export default {
   font-size: 14px;
   margin-bottom: 20px;
   text-align: left;
+  width: 50ch;
 }
 
 .purchase-section {
@@ -301,7 +301,7 @@ export default {
   line-height: 35px;
 }
 
-.buy {
+.cart {
   padding: 10px 20px;
   background-color: #db4444;
   color: #fff;

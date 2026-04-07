@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    name: "Wireless Headphones",
+    name: "Headphones",
     price: 79.99,
     image: require("../assets/Wireless Headphones.jpg"),
     description: "High-quality wireless headphones with immersive sound, long battery life, and a comfortable over-ear design perfect for music, calls, and daily use.",
@@ -56,7 +56,7 @@ export default [
   },
   {
     id: 6,
-    name: "Mechanical Keyboard",
+    name: "Keyboard",
     price: 89.99,
     image: require("../assets/Mechanical Keyboard.jpg"),
     description: "Mechanical keyboard with tactile switches, customizable RGB lighting, durable build quality, and responsive keys perfect for typing, coding, and gaming performance.",

@@ -150,7 +150,6 @@ export default {
     color: #fff;
     border-radius: 4px;
     transition: all 0.5s ease;
-
 }
 
 .btn a {

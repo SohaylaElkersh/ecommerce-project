@@ -32,7 +32,13 @@
               </svg>
             </div>
         </div>
-        <div class="cart">
+        <button
+          type="button"
+          class="cart cart-btn"
+          aria-label="Open shopping cart"
+          :aria-expanded="cartOpen ? 'true' : 'false'"
+          @click="openCart"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -42,21 +48,78 @@
             stroke="currentColor"
             stroke-width="2"
             stroke-linecap="round"
-            stroke-linejoin="round">
-           <circle cx="9" cy="21" r="1"></circle>
-           <circle cx="20" cy="21" r="1"></circle>
-           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
           </svg>
-        </div>
+        </button>
       </div>
 
     </div>
+
+    <transition name="cart-overlay">
+      <div
+        v-if="cartOpen"
+        class="cart-drawer__overlay"
+        aria-hidden="true"
+        @click="closeCart"
+      />
+    </transition>
+    <transition name="cart-slide">
+      <aside
+        v-if="cartOpen"
+        class="cart-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Shopping cart"
+      >
+        <SliderCart @close="closeCart" />
+      </aside>
+    </transition>
   </header>
 </template>
 
 <script>
+import SliderCart from '@/layout/shared/SliderCart.vue'
+
 export default {
-  name: "AppNavbar"
+  name: "AppNavbar",
+  components: { SliderCart },
+  data() {
+    return {
+      cartOpen: false,
+    }
+  },
+  watch: {
+    cartOpen(open) {
+      document.documentElement.classList.toggle('cart-drawer-open', open)
+      if (open) {
+        document.addEventListener('keydown', this.onEscape)
+      } else {
+        document.removeEventListener('keydown', this.onEscape)
+      }
+    },
+  },
+  beforeDestroy() {
+    document.removeEventListener('keydown', this.onEscape)
+    document.documentElement.classList.remove('cart-drawer-open')
+  },
+  methods: {
+    openCart() {
+      this.cartOpen = true
+    },
+    closeCart() {
+      this.cartOpen = false
+    },
+    onEscape(e) {
+      if (e.key === 'Escape') {
+        this.closeCart()
+      }
+    },
+  },
 }
 </script>
 
@@ -132,7 +195,75 @@ export default {
   cursor: pointer;
 }
 
-.cart {
+.cart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
   cursor: pointer;
+}
+
+.cart-btn:focus-visible {
+  outline: 2px solid #db4444;
+  outline-offset: 2px;
+}
+
+.cart-drawer__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.cart-overlay-enter-active,
+.cart-overlay-leave-active {
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-overlay-enter,
+.cart-overlay-leave-to {
+  opacity: 0;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: auto;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  width: min(650px, 100vw);
+  height: 100vh;
+  max-height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.cart-slide-enter-active,
+.cart-slide-leave-active {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cart-slide-enter,
+.cart-slide-leave-to {
+  transform: translateX(100%);
+}
+
+.cart-slide-enter-to,
+.cart-slide-leave {
+  transform: translateX(0);
+}
+</style>
+
+<style>
+html.cart-drawer-open {
+  overflow: hidden;
 }
 </style>
