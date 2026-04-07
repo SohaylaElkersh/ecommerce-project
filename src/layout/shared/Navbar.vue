@@ -3,7 +3,7 @@
     <div class="container navbar__content">
       
       <div class="navbar__logo">
-        Exclusive
+        <router-link to="/">Exclusive</router-link>
       </div>
 
       <nav class="navbar__links">
@@ -146,8 +146,10 @@ export default {
   height: 70px;
 }
 
-.navbar__logo {
+.navbar__logo a {
   font-weight: bold;
+  color: #000;
+  text-decoration: none;
   font-size: 23px;
 }
 
@@ -237,7 +239,7 @@ export default {
   z-index: 1001;
   display: flex;
   flex-direction: column;
-  width: min(650px, 100vw);
+  width: min(550px, 100vw);
   height: 100vh;
   max-height: 100vh;
   background: #fff;

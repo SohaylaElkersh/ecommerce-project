@@ -15,7 +15,7 @@
       <div class="cart-content__inner">
         <div class="cart-items">
           <ProductCartCard
-            v-for="product in products"
+            v-for="product in cartProducts"
             :key="product.id"
             :product="product"
           />
@@ -34,6 +34,7 @@
             <p>$1234</p>
           </div>
           <div class="payment-method">
+            <h4>Payment Method:</h4>
             <div class="method">
               <input type="radio" id="bank" name="method" />
               <label for="bank">Bank</label>
@@ -58,17 +59,19 @@
 
 <script>
 import ProductCartCard from '@/components/products/ProductCartCard.vue'
-import products from '@/models/products'
+import allProducts from '@/models/products'
+
+const STATIC_CART_ITEM_COUNT = 0      // =======>>>>> to control cart item number
 
 export default {
   name: 'SliderCart',
   components: {
     ProductCartCard,
   },
-  data() {
-    return {
-      products,
-    }
+  computed: {
+    cartProducts() {
+      return allProducts.slice(0, STATIC_CART_ITEM_COUNT)
+    },
   },
 }
 </script>
@@ -162,7 +165,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 50px;
   width: 100%;
   max-width: 500px;
   box-sizing: border-box;
@@ -179,11 +182,13 @@ export default {
 
 .payment-method {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .method label {
