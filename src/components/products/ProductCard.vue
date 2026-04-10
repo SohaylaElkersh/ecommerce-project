@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="image-container">
-      <img :src="product.image" :alt="product.name" />
+      <img :src="product.thumbnail" :alt="product.name" />
       <div class="icons">
         <router-link :to="`/product/${product.id}`">
           <i class="fa-regular fa-eye"></i>
@@ -11,12 +11,12 @@
       <div class="add-to-cart">Add to Cart</div>
     </div>
     <div class="info">
-      <h4>{{ product.name }}</h4>
+      <h4>{{ product.title }}</h4>
       <div>
         <p class="price">${{ product.price }}</p>
         <div class="rating">
           <p class="stars">{{ star(product.rating) }}</p>
-          <p class="total-ratings">({{ product.totalRatings }})</p>
+          <p class="total-ratings">({{ product.reviews.length }})</p>
         </div>
       </div>
     </div>
@@ -28,12 +28,7 @@ import star from "../../utils/rating.js";
 
 export default {
   name: "ProductCard",
-  props: {
-    product: {
-      type: Object,
-      required: true,
-    },
-  },
+  props: ["product"],
   methods: {
     star,
   },

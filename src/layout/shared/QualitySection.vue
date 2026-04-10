@@ -1,40 +1,41 @@
 <template>
     <div class="main">
-        <div class="card">
-            <div class="icon">
-                <img width="50" height="50" src="../../assets/icons/icons8-delivery-50.png" alt="delivery"/>
-            </div>
-            <div class="content">
-                <h2>FREE AND FAST DELIVERY</h2>
-                <p>Free delivery for all orders over $140</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">
-               <img width="50" height="50" src="../../assets/icons/icons8-customer-service-50.png" alt="headset--v1"/>
-            </div>
-            <div class="content">
-                <h2>24/7 CUSTOMER SERVICE</h2>
-                <p>Friendly 24/7 customer support</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">
-                <img width="50" height="50" src="../../assets/icons/icons8-guarantee-50.png" alt="guarantee"/>
-            </div>
-            <div class="content">
-                <h2>MONEY BACK GUARANTEE</h2> 
-                <p>We return money within 30 days</p>
-            </div>
+        <div class="card" v-for="(quality, index) in qualities" :key="index">
+          <div class="icon">
+            <img :src="quality.img" alt="">
+          </div>
+          <div class="content">
+            <h2>{{ quality.h2 }}</h2>
+            <p>{{ quality.p }}</p>
+          </div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-  name: "QualitySection"
+  name: "QualitySection",
+  data() {
+    return {
+      qualities: [
+        {
+          img: require('../../assets/quality-section-icons/icons8-delivery-50.png'),
+          h2: 'FREE AND FAST DELIVERY',
+          p: 'Free delivery for all orders over $140'
+        },
+        {
+          img: require('../../assets/quality-section-icons/icons8-customer-service-50.png'),
+          h2: '24/7 CUSTOMER SERVICE', p:
+          'Friendly 24/7 customer support'
+        },
+        {
+          img: require('../../assets/quality-section-icons/icons8-guarantee-50.png'),
+          h2: 'MONEY BACK GUARANTEE',
+          p: 'We return money within 30 days'
+        },
+      ]
+    }
+  },
 }
 </script>
 

@@ -24,7 +24,6 @@
 </template>
 
 <script>   
-import products from '../models/products.js';
 import ProductCard from '../components/products/ProductCard.vue';
 
 export default {
@@ -32,11 +31,14 @@ export default {
     components: {
         ProductCard
     },
-    data() {
-        return {
-            products
-        };
-    }
+    computed: {
+      products() {
+        return this.$store.state.products 
+      }
+    },
+    mounted() {
+      this.$store.dispatch('fetchProducts');
+  }
 }
 </script>
 

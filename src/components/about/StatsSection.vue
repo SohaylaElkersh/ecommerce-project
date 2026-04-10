@@ -1,40 +1,12 @@
 <template>
     <div class="main">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <div class="card">
+        <div class="card" v-for="(stat, index) in stats" :key="index">
             <div class="icon">
-                <i class="fa-solid fa-user"></i>
+              <i :class="stat.i"></i>
             </div>
             <div class="content">
-                <h2>10.5k</h2>
-                <p>Lorem ipsum dolor sit amet.</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="icon">
-                <i class="fa-solid fa-dollar-sign"></i>
-            </div>
-            <div class="content">
-                <h2>33k</h2>
-                <p>Lorem ipsum dolor sit amet.</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="icon">
-                <i class="fa-solid fa-bag-shopping"></i>
-            </div>
-            <div class="content">
-                <h2>45.5k</h2>
-                <p>Lorem ipsum dolor sit amet.</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="icon">
-                <i class="fa-solid fa-thumbs-up"></i>
-            </div>
-            <div class="content">
-                <h2>25k</h2>
-                <p>Lorem ipsum dolor sit amet.</p>
+              <h2>{{ stat.h2 }}</h2>
+              <p>{{ stat.p }}</p>
             </div>
         </div>
     </div>
@@ -42,7 +14,17 @@
 
 <script>
 export default {
-  name: 'StatsSection'
+  name: 'StatsSection',
+  data() {
+    return {
+      stats: [
+        {i:'fa-solid fa-user', h2: '10.5k', p: 'Lorem ipsum dolor sit amet.'},
+        {i:'fa-solid fa-dollar-sign', h2: '33.k', p: 'Lorem ipsum dolor sit amet.'},
+        {i:'fa-solid fa-bag-shopping', h2: '45.5k', p: 'Lorem ipsum dolor sit amet.'},
+        {i:'fa-solid fa-thumbs-up', h2: '25k', p: 'Lorem ipsum dolor sit amet.'},
+      ]
+    }
+  },
 }
 </script>
 

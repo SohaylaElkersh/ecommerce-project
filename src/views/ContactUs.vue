@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="contact-img">
-            <img src="../assets/cyber-monday-shopping-sales.jpg" alt="contact">
+            <img src="../assets/contact/cyber-monday-shopping-sales.jpg" alt="contact">
         </div>
         <div class="card">
             <div class="call">

@@ -15,13 +15,32 @@
 </template>
 
 <script>
-import team from '../../models/team.js';
-
 export default {
   name: 'TeamSection',
   data() {
     return {
-      team
+      team: [
+        {
+          name: "Jane Smith",
+          role: "Founder & CEO",
+          image: require("../../assets/about/corporate-headshots-professional-photography-connecticut-ct-photo-studio-nlalor-3.jpg"),
+        },
+        {
+          name: "John Doe",
+          role: "Co-Founder & COO",
+          image: require("../../assets/about/linkedin-sales-solutions-pAtA8xe_iVM-unsplash.jpg"),
+        },
+        {
+          name: "Samanth White",
+          role: "Marketing Director",
+          image: require("../../assets/about/c76b3f38a6b60c338d6534b4eacc9af2.jpg"),
+        },
+        {
+          name: "William Brown",
+          role: "Sales Manager",
+          image: require("../../assets/about/man-portrait-posing-loft-modern-space.jpg"),
+        }
+      ]
     };
   }
 }

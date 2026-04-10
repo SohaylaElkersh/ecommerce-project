@@ -2,8 +2,8 @@
     <div class="main">
         <div class="card">
             <div class="xmark"><i class="fa-solid fa-circle-xmark"></i></div>
-            <img :src="product.image" :alt="product.name" />
-            <p>{{ product.name }}</p>
+            <img :src="product.thumbnail" :alt="product.title" />
+            <p>{{ product.title }}</p>
             <div class="quantity">
                 <div class="minus" @click="decrementQuantity"><i class="fa-solid fa-minus"></i></div>
                 <div class="quantity-input"><span>{{ quantity }}</span></div>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "ProductCartCard",
+  name: "CartCard",
   props: {
     product: {
       type: Object,
