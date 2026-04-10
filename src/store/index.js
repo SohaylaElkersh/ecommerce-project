@@ -7,7 +7,10 @@ export default new Vuex.Store({
   state: {
     products: [],
     product: null,
-    categories: []
+    categories: [],
+    skip: 0,
+    limit: 12,
+    total: 0
   },
   getters: {
     relatedProducts: (state) => {
@@ -18,24 +21,34 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    setProducts(state, products) {
-      state.products = products;
+    appendProducts(state, products) {
+      state.products = [...state.products, ...products]
     },
     setProduct(state, product) {
       state.product = product;
     },
     setCategories(state, categories) {
       state.categories = categories;
+    },
+    incrementSkip(state) {
+      state.skip += state.limit;
+    },
+    setTotal(state, total) {
+      state.total = total;
     }
   },
   actions: {
-    fetchProducts({ commit }) {
-      return fetch('https://dummyjson.com/products')
+    fetchProducts({ commit, state }) {
+      return fetch(`https://dummyjson.com/products?limit=${state.limit}&skip=${state.skip}&select=id,title,thumbnail,price,rating,reviews,discountPercentage`)
         .then(res => res.json())
-        .then(data => commit('setProducts', data.products));
+        .then(data => {
+          commit('appendProducts', data.products);
+          commit('incrementSkip');
+          commit('setTotal', data.total)
+        });
     },
     fetchProduct({ commit }, id) {
-      return fetch(`https://dummyjson.com/products/${id}`)
+      return fetch(`https://dummyjson.com/products/${id}?select=id,thumbnail,images,title,price,rating,decription,reviews,discountPercentage,category,stock,description`)
         .then(res => {
           if (!res.ok) {
             throw new Error("Product not found"); 
@@ -52,7 +65,7 @@ export default new Vuex.Store({
         });
     },
     fetchCategories({commit}) {
-      return fetch('https://dummyjson.com/products/categories')
+      return fetch('https://dummyjson.com/products/categories?limit=6')
         .then(res => res.json())
         .then(data => {
           const limitedCategories = data.slice(0,6);

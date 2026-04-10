@@ -18,7 +18,7 @@
             <ProductCard v-for="product in products" :key="product.id" :product="product" />
         </div>
         <div class="btn">
-            <a href="">Load More...</a>
+            <button @click="loadMore" :disabled="products.length >= total">Load More...</button>
         </div>
     </div>
 </template>
@@ -34,6 +34,14 @@ export default {
     computed: {
       products() {
         return this.$store.state.products 
+      },
+      total() {
+        return this.$store.state.total
+      }
+    },
+    methods: {
+      loadMore() {
+        this.$store.dispatch('fetchProducts');
       }
     },
     mounted() {
@@ -89,17 +97,26 @@ export default {
   justify-content: center;
   margin: 30px 0;
 }
-.btn a {
+.btn button {
   padding: 10px 20px;
+  font-size: 16px;
   background-color: #db4444;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
+  border: none;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
-.btn a:hover {
+.btn button:hover {
   background-color: #c03939;
   transform: translateY(-5px);
+}
+
+.btn button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
 </style>
