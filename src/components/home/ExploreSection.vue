@@ -1,12 +1,9 @@
-<!-- Every product returned from the dummy json has a discount percentage,
- so i just fetched a sliced array of products by fetchProducts action-->
-
 <template>
     <div class="main">
         <div class="header">
             <HeaderColor>
-              <span slot="small">Today's</span>
-              <span slot="big">Flash Sales</span>
+              <span slot="small">Our Products</span>
+              <span slot="big">Explore Our Products</span>
             </HeaderColor>
         </div>
         <div class="cards">
@@ -25,14 +22,14 @@ import HeaderColor from '@/layout/shared/HeaderColor.vue';
 import ProductCard from '../products/ProductCard.vue';
 
 export default {
-    name: 'FlashSales',
+    name: 'ExploreSection',
     components: {
         HeaderColor,
         ProductCard
     },
     computed: {
       products() {
-        return this.$store.state.products.slice(0,4);
+        return this.$store.state.products.slice(0,8);
       },
     },
     mounted() {
@@ -47,8 +44,6 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  border-bottom: solid #ccc 1px;
-  padding-bottom: 40px;
 }
 
 .cards {

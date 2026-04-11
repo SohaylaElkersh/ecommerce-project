@@ -1,8 +1,10 @@
 <template>
   <div class="main">
     <div class="header">
-        <HeaderColor>Categories</HeaderColor>
-        <h2>Browse By Category</h2>
+        <HeaderColor>
+          <span slot="small">Categories</span>
+          <span slot="big">Browse By Category</span>
+        </HeaderColor>
     </div>
     <div class="category-grid" >
         <div class="grid-box" v-for="(category, index) in categories" :key="category.slug">
@@ -31,7 +33,9 @@ export default {
             {i: 'fa-solid fa-chair'},
             {i: 'fa-solid fa-shopping-bag'},
             {i: 'fa-solid fa-paint-roller'},
-            {i: 'fa-solid fa-blender'}
+            {i: 'fa-solid fa-blender'},
+            {i: 'fa-solid fa-laptop'},
+            {i: 'fa-solid fa-shirt'},
         ]
     }
   }, 
@@ -48,20 +52,19 @@ export default {
 
 <style scoped>
 .main {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  border-bottom: solid #ccc 1px;
 }
 
 .category-grid{
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 30px;
   align-items: center;
-  padding: 20px 0 40px;
-  border-bottom: solid #ccc 1px;
+  padding: 0 0 40px;
 }
 
 .grid-box {

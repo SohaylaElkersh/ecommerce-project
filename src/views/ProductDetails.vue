@@ -1,12 +1,14 @@
 <template>
     <div class="main">
-          <ProductInfo/>
+        <ProductInfo/>
         <div class="similar-products" v-if="relatedProducts.length > 0">
           <div class="header">
-            <HeaderColor>More of this category</HeaderColor> 
+            <HeaderColor>
+              <span slot="small">More of this category</span>
+            </HeaderColor>            
           </div>
             <div class="products-list">
-                <ProductCard v-for="prod in relatedProducts" :key="prod.id" :product="prod" />
+              <ProductCard v-for="prod in relatedProducts" :key="prod.id" :product="prod" />
             </div>
         </div>
     </div>
@@ -35,15 +37,20 @@ export default {
           return this.$store.state.product
         },
         relatedProducts() {
-          return this.$store.getters.relatedProducts;
+          return this.$store.state.relatedProducts;
         }
     },
   mounted() {
     const id = this.$route.params.id;
     this.$store.dispatch('fetchProduct', id)
+      .then(product => {
+        return this.$store.dispatch('fetchRelatedProducts', product.category)
+      })
       .catch(() => {
-        this.$router.replace({ name: "NotFound" });
-      });      
+        if (this.$route.name !== "NotFound") {
+          this.$router.replace({ name: "NotFound" }).catch(() => {});
+        }
+      });     
   },
   methods: {
       star,
@@ -59,9 +66,14 @@ export default {
   watch: {
    '$route.params.id'(newId) {
      this.$store.dispatch('fetchProduct', newId)
+       .then(product => {
+          return this.$store.dispatch('fetchRelatedProducts', product.category);
+        })
        .catch(() => {
-         this.$router.replace({ name: "NotFound" });
-       });
+          if (this.$route.name !== "NotFound") {
+            this.$router.replace({ name: "NotFound" }).catch(() => {});
+          }
+        });
    }
  } 
 }
@@ -69,14 +81,19 @@ export default {
 
 <style scoped>
 .main {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.header {
+  display: flex;
+  align-items: flex-start;
+}
+
 .similar-products {
+  margin-top: 0;
   max-width: 1200px;
   width: 100%;
   display: flex;
@@ -90,10 +107,5 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-bottom: 40px;
-}
-
-.products-list ::v-deep .card {
-  max-width: 280px;
-  margin: 0;
 }
 </style>

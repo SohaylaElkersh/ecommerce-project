@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div class="main-section">
         <div class="card" v-for="(quality, index) in qualities" :key="index">
           <div class="icon">
             <img :src="quality.img" alt="">
@@ -40,12 +40,12 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.main-section {
   display: flex;
   flex-direction: row;
   justify-content:space-evenly;
   padding: 50px 30px;
-  margin-top: 50px;
+  width: 100%;
 }
 
 .card {

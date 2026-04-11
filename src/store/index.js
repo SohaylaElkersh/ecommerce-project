@@ -8,17 +8,13 @@ export default new Vuex.Store({
     products: [],
     product: null,
     categories: [],
+    relatedProducts: [],
     skip: 0,
     limit: 12,
-    total: 0
+    total: 0,
   },
   getters: {
-    relatedProducts: (state) => {
-      if (!state.product) return [];
-      return state.products.filter(
-        p => p.category === state.product.category && p.id !== state.product.id
-      ).slice(0, 4);
-    }
+
   },
   mutations: {
     appendProducts(state, products) {
@@ -26,6 +22,9 @@ export default new Vuex.Store({
     },
     setProduct(state, product) {
       state.product = product;
+    },
+    setRelatedProducts(state, products) {
+      state.relatedProducts = products;
     },
     setCategories(state, categories) {
       state.categories = categories;
@@ -35,7 +34,7 @@ export default new Vuex.Store({
     },
     setTotal(state, total) {
       state.total = total;
-    }
+    },
   },
   actions: {
     fetchProducts({ commit, state }) {
@@ -44,11 +43,11 @@ export default new Vuex.Store({
         .then(data => {
           commit('appendProducts', data.products);
           commit('incrementSkip');
-          commit('setTotal', data.total)
+          commit('setTotal', data.total);
         });
     },
     fetchProduct({ commit }, id) {
-      return fetch(`https://dummyjson.com/products/${id}?select=id,thumbnail,images,title,price,rating,decription,reviews,discountPercentage,category,stock,description`)
+      return fetch(`https://dummyjson.com/products/${id}?select=id,thumbnail,images,title,price,rating,description,reviews,discountPercentage,category,stock,description`)
         .then(res => {
           if (!res.ok) {
             throw new Error("Product not found"); 
@@ -64,11 +63,18 @@ export default new Vuex.Store({
           throw error; 
         });
     },
-    fetchCategories({commit}) {
-      return fetch('https://dummyjson.com/products/categories?limit=6')
+    fetchRelatedProducts({commit}, category) {
+      return fetch(`https://dummyjson.com/products/category/${category}`)
         .then(res => res.json())
         .then(data => {
-          const limitedCategories = data.slice(0,6);
+          commit ('setRelatedProducts', data.products.slice(0,4));
+        });
+    },
+    fetchCategories({commit}) {
+      return fetch('https://dummyjson.com/products/categories')
+        .then(res => res.json())
+        .then(data => {
+          const limitedCategories = data.slice(0,8);
           commit('setCategories', limitedCategories);
         });
     }

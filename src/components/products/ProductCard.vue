@@ -2,6 +2,7 @@
   <div class="card">
     <div class="image-container">
       <img :src="product.thumbnail" :alt="product.name" />
+      <div class="discount">-{{ Math.ceil(product.discountPercentage) }}%</div>
       <div class="icons">
         <router-link :to="`/product/${product.id}`">
           <i class="fa-regular fa-eye"></i>
@@ -60,6 +61,17 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover; 
+}
+
+.discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 4px;
+  padding: 5px 10px;
+  background-color: #db4444;
+  color: #fff;
+  font-size: small;
 }
 
 .icons {

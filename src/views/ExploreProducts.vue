@@ -46,7 +46,7 @@ export default {
     },
     mounted() {
       this.$store.dispatch('fetchProducts');
-  }
+    }
 }
 </script>
 
@@ -89,7 +89,6 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
   gap: 50px;
-  padding: 20px;
 }
 
 .btn {
