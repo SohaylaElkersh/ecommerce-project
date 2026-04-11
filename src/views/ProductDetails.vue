@@ -44,7 +44,10 @@ export default {
     const id = this.$route.params.id;
     this.$store.dispatch('fetchProduct', id)
       .then(product => {
-        return this.$store.dispatch('fetchRelatedProducts', product.category)
+        return this.$store.dispatch('fetchRelatedProducts', {
+          category: product.category,
+          productId: product.id
+        });
       })
       .catch(() => {
         if (this.$route.name !== "NotFound") {
@@ -67,7 +70,10 @@ export default {
    '$route.params.id'(newId) {
      this.$store.dispatch('fetchProduct', newId)
        .then(product => {
-          return this.$store.dispatch('fetchRelatedProducts', product.category);
+         return this.$store.dispatch('fetchRelatedProducts', {
+           category: product.category,
+           productId: product.id
+          });
         })
        .catch(() => {
           if (this.$route.name !== "NotFound") {

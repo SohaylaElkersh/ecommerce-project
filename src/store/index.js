@@ -63,11 +63,15 @@ export default new Vuex.Store({
           throw error; 
         });
     },
-    fetchRelatedProducts({commit}, category) {
+    fetchRelatedProducts({ commit }, { category, productId }) {
       return fetch(`https://dummyjson.com/products/category/${category}`)
         .then(res => res.json())
         .then(data => {
-          commit ('setRelatedProducts', data.products.slice(0,4));
+          const filteredProducts = data.products
+            .filter(product => product.id !== productId) // exclude current product
+            .slice(0, 4);
+    
+          commit('setRelatedProducts', filteredProducts);
         });
     },
     fetchCategories({commit}) {
