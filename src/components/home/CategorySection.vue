@@ -75,7 +75,7 @@ export default {
   background-color: #fff;
   color: #000;
   border: solid #ccc 1px;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease; 
 }
 
 .grid-box:hover {

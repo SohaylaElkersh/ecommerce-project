@@ -1,5 +1,6 @@
 <template>
   <div class="main-home">
+    <CarouselSection/>
     <FlashSales/>
     <CategorySection/>
     <ExploreSection/>
@@ -8,16 +9,18 @@
 </template>
 
 <script>
-import CategorySection from '@/components/home/CategorySection.vue';
+import CarouselSection from '@/components/home/CarouselSection.vue';
 import FlashSales from '@/components/home/FlashSales.vue';
+import CategorySection from '@/components/home/CategorySection.vue';
 import ExploreSection from '@/components/home/ExploreSection.vue'
 import QualitySection from '@/layout/shared/QualitySection.vue';
 
 export default {
   name: 'HomePage',
   components: {
-    CategorySection,
+    CarouselSection,
     FlashSales,
+    CategorySection,
     ExploreSection,
     QualitySection
   }
@@ -30,7 +33,7 @@ export default {
   flex-direction: column;
   gap: 0px;
   align-items: center;
-  padding: 50px 75px;
+  padding: 0px 75px;
   gap: 100px;
 }
 </style>
