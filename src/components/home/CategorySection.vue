@@ -9,7 +9,7 @@
     <div class="category-grid" >
         <div class="grid-box" v-for="(category, index) in categories" :key="category.slug">
             <div class="icon">
-                <i :class="categoryIcons[index].i"></i>
+                <i :class="categoryIcons[index].icon"></i>
             </div>
             <p>{{ category.name }}</p>
         </div>
@@ -28,14 +28,14 @@ export default {
   data() {
     return {
         categoryIcons: [
-            {i: 'fa-solid fa-spa'},
-            {i: 'fa-solid fa-spray-can-sparkles'},
-            {i: 'fa-solid fa-chair'},
-            {i: 'fa-solid fa-shopping-bag'},
-            {i: 'fa-solid fa-paint-roller'},
-            {i: 'fa-solid fa-blender'},
-            {i: 'fa-solid fa-laptop'},
-            {i: 'fa-solid fa-shirt'},
+            {icon: 'fa-solid fa-spa'},
+            {icon: 'fa-solid fa-spray-can-sparkles'},
+            {icon: 'fa-solid fa-chair'},
+            {icon: 'fa-solid fa-shopping-bag'},
+            {icon: 'fa-solid fa-paint-roller'},
+            {icon: 'fa-solid fa-blender'},
+            {icon: 'fa-solid fa-laptop'},
+            {icon: 'fa-solid fa-shirt'},
         ]
     }
   }, 

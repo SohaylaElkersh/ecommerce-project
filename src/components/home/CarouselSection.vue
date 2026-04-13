@@ -7,7 +7,7 @@
         v-for="(slide, index) in computedSlides" :key="index" :style="{ backgroundImage: `url(${slide.image})` }">
         <div class="overlay">
           <div class="content">
-            <p class="brand">{{ slide.p }}</p>
+            <p class="brand">{{ slide.description }}</p>
             <h1>{{ slide.title }}</h1>
             <a href="#" class="shop">Shop Now →</a>
           </div>
@@ -38,27 +38,27 @@ export default {
       isTransitioning: true,
       slides: [
         {
-          p: "Power meets elegance",
+          description: "Power meets elegance",
           title: "Best Deals Today",
           image: require("../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg")
         },
         {
-          p: "For first-time users",
+          description: "For first-time users",
           title: "Up to 10% off Voucher",
           image: require("../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg")
         },
         {
-          p: "Designed for the future",
+          description: "Designed for the future",
           title: "New Arrivals",
           image: require("../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg")
         },
         {
-          p: "Upgrade your everyday",
+          description: "Upgrade your everyday",
           title: "Limited Offers",
           image: require("../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg")
         },
         {
-          p: "More value, less price",
+          description: "More value, less price",
           title: "Exclusive Discounts",
           image: require("../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg")
         }

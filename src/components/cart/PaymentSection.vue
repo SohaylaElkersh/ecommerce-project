@@ -2,8 +2,8 @@
     <div class="main">
         <div class="payment">
           <div class="money" v-for="(amount, index) in money" :key="index">
-            <p>{{ amount.p1 }}:</p>
-            <p>${{ amount.p2 }}</p>
+            <p>{{ amount.title }}:</p>
+            <p>${{ amount.amount }}</p>
           </div>
           <div class="payment-method">
             <h4>Payment Method:</h4>
@@ -33,9 +33,9 @@ export default {
   data() {
     return {
       money: [
-        {p1: 'Subtotal', p2: '123'},
-        {p1: 'Shipping', p2: '12'},
-        {p1: 'Total', p2: '1234'}
+        {title: 'Subtotal', amount: '123'},
+        {title: 'Shipping', amount: '12'},
+        {title: 'Total', amount: '1234'}
       ]
     }
   }

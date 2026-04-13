@@ -2,11 +2,11 @@
     <div class="main">
         <div class="card" v-for="(stat, index) in stats" :key="index">
             <div class="icon">
-              <i :class="stat.i"></i>
+              <i :class="stat.icon"></i>
             </div>
             <div class="content">
-              <h2>{{ stat.h2 }}</h2>
-              <p>{{ stat.p }}</p>
+              <h2>{{ stat.title }}</h2>
+              <p>{{ stat.description }}</p>
             </div>
         </div>
     </div>
@@ -18,10 +18,10 @@ export default {
   data() {
     return {
       stats: [
-        {i:'fa-solid fa-user', h2: '10.5k', p: 'Lorem ipsum dolor sit amet.'},
-        {i:'fa-solid fa-dollar-sign', h2: '33.k', p: 'Lorem ipsum dolor sit amet.'},
-        {i:'fa-solid fa-bag-shopping', h2: '45.5k', p: 'Lorem ipsum dolor sit amet.'},
-        {i:'fa-solid fa-thumbs-up', h2: '25k', p: 'Lorem ipsum dolor sit amet.'},
+        {icon:'fa-solid fa-user', title: '10.5k', description: 'Lorem ipsum dolor sit amet.'},
+        {icon:'fa-solid fa-dollar-sign', title: '33.k', description: 'Lorem ipsum dolor sit amet.'},
+        {icon:'fa-solid fa-bag-shopping', title: '45.5k', description: 'Lorem ipsum dolor sit amet.'},
+        {icon:'fa-solid fa-thumbs-up', title: '25k', description: 'Lorem ipsum dolor sit amet.'},
       ]
     }
   },
