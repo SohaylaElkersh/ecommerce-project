@@ -23,29 +23,12 @@
       </div>
 
       <div class="footer__links">
-        <div>
-          <h3>Support</h3>
-          <a href="#">111 Bijoy sarani, Dhaka, <br> DH 1515, Bangladesh.</a>
-          <a href="#">exclusive@gmail.com</a>
-          <a href="#">+880 123456789</a>
-        </div>
-
-        <div>
-          <h3>Account</h3>
-          <a href="#">My Account</a>
-          <a href="#">Login</a>
-          <a href="#">Register</a>
-          <a href="">Cart</a>
-          <a href="#">Wishlist</a>
-          <a href="">Shop</a>
-        </div>
-
-        <div>
-          <h3>Quick Links</h3>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="">FAQ</a>
-          <a href="#">Contact</a>
+        <div v-for="(section, index) in footerLinks" :key="index">
+          <h3>{{ section.title }}</h3>
+      
+          <a v-for="(link, i) in section.links" :key="i" :href="link.url">
+            {{ link.name }}
+          </a>
         </div>
       </div>
 
@@ -58,20 +41,16 @@
             </div>
             <div class="store-links">
               <img src="@/assets/footer/playstore.png" alt="Play Store" class="store-link"/>
-              <img src="@/assets/footer/appstore.png" alt="App Store" class="store-link"/>
+              <img src="@/assets/footer/appstore.jpg" alt="App Store" class="store-link"/>
             </div>
         </div>
         <div class="social-icons">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-linkedin-in"></i>
-
+          <a v-for="(social, index) in socialLinks" :key="index" :href="social.url">
+            <i :class="['fa-brands', social.icon]"></i>
+          </a>
         </div>
       </div>
-
     </div>
-
     <div class="footer__bottom">
       © Copyright Rimmel 2022. All rights reserved.
     </div>
@@ -80,7 +59,47 @@
 
 <script>
 export default {
-  name: "AppFooter"
+  name: "AppFooter",
+  data() {
+    return {
+      footerLinks: [
+        {
+          title: "Support",
+          links: [
+            { name: "111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.", url: "#" },
+            { name: "exclusive@gmail.com", url: "#" },
+            { name: "+880 123456789", url: "#" }
+          ]
+        },
+        {
+          title: "Account",
+          links: [
+            { name: "My Account", url: "#" },
+            { name: "Login", url: "#" },
+            { name: "Register", url: "#" },
+            { name: "Cart", url: "#" },
+            { name: "Wishlist", url: "#" },
+            { name: "Shop", url: "#" }
+          ]
+        },
+        {
+          title: "Quick Links",
+          links: [
+            { name: "Privacy Policy", url: "#" },
+            { name: "Terms of Service", url: "#" },
+            { name: "FAQ", url: "#" },
+            { name: "Contact", url: "#" }
+          ]
+        }
+      ],
+      socialLinks: [
+      { icon: "fa-facebook", url: "#" },
+      { icon: "fa-twitter", url: "#" },
+      { icon: "fa-instagram", url: "#" },
+      { icon: "fa-linkedin-in", url: "#" }
+    ]
+    }
+  }
 }
 </script>
 
@@ -200,6 +219,7 @@ export default {
 .store-links {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 3px;
   margin: 10px 0;
 }

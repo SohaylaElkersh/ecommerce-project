@@ -7,10 +7,9 @@
       </div>
 
       <nav class="navbar__links">
-        <router-link to="/">Home</router-link>
-        <router-link to="/explore">Explore</router-link>
-        <router-link to="/contact">Contact Us</router-link>
-        <router-link to="/about">About Us</router-link>
+        <router-link v-for="(link, index) in navLinks" :key="index" :to="link.path">
+          {{ link.name }}
+        </router-link>
       </nav>
 
       <div class="navbar__actions">
@@ -91,6 +90,12 @@ export default {
   data() {
     return {
       cartOpen: false,
+      navLinks: [
+        { name: "Home", path: "/" },
+        { name: "Explore", path: "/explore" },
+        { name: "Contact Us", path: "/contact" },
+        { name: "About Us", path: "/about" }
+      ]
     }
   },
   watch: {

@@ -6,9 +6,9 @@
       <p>{{ member.role }}</p>
 
       <div class="social-icons">
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-instagram"></i>
-        <i class="fa-brands fa-linkedin-in"></i>
+        <a v-for="social in member.socials" :key="social.icon" :href="social.url">
+          <i :class="['fa-brands', social.icon]"></i>
+        </a>
       </div>
     </div>
   </div>
@@ -29,21 +29,41 @@ export default {
           name: "Jane Smith",
           role: "Founder & CEO",
           image: founderPic,
+          socials: [
+            { icon: "fa-twitter", url: "#" },
+            { icon: "fa-instagram", url: "#" },
+            { icon: "fa-linkedin-in", url: "#" }
+          ]
         },
         {
           name: "John Doe",
           role: "Co-Founder & COO",
           image: coFounderPic,
+          socials: [
+            { icon: "fa-twitter", url: "#" },
+            { icon: "fa-instagram", url: "#" },
+            { icon: "fa-linkedin-in", url: "#" }
+          ]
         },
         {
           name: "Samanth White",
           role: "Marketing Director",
           image: marketingDirectorPic,
+          socials: [
+            { icon: "fa-twitter", url: "#" },
+            { icon: "fa-instagram", url: "#" },
+            { icon: "fa-linkedin-in", url: "#" }
+          ]
         },
         {
           name: "William Brown",
           role: "Sales Manager",
           image: salesManagerPic,
+          socials: [
+            { icon: "fa-twitter", url: "#" },
+            { icon: "fa-instagram", url: "#" },
+            { icon: "fa-linkedin-in", url: "#" }
+          ]
         }
       ]
     };
