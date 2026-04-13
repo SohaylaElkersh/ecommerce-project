@@ -1,5 +1,15 @@
 <template>
-  <div class="carousel">
+    <div class="carousel">
+    <button class="nav left" @click="prevSlide">
+      <span class="inner">
+        <i class="fa-solid fa-arrow-left"></i>
+      </span>
+    </button>
+    <button class="nav right" @click="nextSlide">
+      <span class="inner">
+        <i class="fa-solid fa-arrow-right"></i>
+      </span>
+    </button>
     <div
       class="carousel-track" :style="{transform: `translateX(-${currentIndex * 100}%)`, transition: isTransitioning ? 'transform 0.6s ease' : 'none'}">
       <div
@@ -88,8 +98,14 @@ export default {
     startAutoSlide() {
       this.interval = setInterval(() => {
         this.currentIndex++;
-      }, 3000);
-    }
+      }, 10000);
+    },
+    nextSlide() {
+      this.currentIndex++;
+    },
+    prevSlide() {
+      this.currentIndex--;
+    }    
   },
 
   watch: {
@@ -100,14 +116,12 @@ export default {
           this.currentIndex = 1;
         }, 600);
       }
-
       if (newIndex === 0) {
         setTimeout(() => {
           this.isTransitioning = false;
           this.currentIndex = this.slides.length;
         }, 600);
       }
-
       setTimeout(() => {
         this.isTransitioning = true;
       }, 650);
@@ -148,8 +162,11 @@ export default {
 
 .content {
   color: white;
-  padding-left: 60px;
   max-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .brand {
@@ -187,5 +204,40 @@ h1 {
 .dots span.active {
   background: #db4444;
   border: solid 2px #fff;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 13px 15px;
+  cursor: pointer;
+  border-radius: 60%;
+  z-index: 10;
+  transition: all 0.5s ease;
+}
+.inner {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.nav.left {
+  left: 15px;
+}
+
+.nav.right {
+  right: 15px;
+}
+
+.nav:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.nav:hover .inner {
+  transform: scale(1.1);
 }
 </style>
