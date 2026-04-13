@@ -5,8 +5,8 @@
             <img :src="quality.img" alt="">
           </div>
           <div class="content">
-            <h2>{{ quality.h2 }}</h2>
-            <p>{{ quality.p }}</p>
+            <h2>{{ quality.title }}</h2>
+            <p>{{ quality.description }}</p>
           </div>
         </div>
     </div>
@@ -20,18 +20,18 @@ export default {
       qualities: [
         {
           img: require('../../assets/quality-section-icons/icons8-delivery-50.png'),
-          h2: 'FREE AND FAST DELIVERY',
-          p: 'Free delivery for all orders over $140'
+          title: 'FREE AND FAST DELIVERY',
+          description: 'Free delivery for all orders over $140'
         },
         {
           img: require('../../assets/quality-section-icons/icons8-customer-service-50.png'),
-          h2: '24/7 CUSTOMER SERVICE', p:
-          'Friendly 24/7 customer support'
+          title: '24/7 CUSTOMER SERVICE', 
+          description: 'Friendly 24/7 customer support'
         },
         {
           img: require('../../assets/quality-section-icons/icons8-guarantee-50.png'),
-          h2: 'MONEY BACK GUARANTEE',
-          p: 'We return money within 30 days'
+          title: 'MONEY BACK GUARANTEE',
+          description: 'We return money within 30 days'
         },
       ]
     }

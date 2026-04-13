@@ -31,16 +31,7 @@ export default {
   components: {
     CartCard,
     PaymentSection
-  },
-  data() {
-    return {
-      money: [
-        {p1: 'Subtotal', p2: '123'},
-        {p1: 'Shipping', p2: '12'},
-        {p1: 'Total', p2: '1234'}
-      ]
-    }
-  },
+  }
 }
 </script>
 
