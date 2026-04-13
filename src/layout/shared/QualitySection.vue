@@ -13,23 +13,27 @@
 </template>
 
 <script>
+import deliveryIcon from '../../assets/quality-section-icons/icons8-delivery-50.png'
+import customerServiceIcon from '../../assets/quality-section-icons/icons8-customer-service-50.png'
+import guaranteeIcon from '../../assets/quality-section-icons/icons8-guarantee-50.png'
+
 export default {
   name: "QualitySection",
   data() {
     return {
       qualities: [
         {
-          img: require('../../assets/quality-section-icons/icons8-delivery-50.png'),
+          img: deliveryIcon,
           title: 'FREE AND FAST DELIVERY',
           description: 'Free delivery for all orders over $140'
         },
         {
-          img: require('../../assets/quality-section-icons/icons8-customer-service-50.png'),
+          img: customerServiceIcon,
           title: '24/7 CUSTOMER SERVICE', 
           description: 'Friendly 24/7 customer support'
         },
         {
-          img: require('../../assets/quality-section-icons/icons8-guarantee-50.png'),
+          img: guaranteeIcon,
           title: 'MONEY BACK GUARANTEE',
           description: 'We return money within 30 days'
         },

@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import carouselBackground from '../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg'
+
 export default {
   data() {
     return {
@@ -50,28 +52,28 @@ export default {
         {
           description: "Power meets elegance",
           title: "Best Deals Today",
-          image: require("../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg")
+          image: carouselBackground
         },
         {
           description: "For first-time users",
           title: "Up to 10% off Voucher",
-          image: require("../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg")
-        },
+          image: carouselBackground
+        },  
         {
           description: "Designed for the future",
           title: "New Arrivals",
-          image: require("../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg")
+          image: carouselBackground
         },
         {
           description: "Upgrade your everyday",
           title: "Limited Offers",
-          image: require("../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg")
+          image: carouselBackground
         },
         {
           description: "More value, less price",
           title: "Exclusive Discounts",
-          image: require("../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg")
-        }
+          image: carouselBackground
+        } 
       ]
     };
   },

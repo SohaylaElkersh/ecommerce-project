@@ -15,6 +15,11 @@
 </template>
 
 <script>
+import founderPic from '../../assets/about/corporate-headshots-professional-photography-connecticut-ct-photo-studio-nlalor-3.jpg'
+import coFounderPic from '../../assets/about/linkedin-sales-solutions-pAtA8xe_iVM-unsplash.jpg'
+import marketingDirectorPic from '../../assets/about/c76b3f38a6b60c338d6534b4eacc9af2.jpg'
+import salesManagerPic from '../../assets/about/man-portrait-posing-loft-modern-space.jpg'
+
 export default {
   name: 'TeamSection',
   data() {
@@ -23,22 +28,22 @@ export default {
         {
           name: "Jane Smith",
           role: "Founder & CEO",
-          image: require("../../assets/about/corporate-headshots-professional-photography-connecticut-ct-photo-studio-nlalor-3.jpg"),
+          image: founderPic,
         },
         {
           name: "John Doe",
           role: "Co-Founder & COO",
-          image: require("../../assets/about/linkedin-sales-solutions-pAtA8xe_iVM-unsplash.jpg"),
+          image: coFounderPic,
         },
         {
           name: "Samanth White",
           role: "Marketing Director",
-          image: require("../../assets/about/c76b3f38a6b60c338d6534b4eacc9af2.jpg"),
+          image: marketingDirectorPic,
         },
         {
           name: "William Brown",
           role: "Sales Manager",
-          image: require("../../assets/about/man-portrait-posing-loft-modern-space.jpg"),
+          image: salesManagerPic,
         }
       ]
     };
