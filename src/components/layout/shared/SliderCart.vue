@@ -31,6 +31,11 @@ export default {
   components: {
     CartCard,
     PaymentSection
+  },
+  computed: {
+    cartProducts() {
+      return this.$store.getters.cartProducts;
+    }
   }
 }
 </script>

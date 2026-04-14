@@ -9,7 +9,7 @@
         </router-link>
         <i class="fa-regular fa-heart"></i>
       </div>
-      <div class="add-to-cart">Add to Cart</div>
+      <div class="add-to-cart" @click="addToCart">Add to Cart</div>
     </div>
     <div class="info">
       <h4>{{ product.title }}</h4>
@@ -32,6 +32,9 @@ export default {
   props: ["product"],
   methods: {
     star,
+    addToCart() {
+      this.$store.commit('addToCart', this.product);
+    }
   },
 };
 </script>

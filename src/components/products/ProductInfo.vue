@@ -29,7 +29,7 @@
                         <div class="plus" @click="incrementQuantity"><i class="fa-solid fa-plus"></i></div>
                     </div>
                     <div>
-                        <BaseButton>Add to Cart</BaseButton>
+                        <BaseButton @click="addToCart">Add to Cart</BaseButton>
                         <button class="love"><i class="fa-regular fa-heart"></i></button>
                     </div>
                 </div>
@@ -85,6 +85,9 @@ export default {
   },
   methods: {
       star,
+      addToCart() {
+        this.$store.commit('addToCart', this.product);
+      },      
       incrementQuantity() {
           this.quantity++;
       },
