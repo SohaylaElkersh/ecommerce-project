@@ -16,19 +16,7 @@
         <div class="search-box">
             <BaseInput class="search-box-base-input" placeholder="What are you looking for?" v-model="search"/>
             <div class="search-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
+              <i class="fa-solid fa-magnifying-glass"></i>
             </div>
         </div>
         <button
@@ -38,22 +26,10 @@
           :aria-expanded="cartOpen ? 'true' : 'false'"
           @click="openCart"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-          </svg>
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span v-if="cartItemCount > 0" class="cart-badge">
+            {{ cartItemCount }}
+          </span>
         </button>
       </div>
 
@@ -101,6 +77,12 @@ export default {
         { name: "Contact Us", path: "/contact" },
         { name: "About Us", path: "/about" }
       ]
+    }
+  },
+  computed: {
+    cartItemCount() {
+      return this.$store.state.cart.reduce(
+        (total, item) => total + item.quantity, 0);
     }
   },
   watch: {
@@ -197,8 +179,18 @@ export default {
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #000;
+  color: #555;
   cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 15px;
+}
+  
+.search-icon i {
+  transition: all 0.5s ease;
+}
+
+.search-icon i:hover {
+  transform: scale(1.2);  
 }
 
 .cart-btn {
@@ -209,13 +201,28 @@ export default {
   margin: 0;
   border: none;
   background: transparent;
-  color: inherit;
   cursor: pointer;
+  font-size: 22px;
+  transition: all 0.5s ease;
+  position: relative;
 }
 
-.cart-btn:focus-visible {
-  outline: 2px solid #db4444;
-  outline-offset: 2px;
+.cart-btn:hover {
+  transform: scale(1.2);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  background: #db4444;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 0px;
+  border-radius: 50%;
+  min-width: 18px;
+  text-align: center;
 }
 
 .cart-drawer__overlay {

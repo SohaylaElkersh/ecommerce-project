@@ -91,7 +91,7 @@ export default new Vuex.Store({
         .then(res => res.json())
         .then(data => {
           const filteredProducts = data.products
-            .filter(product => product.id !== productId) // exclude current product
+            .filter(product => product.id !== productId) 
             .slice(0, 4);
     
           commit('setRelatedProducts', filteredProducts);
