@@ -20,6 +20,10 @@ export default new Vuex.Store({
     },
     cartTotal(state) {
       return state.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    },
+    cartItemCount(state) {
+      return state.cart.reduce((total, item) =>
+        total + item.quantity, 0);
     }
   },
   mutations: {

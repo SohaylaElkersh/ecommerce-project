@@ -81,8 +81,7 @@ export default {
   },
   computed: {
     cartItemCount() {
-      return this.$store.state.cart.reduce(
-        (total, item) => total + item.quantity, 0);
+      return this.$store.getters.cartItemCount;
     }
   },
   watch: {

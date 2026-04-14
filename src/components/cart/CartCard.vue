@@ -3,7 +3,7 @@
         <div class="card">
             <div class="xmark" @click="removeFromCart"><i class="fa-solid fa-circle-xmark"></i></div>
             <img :src="product.thumbnail" :alt="product.title" />
-            <p>{{ product.title }}</p>
+            <p class="title">{{ product.title }}</p>
             <div class="quantity">
                 <div class="minus" @click="decrementQuantity"><i class="fa-solid fa-minus"></i></div>
                 <div class="quantity-input"><span>{{ product.quantity }}</span></div>
@@ -74,6 +74,13 @@ export default {
   background-color: #f5f5f5;
 }
 
+.card .xmark,
+.card img,
+.quantity,
+.card p:last-child {
+  flex-shrink: 0;
+}
+
 .card .xmark {
     color: #db4444;
     font-size: 20px;
@@ -92,8 +99,13 @@ export default {
     aspect-ratio: 1 / 1;
 }
 
-.card p {
-    font-size: 14px;
+.title {
+  flex: 0.8;                 
+  min-width: 0;           
+  white-space: nowrap;     
+  overflow: hidden;        
+  text-overflow: ellipsis; 
+  font-size: 14px;
 }
 
 .quantity {
@@ -150,4 +162,3 @@ export default {
   background-color: #fff
 }
 </style>
-
