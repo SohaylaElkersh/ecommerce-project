@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import star from "../../filters/ratingStar.js"; 
+import star from "@/filters/ratingStar.js"; 
 
 export default {
   name: "ProductCard",

@@ -18,8 +18,8 @@
 
 <script>
 import HeaderColor from '@/components/UI/HeaderColor.vue';
-import ProductCard from '../products/ProductCard.vue';
-import ProductGrid from '../products/ProductGrid.vue';
+import ProductCard from '@/components/products/ProductCard.vue';
+import ProductGrid from '@/components/products/ProductGrid.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 
 export default {

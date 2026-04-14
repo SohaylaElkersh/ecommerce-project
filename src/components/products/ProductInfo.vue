@@ -56,7 +56,7 @@
 
 <script>
 import BaseButton from '@/components/UI/BaseButton.vue';
-import star from '../../filters/ratingStar.js';
+import star from '@/filters/ratingStar.js';
 
 export default {
     name: 'ProductProps',
