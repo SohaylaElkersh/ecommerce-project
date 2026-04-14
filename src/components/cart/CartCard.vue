@@ -1,12 +1,12 @@
 <template>
     <div class="main">
         <div class="card">
-            <div class="xmark"><i class="fa-solid fa-circle-xmark"></i></div>
+            <div class="xmark" @click="removeFromCart"><i class="fa-solid fa-circle-xmark"></i></div>
             <img :src="product.thumbnail" :alt="product.title" />
             <p>{{ product.title }}</p>
             <div class="quantity">
                 <div class="minus" @click="decrementQuantity"><i class="fa-solid fa-minus"></i></div>
-                <div class="quantity-input"><span>{{ quantity }}</span></div>
+                <div class="quantity-input"><span>{{ product.quantity }}</span></div>
                 <div class="plus" @click="incrementQuantity"><i class="fa-solid fa-plus"></i></div>
             </div>
             <p>${{ product.price }}</p>
@@ -22,22 +22,22 @@ export default {
       type: Object,
       required: true,
     },
-  },  
-    data() {
-        return {
-            quantity: 1
-        }
-   },
+  },
   methods: {
-      incrementQuantity() {
-          this.quantity++;
-      },
-      decrementQuantity() {
-          if (this.quantity > 1) {
-              this.quantity--;
-          }
+    incrementQuantity() {
+      this.$store.commit('updateCartQuantity', 
+      {productId: this.product.id, quantity: this.product.quantity + 1});
+    },
+    decrementQuantity() {
+      if (this.product.quantity > 1) {
+        this.$store.commit('updateCartQuantity', 
+        {productId: this.product.id, quantity: this.product.quantity - 1});
       }
-  }  
+    },
+    removeFromCart() {
+      this.$store.commit('removeFromCart', this.product.id);
+    }
+  }
 }
 </script>
 
