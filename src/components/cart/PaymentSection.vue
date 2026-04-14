@@ -35,13 +35,22 @@ export default {
     BaseButton,
     BaseInput
   },
-  data() {
-    return {
-      money: [
-        {title: 'Subtotal', amount: '123'},
-        {title: 'Shipping', amount: '12'},
-        {title: 'Total', amount: '1234'}
-      ]
+  computed: {
+    subtotal() {
+      return this.$store.getters.cartTotal;
+    },
+    shipping() {
+      return this.subtotal * 0.1;       //shipping is 1% of the subtotal
+    },
+    total() {
+      return this.subtotal + this.shipping;
+    },
+    money() {
+      return [
+        { title: 'Subtotal', amount: this.subtotal.toFixed(2) },
+        { title: 'Shipping', amount: this.shipping.toFixed(2) },
+        { title: 'Total', amount: this.total.toFixed(2) }
+      ];
     }
   }
 }
