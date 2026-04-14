@@ -25,7 +25,7 @@
                 <div class="purchase-section">
                     <div class="quantity">
                         <div class="minus" @click="decrementQuantity"><i class="fa-solid fa-minus"></i></div>
-                        <div class="quantity-input"><span>{{ product.quantity }}</span></div>
+                        <div class="quantity-input"><span>{{ quantity }}</span></div>
                         <div class="plus" @click="incrementQuantity"><i class="fa-solid fa-plus"></i></div>
                     </div>
                     <div>
@@ -86,16 +86,14 @@ export default {
   methods: {
       star,
       addToCart() {
-        this.$store.commit('addToCart', this.product);
+        this.$store.commit('addToCart', { ...this.product, quantity: this.quantity });
       },      
       incrementQuantity() {
-        this.$store.commit('updateCartQuantity', 
-        {productId: this.product.id, quantity: this.product.quantity + 1});
+        this.quantity++;
       },
       decrementQuantity() {
-        if (this.product.quantity > 1) {
-          this.$store.commit('updateCartQuantity', 
-          {productId: this.product.id, quantity: this.product.quantity - 1});
+        if (this.quantity > 1) {
+          this.quantity--;
         }
       },
   },
