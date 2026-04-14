@@ -29,7 +29,7 @@
                         <div class="plus" @click="incrementQuantity"><i class="fa-solid fa-plus"></i></div>
                     </div>
                     <div>
-                        <button class="cart">Add to Cart</button>
+                        <BaseButton>Add to Cart</BaseButton>
                         <button class="love"><i class="fa-regular fa-heart"></i></button>
                     </div>
                 </div>
@@ -55,10 +55,14 @@
 </template>
 
 <script>
+import BaseButton from '@/layout/shared/BaseButton.vue';
 import star from '../../utils/rating.js';
 
 export default {
     name: 'ProductProps',
+    components: {
+      BaseButton
+    },
     data() {
       return {
         quantity: 1
@@ -286,21 +290,6 @@ export default {
   width: 100%;
   height: 100%;
   line-height: 35px;
-}
-
-.cart {
-  padding: 10px 20px;
-  background-color: #db4444;
-  color: #fff;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.5s ease;
-}
-
-.buy:hover {
-  background-color: #c03939;
-  transform: translateY(-5px);
 }
 
 .love {

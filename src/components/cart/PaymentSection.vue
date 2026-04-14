@@ -19,17 +19,20 @@
         </div>
         <div class="coupon">
           <input type="text" placeholder="Coupon Code" />
-          <button type="button">Apply</button>
+          <BaseButton>Apply</BaseButton>
         </div>
-        <div class="btn">
-          <button type="button">Place Order</button>
-        </div>
+        <BaseButton class="order-btn">Place Order</BaseButton>
       </div>        
 </template>
 
 <script>
+import BaseButton from '@/layout/shared/BaseButton.vue';
+
 export default {
   name: 'PaymentSection',
+  components: {
+    BaseButton
+  },
   data() {
     return {
       money: [
@@ -83,7 +86,7 @@ export default {
 
 .coupon {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   max-width: 500px;
@@ -104,43 +107,8 @@ export default {
   box-sizing: border-box;
 }
 
-.coupon button {
-  padding: 10px 40px;
-  border-radius: 4px;
-  color: #fff;
-  background-color: #db4444;
-  transition: all 0.5s ease;
-  border: none;
-  margin-left: 20px;
-  flex-shrink: 0;
-}
-
-.coupon button:hover {
-  transform: translateY(-5px);
-  background-color: #c03939;
-}
-
-.btn {
-  margin-top: 20px;
-  width: 100%;
-  max-width: 500px;
-  display: flex;
-  justify-content: center;
-}
-
-.btn button {
-  padding: 15px 25px;
-  border-radius: 4px;
-  color: #fff;
-  background-color: #db4444;
-  transition: all 0.5s ease;
-  border: none;
-  width: 200px;
-  font-size: 16px;
-}
-
-.btn button:hover {
-  transform: translateY(-5px);
-  background-color: #c03939;
+.order-btn {
+  width: fit-content;
+  align-self: center;
 }
 </style>

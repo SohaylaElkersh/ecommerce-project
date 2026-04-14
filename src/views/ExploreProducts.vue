@@ -14,23 +14,23 @@
         <ProductGrid>
           <ProductCard v-for="product in products" :key="product.id" :product="product"/>
         </ProductGrid>
-        <div class="btn">
-            <button @click="loadMore" :disabled="products.length >= total || isLoading">
-              {{ isLoading ? 'Loading...' : 'Load More...' }}
-            </button>       
-        </div>
+        <BaseButton class="btn" @click="loadMore" :disabled="products.length >= total || isLoading">
+          {{ isLoading ? 'Loading...' : 'Load More...' }}
+        </BaseButton>     
     </div>
 </template>
 
 <script>   
 import ProductCard from '../components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
+import BaseButton from '@/layout/shared/BaseButton.vue';
 
 export default {
     name: 'ExploreProducts',
     components: {
         ProductCard,
-        ProductGrid
+        ProductGrid,
+        BaseButton
     },
     data() {
       return {
@@ -105,31 +105,7 @@ export default {
 }
 
 .btn {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-}
-
-.btn button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #db4444;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  border: none;
-  transition: all 0.5s ease;
-  cursor: pointer;
-}
-
-.btn button:hover {
-  background-color: #c03939;
-  transform: translateY(-5px);
-}
-
-.btn button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
+  margin: 50px;
+  align-self: center;
 }
 </style>

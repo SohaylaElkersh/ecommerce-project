@@ -26,16 +26,19 @@
                 </div>
                 <textarea name="message" id="message" cols="20" rows="7" placeholder="Your Message"></textarea>
             </div>
-            <div class="btn">
-                <a href="">Send Message</a>
-            </div>
+            <BaseButton>Send Message</BaseButton>
         </div>
     </div>
 </template>
 
 <script>
+import BaseButton from '@/layout/shared/BaseButton.vue';
+
 export default {
-  name: "ContactUs"
+  name: "ContactUs",
+  components: {
+    BaseButton
+  }
 }
 </script>
 
@@ -141,24 +144,5 @@ export default {
 
 .form input {
     height: 20px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #db4444;
-    color: #fff;
-    border-radius: 4px;
-    transition: all 0.5s ease;
-}
-
-.btn a {
-    color: #fff;
-    text-decoration: none;   
-}
-
-.btn:hover {
-    background-color: #c03939;
-    transform: translateY(-5px);
 }
 </style>

@@ -9,11 +9,7 @@
         <ProductGrid>
           <ProductCard v-for="product in products" :key="product.id" :product="product"/>
         </ProductGrid>
-        <div class="btn">
-            <router-link to="/explore">
-              View All Products
-            </router-link>
-        </div>
+        <BaseButton class="btn" to="/explore">View All Products</BaseButton>
     </div>
 </template>
 
@@ -21,13 +17,15 @@
 import HeaderColor from '@/layout/shared/HeaderColor.vue';
 import ProductCard from '../products/ProductCard.vue';
 import ProductGrid from '../products/ProductGrid.vue';
+import BaseButton from '@/layout/shared/BaseButton.vue';
 
 export default {
     name: 'ExploreSection',
     components: {
         HeaderColor,
         ProductCard,
-        ProductGrid
+        ProductGrid,
+        BaseButton
     },
     computed: {
       products() {
@@ -49,21 +47,7 @@ export default {
 }
 
 .btn {
-  margin: 50px auto 0;
-}
-
-.btn a {
-  display: inline-block;
-  padding: 10px 20px;
-  color: #fff;
-  background-color: #db4444;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.5s ease;
-}
-
-.btn a:hover {
-    background-color: #c03939;
-    transform: translateY(-10px);
+  margin: 50px;
+  align-self: center;
 }
 </style>
