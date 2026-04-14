@@ -21,8 +21,8 @@
             </div>
             <div class="form">
                 <div>
-                    <input type="text" placeholder="Your Name">
-                    <input type="email" placeholder="Your Email">
+                  <BaseInput placeholder="Your Name" v-model="name" />
+                  <BaseInput type="email" placeholder="Your Email" v-model="email" />
                 </div>
                 <textarea name="message" id="message" cols="20" rows="7" placeholder="Your Message"></textarea>
             </div>
@@ -33,11 +33,13 @@
 
 <script>
 import BaseButton from '@/layout/shared/BaseButton.vue';
+import BaseInput from '@/layout/shared/BaseInput.vue';
 
 export default {
   name: "ContactUs",
   components: {
-    BaseButton
+    BaseButton,
+    BaseInput
   }
 }
 </script>
@@ -134,7 +136,7 @@ export default {
     margin-top: 0px;
 }
 
-.form input , .form textarea {
+.form textarea {
     width: 100%;
     padding: 10px;
     background-color: #f5f5f5;
@@ -142,7 +144,8 @@ export default {
     border: none;
 }
 
-.form input {
-    height: 20px;
+.form textarea:focus {
+    border: 1px solid #ccc;
+    outline: none;
 }
 </style>

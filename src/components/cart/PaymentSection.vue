@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="coupon">
-          <input type="text" placeholder="Coupon Code" />
+          <BaseInput class="coupon-input" type="text" placeholder="Coupon Code"/>
           <BaseButton>Apply</BaseButton>
         </div>
         <BaseButton class="order-btn">Place Order</BaseButton>
@@ -27,11 +27,13 @@
 
 <script>
 import BaseButton from '@/layout/shared/BaseButton.vue';
+import BaseInput from '@/layout/shared/BaseInput.vue';
 
 export default {
   name: 'PaymentSection',
   components: {
-    BaseButton
+    BaseButton,
+    BaseInput
   },
   data() {
     return {
@@ -94,17 +96,8 @@ export default {
   margin: 25px 0;
 }
 
-.coupon input {
-  height: 35px;
-  border-radius: 4px;
-  border: none;
-  width: 350px;
-  max-width: calc(100% - 140px);
-  min-width: 0;
-  font-size: 14px;
-  background-color: #f5f5f5;
-  padding-left: 15px;
-  box-sizing: border-box;
+.coupon-input {
+  max-width: calc(100% - 110px);
 }
 
 .order-btn {

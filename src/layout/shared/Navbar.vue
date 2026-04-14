@@ -14,7 +14,7 @@
 
       <div class="navbar__actions">
         <div class="search-box">
-          <input type="text" placeholder="What are you looking for?"/>
+            <BaseInput class="search-box-base-input" placeholder="What are you looking for?" v-model="search"/>
             <div class="search-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,13 +83,18 @@
 
 <script>
 import SliderCart from '@/layout/shared/SliderCart.vue'
+import BaseInput from '@/layout/shared/BaseInput.vue'
 
 export default {
   name: "AppNavbar",
-  components: { SliderCart },
+  components: { 
+    SliderCart, 
+    BaseInput 
+  },
   data() {
     return {
       cartOpen: false,
+      search: '',
       navLinks: [
         { name: "Home", path: "/" },
         { name: "Explore", path: "/explore" },
@@ -183,14 +188,8 @@ export default {
   margin-right: 70px;
 }
 
-.search-box input {
-  padding: 10px 60px 10px 12px;
-  border: 1px solid #ffffff;
-  background-color: #f6f6f6;
-  color: #888;
-  font-size: 14px;
-  outline: none;
-  border-radius: 4px;
+.search-box-base-input {
+  width: 240px;
 }
 
 .search-icon {
