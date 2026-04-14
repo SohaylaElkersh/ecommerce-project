@@ -23,7 +23,7 @@
 <script>   
 import ProductCard from '../components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
-import BaseButton from '@/layout/shared/BaseButton.vue';
+import BaseButton from '@/components/UI/BaseButton.vue';
 
 export default {
     name: 'ExploreProducts',

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import MainLayout from '@/layout/MainLayout.vue'
+import MainLayout from '@/components/layout/MainLayout.vue'
 import HomePage from '@/views/HomePage.vue'
 import NotFound from '@/views/NotFound.vue'
 import ExploreProducts from '@/views/ExploreProducts.vue'

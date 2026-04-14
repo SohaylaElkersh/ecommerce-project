@@ -11,7 +11,7 @@
 import StorySection from '@/components/about/StorySection.vue';
 import StatsSection from '@/components/about/StatsSection.vue';
 import TeamSection from '@/components/about/TeamSection.vue';   
-import QualitySection from '@/layout/shared/QualitySection.vue';
+import QualitySection from '@/components/layout/shared/QualitySection.vue';
 
 export default {
   name: 'AboutUs',

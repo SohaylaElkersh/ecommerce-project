@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import deliveryIcon from '../../assets/quality-section-icons/icons8-delivery-50.png'
-import customerServiceIcon from '../../assets/quality-section-icons/icons8-customer-service-50.png'
-import guaranteeIcon from '../../assets/quality-section-icons/icons8-guarantee-50.png'
+import deliveryIcon from '../../../assets/quality-section-icons/icons8-delivery-50.png'
+import customerServiceIcon from '../../../assets/quality-section-icons/icons8-customer-service-50.png'
+import guaranteeIcon from '../../../assets/quality-section-icons/icons8-guarantee-50.png'
 
 export default {
   name: "QualitySection",

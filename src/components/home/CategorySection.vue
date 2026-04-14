@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import HeaderColor from '@/layout/shared/HeaderColor.vue';
+import HeaderColor from '@/components/UI/HeaderColor.vue';
 
 export default {   
   name: 'CategorySection',

@@ -82,8 +82,8 @@
 </template>
 
 <script>
-import SliderCart from '@/layout/shared/SliderCart.vue'
-import BaseInput from '@/layout/shared/BaseInput.vue'
+import SliderCart from '@/components/layout/shared/SliderCart.vue'
+import BaseInput from '@/components/UI/BaseInput.vue'
 
 export default {
   name: "AppNavbar",

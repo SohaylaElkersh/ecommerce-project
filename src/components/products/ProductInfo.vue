@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import BaseButton from '@/layout/shared/BaseButton.vue';
-import star from '../../utils/rating.js';
+import BaseButton from '@/components/UI/BaseButton.vue';
+import star from '../../filters/ratingStar.js';
 
 export default {
     name: 'ProductProps',

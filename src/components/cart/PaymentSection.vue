@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import BaseButton from '@/layout/shared/BaseButton.vue';
-import BaseInput from '@/layout/shared/BaseInput.vue';
+import BaseButton from '@/components/UI/BaseButton.vue';
+import BaseInput from '@/components/UI//BaseInput.vue';
 
 export default {
   name: 'PaymentSection',
