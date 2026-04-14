@@ -23,11 +23,7 @@
                     <p class="description">{{ product.description }}</p>
                 </div>
                 <div class="purchase-section">
-                    <div class="quantity">
-                        <div class="minus" @click="decrementQuantity"><i class="fa-solid fa-minus"></i></div>
-                        <div class="quantity-input"><span>{{ quantity }}</span></div>
-                        <div class="plus" @click="incrementQuantity"><i class="fa-solid fa-plus"></i></div>
-                    </div>
+                    <QuantityControl class="quantity-control" :modelValue="quantity" @increment="incrementQuantity" @decrement="decrementQuantity"/>
                     <div>
                         <BaseButton @click="addToCart">Add to Cart</BaseButton>
                         <button class="love"><i class="fa-regular fa-heart"></i></button>
@@ -57,11 +53,13 @@
 <script>
 import BaseButton from '@/components/UI/BaseButton.vue';
 import star from '@/filters/ratingStar.js';
+import QuantityControl from '../UI/QuantityControl.vue';
 
 export default {
     name: 'ProductProps',
     components: {
-      BaseButton
+      BaseButton,
+      QuantityControl
     },
     data() {
       return {
@@ -242,57 +240,8 @@ export default {
   align-items: center;
 }
 
-.quantity {
-  display: flex;
-  align-items: center;
-  gap: 0px;
-}
-
-.quantity .minus, .quantity .plus {
-  width: 30px;
-  height: 35px;
-  background-color: #fff;
-  color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  transition: all 0.5s ease;
-}
-
-.quantity .minus {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-
-.quantity .plus {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-
-.quantity .minus:hover, .quantity .plus:hover {
-  background-color: #db4444;
-  border: #db4444 solid 1px;
-  color: #fff;
-}
-
-.quantity .quantity-input {
-  width: 100px;
-  height: 35px;
-  text-align: center;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  border-left: none;
-  border-right: none;
-  font-weight: bold;
-}
-
-.quantity-input span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  line-height: 35px;
+.quantity-control {
+  
 }
 
 .love {

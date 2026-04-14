@@ -4,19 +4,20 @@
             <div class="xmark" @click="removeFromCart"><i class="fa-solid fa-circle-xmark"></i></div>
             <img :src="product.thumbnail" :alt="product.title" />
             <p class="title">{{ product.title }}</p>
-            <div class="quantity">
-                <div class="minus" @click="decrementQuantity"><i class="fa-solid fa-minus"></i></div>
-                <div class="quantity-input"><span>{{ product.quantity }}</span></div>
-                <div class="plus" @click="incrementQuantity"><i class="fa-solid fa-plus"></i></div>
-            </div>
+            <QuantityControl :modelValue="product.quantity" @increment="incrementQuantity" @decrement="decrementQuantity"/>
             <p>${{ product.price }}</p>
         </div>
     </div>
 </template>
 
 <script>
+import QuantityControl from '../UI/QuantityControl.vue';
+
 export default {
   name: "CartCard",
+  components: {
+    QuantityControl
+  },
   props: {
     product: {
       type: Object,
@@ -106,59 +107,5 @@ export default {
   overflow: hidden;        
   text-overflow: ellipsis; 
   font-size: 14px;
-}
-
-.quantity {
-  display: flex;
-  align-items: center;
-  gap: 0px;
-}
-
-.quantity .minus, .quantity .plus {
-  width: 30px;
-  height: 35px;
-  background-color: #fff;
-  color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  transition: all 0.5s ease;
-}
-
-.quantity .minus {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-
-.quantity .plus {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-
-.quantity .minus:hover, .quantity .plus:hover {
-  background-color: #db4444;
-  border: #db4444 solid 1px;
-  color: #fff;
-}
-
-.quantity .quantity-input {
-  width: 50px;
-  height: 35px;
-  text-align: center;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  border-left: none;
-  border-right: none;
-  font-weight: bold;
-}
-
-.quantity-input span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  line-height: 35px;
-  background-color: #fff
 }
 </style>
