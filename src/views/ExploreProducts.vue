@@ -3,22 +3,21 @@
         <div class="header">
             <h1>Explore Our Products</h1>
             <div class="sorting">
-                <span>Sort By</span>
-                <select>
-                    <option value="rating">Highest Rating</option>
-                    <option value="priceLowHigh">Price: Low to High</option>
-                    <option value="priceHighLow">Price: High to Low</option>
-                    <option value="discount">Discount Percentage</option>
-                    <option value="brand">Brand</option>
-                    <option value="category">Category</option>
-                </select>
+              <span>Sort By</span>
+              <select>
+                <option v-for="option in sortOptions" :key="option.value" :value="option.value">
+                  {{ option.label }}
+                </option>
+              </select>
             </div>
         </div>
         <div class="products">
             <ProductCard v-for="product in products" :key="product.id" :product="product" />
         </div>
         <div class="btn">
-            <button @click="loadMore" :disabled="products.length >= total">Load More...</button>
+            <button @click="loadMore" :disabled="products.length >= total || isLoading">
+              {{ isLoading ? 'Loading...' : 'Load More...' }}
+            </button>       
         </div>
     </div>
 </template>
@@ -31,6 +30,19 @@ export default {
     components: {
         ProductCard
     },
+    data() {
+      return {
+        isLoading: false,
+        sortOptions: [
+          { value: "rating", label: "Highest Rating" },
+          { value: "priceLowHigh", label: "Price: Low to High" },
+          { value: "priceHighLow", label: "Price: High to Low" },
+          { value: "discount", label: "Discount Percentage" },
+          { value: "brand", label: "Brand" },
+          { value: "category", label: "Category" }
+        ]
+      }
+    },
     computed: {
       products() {
         return this.$store.state.products 
@@ -40,8 +52,13 @@ export default {
       }
     },
     methods: {
-      loadMore() {
-        this.$store.dispatch('fetchProducts');
+      async loadMore() {
+        this.isLoading = true;
+        try {
+          await this.$store.dispatch('fetchProducts');
+        } finally {
+          this.isLoading = false;
+        }
       }
     },
     mounted() {

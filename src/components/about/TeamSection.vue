@@ -109,4 +109,14 @@ export default {
   gap: 10px;
   font-size: 20px;
 }
+
+.social-icons a 
+{
+  color: black;
+  transition: all 0.5s ease; 
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
 </style>

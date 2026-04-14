@@ -239,6 +239,11 @@ export default {
   margin-right: 25px;
   color: #fff;
   font-size: 20px;
+  transition: all 0.5s ease; 
+}
+
+.social-icons i:hover {
+  transform: scale(1.2);
 }
 
 .footer__bottom {
