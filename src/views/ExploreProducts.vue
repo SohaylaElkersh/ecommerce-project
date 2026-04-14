@@ -11,9 +11,9 @@
               </select>
             </div>
         </div>
-        <div class="products">
-            <ProductCard v-for="product in products" :key="product.id" :product="product" />
-        </div>
+        <ProductGrid>
+          <ProductCard v-for="product in products" :key="product.id" :product="product"/>
+        </ProductGrid>
         <div class="btn">
             <button @click="loadMore" :disabled="products.length >= total || isLoading">
               {{ isLoading ? 'Loading...' : 'Load More...' }}
@@ -24,11 +24,13 @@
 
 <script>   
 import ProductCard from '../components/products/ProductCard.vue';
+import ProductGrid from '@/components/products/ProductGrid.vue';
 
 export default {
     name: 'ExploreProducts',
     components: {
-        ProductCard
+        ProductCard,
+        ProductGrid
     },
     data() {
       return {
@@ -102,17 +104,12 @@ export default {
   border-color: #868686;
 }
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 50px;
-}
-
 .btn {
   display: flex;
   justify-content: center;
   margin: 30px 0;
 }
+
 .btn button {
   padding: 10px 20px;
   font-size: 16px;

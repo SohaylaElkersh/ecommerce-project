@@ -9,9 +9,9 @@
               <span slot="big">Flash Sales</span>
             </HeaderColor>
         </div>
-        <div class="cards">
-            <ProductCard v-for="product in products" :key="product.id" :product="product" />
-        </div>
+        <ProductGrid>
+          <ProductCard v-for="product in products" :key="product.id" :product="product"/>
+        </ProductGrid>
         <div class="btn">
             <router-link to="/explore">
               View All Products
@@ -23,12 +23,14 @@
 <script>
 import HeaderColor from '@/layout/shared/HeaderColor.vue';
 import ProductCard from '../products/ProductCard.vue';
+import ProductGrid from '../products/ProductGrid.vue';
 
 export default {
     name: 'FlashSales',
     components: {
         HeaderColor,
-        ProductCard
+        ProductCard,
+        ProductGrid
     },
     computed: {
       products() {
@@ -49,12 +51,6 @@ export default {
   align-items: flex-start;
   border-bottom: solid #ccc 1px;
   padding-bottom: 40px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 50px;
 }
 
 .btn {

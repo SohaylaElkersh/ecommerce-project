@@ -7,9 +7,9 @@
               <span slot="small">More of this category</span>
             </HeaderColor>            
           </div>
-            <div class="products-list">
-              <ProductCard v-for="prod in relatedProducts" :key="prod.id" :product="prod" />
-            </div>
+          <ProductGrid>
+            <ProductCard v-for="prod in relatedProducts" :key="prod.id" :product="prod"/>
+          </ProductGrid>
         </div>
     </div>
 </template>
@@ -19,13 +19,15 @@ import star from '../utils/rating.js';
 import ProductCard from '../components/products/ProductCard.vue';
 import HeaderColor from '../layout/shared/HeaderColor.vue';
 import ProductInfo from '@/components/products/ProductInfo.vue';
+import ProductGrid from '@/components/products/ProductGrid.vue';
 
 export default {
     name: 'ProductDetails',
     components: {
        ProductCard,
        HeaderColor,
-       ProductInfo
+       ProductInfo,
+       ProductGrid
     },
     data() {
       return {
@@ -106,12 +108,5 @@ export default {
   flex-direction: column;
   gap: 20px;
   justify-content: flex-start;
-}
-
-.products-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-bottom: 40px;
 }
 </style>

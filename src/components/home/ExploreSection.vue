@@ -6,9 +6,9 @@
               <span slot="big">Explore Our Products</span>
             </HeaderColor>
         </div>
-        <div class="cards">
-            <ProductCard v-for="product in products" :key="product.id" :product="product" />
-        </div>
+        <ProductGrid>
+          <ProductCard v-for="product in products" :key="product.id" :product="product"/>
+        </ProductGrid>
         <div class="btn">
             <router-link to="/explore">
               View All Products
@@ -20,12 +20,14 @@
 <script>
 import HeaderColor from '@/layout/shared/HeaderColor.vue';
 import ProductCard from '../products/ProductCard.vue';
+import ProductGrid from '../products/ProductGrid.vue';
 
 export default {
     name: 'ExploreSection',
     components: {
         HeaderColor,
-        ProductCard
+        ProductCard,
+        ProductGrid
     },
     computed: {
       products() {
@@ -44,12 +46,6 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 50px;
 }
 
 .btn {
