@@ -13,10 +13,13 @@
     </div>
     <div class="cart-content">
       <div class="cart-content__inner">
-        <div class="cart-items">
+        <div v-if="cartProducts.length > 0" class="cart-items">
           <CartCard v-for="product in cartProducts" :key="product.id" :product="product" />
         </div>
-          <PaymentSection />
+        <PaymentSection  v-if="cartProducts.length > 0"/>
+        <div v-else class="empty-cart-message">
+          <h1>Your Cart is Empty!</h1>
+        </div>
       </div>
     </div>
   </div>
@@ -123,5 +126,20 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.empty-cart-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  margin: auto;
+}
+
+.empty-cart-message h1 {
+  color: #000;
+  margin: auto;
 }
 </style>
