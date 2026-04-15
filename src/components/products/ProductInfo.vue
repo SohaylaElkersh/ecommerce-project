@@ -84,7 +84,7 @@ export default {
   methods: {
       star,
       addToCart() {
-        this.$store.commit('cart/addToCart', { ...this.product, quantity: this.quantity });
+        this.$store.dispatch('cart/addToCart', { ...this.product, quantity: this.quantity });
       },      
       incrementQuantity() {
         this.quantity++;
