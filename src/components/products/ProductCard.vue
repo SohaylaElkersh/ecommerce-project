@@ -39,6 +39,7 @@ export default {
   },
   computed: {
     discountedPrice() {
+      if (!this.product) return 0;
       return (this.product.price * (1 - this.product.discountPercentage / 100)).toFixed(2);
     }
   }

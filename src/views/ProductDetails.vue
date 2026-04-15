@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <ProductInfo/>
+        <ProductInfo :product="product" />
         <div class="similar-products" v-if="relatedProducts.length > 0">
           <div class="header">
             <HeaderColor>
@@ -15,74 +15,50 @@
 </template>
 
 <script>
-import star from '@/filters/ratingStar.js';
 import ProductCard from '@/components/products/ProductCard.vue';
 import HeaderColor from '@/components/UI/HeaderColor.vue';
 import ProductInfo from '@/components/products/ProductInfo.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
 
 export default {
-    name: 'ProductDetails',
-    components: {
-       ProductCard,
-       HeaderColor,
-       ProductInfo,
-       ProductGrid
-    },
-    data() {
-      return {
-        quantity: 1
+  name: 'ProductDetails',
+  components: {
+     ProductCard,
+     HeaderColor,
+     ProductInfo,
+     ProductGrid
+  },
+  computed: {
+      product() {
+        return this.$store.state.products.product
+      },
+      relatedProducts() {
+        return this.$store.state.products.relatedProducts;
       }
-    },
-    computed: {
-        product() {
-          return this.$store.state.products.product
-        },
-        relatedProducts() {
-          return this.$store.state.products.relatedProducts;
-        }
-    },
-  mounted() {
-    const id = this.$route.params.id;
-    this.$store.dispatch('products/fetchProduct', id)
-      .then(product => {
-        return this.$store.dispatch('products/fetchRelatedProducts', {
-          category: product.category,
-          productId: product.id
-        });
-      })
-      .catch(() => {
-        if (this.$route.name !== "NotFound") {
-          this.$router.replace({ name: "NotFound" }).catch(() => {});
-        }
-      });     
   },
   methods: {
-      star,
-      incrementQuantity() {
-          this.quantity++;
-      },
-      decrementQuantity() {
-          if (this.quantity > 1) {
-              this.quantity--;
-          }
-      }
-  },
-  watch: {
-   '$route.params.id'(newId) {
-     this.$store.dispatch('products/fetchProduct', newId)
-       .then(product => {
-         return this.$store.dispatch('products/fetchRelatedProducts', {
-           category: product.category,
-           productId: product.id
+    fetchData(id) {
+      return this.$store.dispatch('products/fetchProduct', id)
+        .then(product => {
+          return this.$store.dispatch('products/fetchRelatedProducts', {
+            category: product.category,
+            productId: product.id
           });
         })
-       .catch(() => {
+        .catch(() => {
           if (this.$route.name !== "NotFound") {
-            this.$router.replace({ name: "NotFound" }).catch(() => {});
+            this.$router.replace({name: "NotFound"}).catch(() => {});
           }
         });
-   }
+    }
+  },
+  mounted() {
+    this.fetchData(this.$route.params.id);
+  },
+  watch: {
+    '$route.params.id'(newId) {
+      this.fetchData(newId);
+    }
  } 
 }
 </script>

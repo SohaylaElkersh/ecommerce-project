@@ -69,46 +69,32 @@ export default {
         quantity: 1
       }
     },
-    computed: {
-        product() {
-          return this.$store.state.products.product
-        },
-        relatedProducts() {
-          return this.$store.getters['products/relatedProducts'];
-        },
-        discountedPrice() {
-          return (this.product.price * (1 - this.product.discountPercentage / 100)).toFixed(2);
-        }
+    props: {
+      product: {
+        type: Object,
+        required: true
+      }
     },
-  mounted() {
-    const id = this.$route.params.id;
-    this.$store.dispatch('products/fetchProduct', id)
-      .catch(() => {
-        this.$router.replace({ name: "NotFound" });
-      });      
-  },
+    computed: {
+      discountedPrice() {
+        if (!this.product) return 0;
+        return (this.product.price * (1 - this.product.discountPercentage / 100)).toFixed(2);
+      }
+    },
   methods: {
-      star,
-      addToCart() {
-        this.$store.dispatch('cart/addToCart', { ...this.product, quantity: this.quantity });
-      },      
-      incrementQuantity() {
-        this.quantity++;
-      },
-      decrementQuantity() {
-        if (this.quantity > 1) {
-          this.quantity--;
-        }
-      },
+    star,
+    addToCart() {
+      this.$store.dispatch('cart/addToCart', { ...this.product, quantity: this.quantity });
+    },      
+    incrementQuantity() {
+      this.quantity++;
+    },
+    decrementQuantity() {
+      if (this.quantity > 1) {
+        this.quantity--;
+      }
+    },
   },
-  watch: {
-   '$route.params.id'(newId) {
-     this.$store.dispatch('products/fetchProduct', newId)
-       .catch(() => {
-         this.$router.replace({ name: "NotFound" });
-       });
-   }
- } 
 }
 </script>
 
