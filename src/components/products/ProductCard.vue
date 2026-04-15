@@ -14,7 +14,7 @@
     <div class="info">
       <h4>{{ product.title }}</h4>
       <div>
-        <p class="originalPrice">${{ product.price }}</p>
+        <p class="originalPrice">${{ product.price.toFixed(2) }}</p>
         <p class="discountedPrice">${{ discountedPrice }}</p>        
         <div class="rating">
           <p class="stars">{{ star(product.rating) }}</p>
@@ -27,6 +27,7 @@
 
 <script>
 import star from "@/filters/ratingStar.js"; 
+import { getDiscountedPrice } from "@/utils/pricing";
 
 export default {
   name: "ProductCard",
@@ -40,7 +41,7 @@ export default {
   computed: {
     discountedPrice() {
       if (!this.product) return 0;
-      return (this.product.price * (1 - this.product.discountPercentage / 100)).toFixed(2);
+      return getDiscountedPrice(this.product.price, this.product.discountPercentage).toFixed(2);
     }
   }
 };
