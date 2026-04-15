@@ -32,7 +32,7 @@ export default {
     },
     computed: {
       products() {
-        return this.$store.state.products.products.slice(0,4);
+        return this.$store.getters['products/randomProducts'];
       },
     },
     mounted() {
