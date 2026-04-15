@@ -14,8 +14,8 @@
     <div class="info">
       <h4>{{ product.title }}</h4>
       <div>
-        <p class="discountedPrice">${{ discountedPrice }}</p>        
         <p class="originalPrice">${{ product.price }}</p>
+        <p class="discountedPrice">${{ discountedPrice }}</p>        
         <div class="rating">
           <p class="stars">{{ star(product.rating) }}</p>
           <p class="total-ratings">({{ product.reviews.length }})</p>
@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     discountedPrice() {
-      return (this.product.price - (this.product.price * this.product.discountPercentage / 100)).toFixed(2);
+      return (this.product.price * (1 - this.product.discountPercentage / 100)).toFixed(2);
     }
   }
 };
@@ -145,12 +145,12 @@ export default {
 }
 
 .originalPrice {
-  color: #db4444;
+  color: gray;
+  text-decoration: line-through;
 }
 
 .discountedPrice {
-  color: gray;
-  text-decoration: line-through;
+  color: #db4444;
 }
 
 .rating {

@@ -4,7 +4,7 @@
             <h1>Explore Our Products</h1>
             <div class="sorting">
               <span>Sort By</span>
-              <select>
+              <select v-model="selectedSort">
                 <option v-for="option in sortOptions" :key="option.value" :value="option.value">
                   {{ option.label }}
                 </option>
@@ -35,19 +35,18 @@ export default {
     data() {
       return {
         isLoading: false,
+        selectedSort: 'nothing',
         sortOptions: [
+          { value: "nothing", label: "Default"},
           { value: "rating", label: "Highest Rating" },
           { value: "priceLowHigh", label: "Price: Low to High" },
-          { value: "priceHighLow", label: "Price: High to Low" },
-          { value: "discount", label: "Discount Percentage" },
-          { value: "brand", label: "Brand" },
-          { value: "category", label: "Category" }
+          { value: "priceHighLow", label: "Price: High to Low" }
         ]
       }
     },
     computed: {
       products() {
-        return this.$store.state.products.products
+        return this.$store.getters['products/sortedProducts'](this.selectedSort)
       },
       total() {
         return this.$store.state.products.total

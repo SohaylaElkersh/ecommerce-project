@@ -20,8 +20,8 @@
                       </p>
                     </div>
                     <div class="pricing">
-                        <p class="discountedPrice">${{ discountedPrice }}</p> 
                         <p class="originalPrice">${{ product.price.toFixed(2) }}</p>
+                        <p class="discountedPrice">${{ discountedPrice }}</p> 
                     </div>
                     <p class="description">{{ product.description }}</p>
                 </div>
@@ -77,7 +77,7 @@ export default {
           return this.$store.getters['products/relatedProducts'];
         },
         discountedPrice() {
-          return (this.product.price - (this.product.price * this.product.discountPercentage / 100)).toFixed(2);
+          return (this.product.price * (1 - this.product.discountPercentage / 100)).toFixed(2);
         }
     },
   mounted() {
