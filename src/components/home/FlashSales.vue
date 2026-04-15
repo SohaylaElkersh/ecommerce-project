@@ -32,11 +32,11 @@ export default {
     },
     computed: {
       products() {
-        return this.$store.state.products.slice(0,4);
+        return this.$store.state.products.products.slice(0,4);
       },
     },
     mounted() {
-      this.$store.dispatch('fetchProducts');
+      this.$store.dispatch('products/fetchProducts');
     }
 }
 </script>

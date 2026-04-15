@@ -26,17 +26,17 @@ export default {
   },
   methods: {
     incrementQuantity() {
-      this.$store.commit('updateCartQuantity', 
+      this.$store.commit('cart/updateCartQuantity', 
       {productId: this.product.id, quantity: this.product.quantity + 1});
     },
     decrementQuantity() {
       if (this.product.quantity > 1) {
-        this.$store.commit('updateCartQuantity', 
+        this.$store.commit('cart/updateCartQuantity', 
         {productId: this.product.id, quantity: this.product.quantity - 1});
       }
     },
     removeFromCart() {
-      this.$store.commit('removeFromCart', this.product.id);
+      this.$store.commit('cart/removeFromCart', this.product.id);
     }
   }
 }

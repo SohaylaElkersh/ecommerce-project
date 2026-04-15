@@ -68,15 +68,15 @@ export default {
     },
     computed: {
         product() {
-          return this.$store.state.product
+          return this.$store.state.products.product
         },
         relatedProducts() {
-          return this.$store.getters.relatedProducts;
+          return this.$store.getters['products/relatedProducts'];
         }
     },
   mounted() {
     const id = this.$route.params.id;
-    this.$store.dispatch('fetchProduct', id)
+    this.$store.dispatch('products/fetchProduct', id)
       .catch(() => {
         this.$router.replace({ name: "NotFound" });
       });      
@@ -84,7 +84,7 @@ export default {
   methods: {
       star,
       addToCart() {
-        this.$store.commit('addToCart', { ...this.product, quantity: this.quantity });
+        this.$store.commit('cart/addToCart', { ...this.product, quantity: this.quantity });
       },      
       incrementQuantity() {
         this.quantity++;
@@ -97,7 +97,7 @@ export default {
   },
   watch: {
    '$route.params.id'(newId) {
-     this.$store.dispatch('fetchProduct', newId)
+     this.$store.dispatch('products/fetchProduct', newId)
        .catch(() => {
          this.$router.replace({ name: "NotFound" });
        });
@@ -238,10 +238,6 @@ export default {
   display: flex;
   gap: 20px;
   align-items: center;
-}
-
-.quantity-control {
-  
 }
 
 .love {

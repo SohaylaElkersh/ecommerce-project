@@ -33,7 +33,7 @@ export default {
   methods: {
     star,
     addToCart() {
-      this.$store.commit('addToCart', this.product);
+      this.$store.commit('cart/addToCart', this.product);
     }
   },
 };

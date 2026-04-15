@@ -36,17 +36,17 @@ export default {
     },
     computed: {
         product() {
-          return this.$store.state.product
+          return this.$store.state.products.product
         },
         relatedProducts() {
-          return this.$store.state.relatedProducts;
+          return this.$store.state.products.relatedProducts;
         }
     },
   mounted() {
     const id = this.$route.params.id;
-    this.$store.dispatch('fetchProduct', id)
+    this.$store.dispatch('products/fetchProduct', id)
       .then(product => {
-        return this.$store.dispatch('fetchRelatedProducts', {
+        return this.$store.dispatch('products/fetchRelatedProducts', {
           category: product.category,
           productId: product.id
         });
@@ -70,9 +70,9 @@ export default {
   },
   watch: {
    '$route.params.id'(newId) {
-     this.$store.dispatch('fetchProduct', newId)
+     this.$store.dispatch('products/fetchProduct', newId)
        .then(product => {
-         return this.$store.dispatch('fetchRelatedProducts', {
+         return this.$store.dispatch('products/fetchRelatedProducts', {
            category: product.category,
            productId: product.id
           });

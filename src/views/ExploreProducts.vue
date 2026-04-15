@@ -47,24 +47,24 @@ export default {
     },
     computed: {
       products() {
-        return this.$store.state.products 
+        return this.$store.state.products.products
       },
       total() {
-        return this.$store.state.total
+        return this.$store.state.products.total
       }
     },
     methods: {
       async loadMore() {
         this.isLoading = true;
         try {
-          await this.$store.dispatch('fetchProducts');
+          await this.$store.dispatch('products/fetchProducts');
         } finally {
           this.isLoading = false;
         }
       }
     },
     mounted() {
-      this.$store.dispatch('fetchProducts');
+      this.$store.dispatch('products/fetchProducts');
     }
 }
 </script>

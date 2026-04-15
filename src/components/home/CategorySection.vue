@@ -41,11 +41,11 @@ export default {
   }, 
   computed: {
     categories() {
-        return this.$store.state.categories
+        return this.$store.state.products.categories
     }
   },
   mounted() {
-    this.$store.dispatch('fetchCategories')
+    this.$store.dispatch('products/fetchCategories')
   },   
 }
 </script>

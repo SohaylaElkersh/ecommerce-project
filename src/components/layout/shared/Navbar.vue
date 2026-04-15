@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     cartItemCount() {
-      return this.$store.getters.cartItemCount;
+      return this.$store.getters['cart/cartItemCount'];
     }
   },
   watch: {

@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     subtotal() {
-      return this.$store.getters.cartTotal;
+      return this.$store.getters['cart/cartTotal'];
     },
     shipping() {
       return this.subtotal * 0.1;       //shipping is 1% of the subtotal
