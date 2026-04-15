@@ -14,7 +14,8 @@
     <div class="info">
       <h4>{{ product.title }}</h4>
       <div>
-        <p class="price">${{ product.price }}</p>
+        <p class="discountedPrice">${{ discountedPrice }}</p>        
+        <p class="originalPrice">${{ product.price }}</p>
         <div class="rating">
           <p class="stars">{{ star(product.rating) }}</p>
           <p class="total-ratings">({{ product.reviews.length }})</p>
@@ -34,8 +35,13 @@ export default {
     star,
     addToCart() {
       this.$store.dispatch('cart/addToCart', this.product);
-    }
+    },
   },
+  computed: {
+    discountedPrice() {
+      return (this.product.price - (this.product.price * this.product.discountPercentage / 100)).toFixed(2);
+    }
+  }
 };
 </script>
 
@@ -138,8 +144,13 @@ export default {
   align-items: center;
 }
 
-.price {
+.originalPrice {
   color: #db4444;
+}
+
+.discountedPrice {
+  color: gray;
+  text-decoration: line-through;
 }
 
 .rating {

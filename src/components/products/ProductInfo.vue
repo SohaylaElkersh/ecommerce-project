@@ -19,7 +19,10 @@
                         {{ product.stock > 0 ? "In Stock" : "Out of Stock" }}
                       </p>
                     </div>
-                    <p class="price">${{ product.price.toFixed(2) }}</p>
+                    <div class="pricing">
+                        <p class="discountedPrice">${{ discountedPrice }}</p> 
+                        <p class="originalPrice">${{ product.price.toFixed(2) }}</p>
+                    </div>
                     <p class="description">{{ product.description }}</p>
                 </div>
                 <div class="purchase-section">
@@ -72,6 +75,9 @@ export default {
         },
         relatedProducts() {
           return this.$store.getters['products/relatedProducts'];
+        },
+        discountedPrice() {
+          return (this.product.price - (this.product.price * this.product.discountPercentage / 100)).toFixed(2);
         }
     },
   mounted() {
@@ -221,10 +227,23 @@ export default {
   color: #db4444;
 }
 
-.product-info .price {
+.product-info .pricing {
+  display: flex;
+  gap: 20px;
+}
+
+.pricing .originalPrice {
   font-size: 22px;
   font-weight: bold;
-  margin: 0;
+  margin: 0;  
+  color: gray;
+  text-decoration: line-through;
+}
+
+.pricing .discountedPrice {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;  
 }
 
 .product-info .description {
