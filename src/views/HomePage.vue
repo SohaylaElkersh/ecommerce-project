@@ -31,8 +31,7 @@ export default {
 .main-home {
   display: flex;
   flex-direction: column;
-  gap: 0px;
-  align-items: center;
+  align-items: stretch;
   padding: 0px 75px;
   gap: 100px;
 }

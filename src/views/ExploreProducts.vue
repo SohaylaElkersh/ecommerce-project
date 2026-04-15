@@ -52,9 +52,6 @@ export default {
           this.isLoading = false;
         }
       }
-    },
-    mounted() {
-      this.$store.dispatch('products/fetchProducts');
     }
 }
 </script>

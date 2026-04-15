@@ -34,9 +34,6 @@ export default {
       products() {
         return this.$store.getters['products/randomProducts'];
       },
-    },
-    mounted() {
-      this.$store.dispatch('products/fetchProducts');
     }
 }
 </script>
