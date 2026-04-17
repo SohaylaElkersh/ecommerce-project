@@ -10,7 +10,7 @@
       <div class="product-detail__content">
         <div class="product-detail__info">
           <h2 class="product-detail__title">{{ product.title }}</h2>
-          <p class="product-detail__category">Category:<router-link to="">{{ product.category }}</router-link></p>
+          <p class="product-detail__category">Category: <router-link to="">{{ product.category }}</router-link></p>
           <div class="product-detail__rating">
             <p class="product-detail__stars">{{ star(product.rating) }}</p>
             <p class="product-detail__reviews">({{ product.reviews.length }} Reviews)</p>

@@ -25,19 +25,29 @@ export default {
   computed: {
     breadcrumbItems() {
       const segments = this.$route.path.split('/').filter(Boolean);
+      const queryBreadcrumb = this.$route.query.breadcrumb;
+      const queryBreadcrumbTo = this.$route.query.breadcrumbTo;
+
+      if (this.$route.name === 'NotFound') {
+        return [
+          { to: this.$route.path, isCurrent: true, label: 'Not Found' }
+        ];
+      }
+
+      if (segments[0] === 'product' && segments.length) {
+        const middleLabel = queryBreadcrumb ? this.formatLabel(queryBreadcrumb) : 'Explore';
+        const middleTo = typeof queryBreadcrumbTo === 'string' && queryBreadcrumbTo ? queryBreadcrumbTo : '/explore';
+        return [
+          { to: middleTo, isCurrent: false, label: middleLabel },
+          { to: '/' + segments.join('/'), isCurrent: true, label: this.currentLabel || this.formatLabel(segments[segments.length - 1]) }
+        ];
+      }
+
       if (!segments.length) { return []; }
-
       return segments.map((segment, index) => {
-        const defaultTo = '/' + segments.slice(0, index + 1).join('/');
+        const to = '/' + segments.slice(0, index + 1).join('/');
         const isCurrent = index === segments.length - 1;
-        const isProductRoutePrefix = segments[0] === 'product' && index === 0;
-
-        return {
-          to: isProductRoutePrefix ? '/explore' : defaultTo,
-          isCurrent,
-          label: isCurrent && this.currentLabel ? this.currentLabel : isProductRoutePrefix
-            ? 'Explore' : this.formatLabel(segment)
-        };
+        return { to, isCurrent, label: isCurrent && this.currentLabel ? this.currentLabel : this.formatLabel(segment) };
       });
     }
   },
