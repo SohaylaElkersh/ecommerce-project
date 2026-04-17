@@ -251,7 +251,50 @@ export default {
 .cart-slide-leave {
   transform: translateX(0);
 }
-</style>
+
+@media (max-width: 970px) {
+  .navbar__content {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    height: auto;
+    gap: 15px;
+  }
+
+  .navbar__links {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .navbar__link {
+    margin: 0 10px 10px 0;
+  }
+
+  .navbar__actions {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .navbar__search {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .navbar__search-input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .navbar__cart {
+    align-self: flex-end;
+    margin: 15px 0;
+  }
+}</style>
 
 <style>
 html.cart-drawer-open {
