@@ -2,6 +2,9 @@ export default {
   appendProducts(state, products) {
     state.products = [...state.products, ...products]
   },
+  setCategory(state, category) {
+    state.currentCategory = category
+  },
   setProduct(state, product) {
     state.product = product
   },

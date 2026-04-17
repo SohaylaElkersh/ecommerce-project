@@ -25,9 +25,8 @@ export const fetchCategoriesApi = () => {
     .then(res => res.json());
 };
 
-export const fetchProductsByCategoryApi = (category) => { 
-  return fetch(`${BASE_URL}/category/${category}`)
-    .then(res => res.json());   
+export const fetchProductsByCategoryApi = ({ category, limit, skip }) => {
+  return fetch(
+    `${BASE_URL}/category/${category}?limit=${limit}&skip=${skip}&select=id,title,thumbnail,price,rating,reviews,discountPercentage`
+  ).then(res => res.json());
 };
-//endpoint doesn't support category filtering via query params
-//so any category that has more than 12 products, pagination wont work on it

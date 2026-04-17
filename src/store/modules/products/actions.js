@@ -44,7 +44,11 @@ export default {
 
       let data;
       if (category) {
-        data = await fetchProductsByCategoryApi(category);
+        data = await fetchProductsByCategoryApi({
+          category,
+          limit: state.limit,
+          skip: state.skip
+        });
       } else {
         data = await fetchProductsApi({
           limit: state.limit,
