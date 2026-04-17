@@ -8,7 +8,7 @@
 export default {
   name: 'app',
   created() {
-    this.$store.dispatch('products/fetchProducts');
+    this.$store.dispatch('products/fetchProducts', {reset: true});
   }
 }
 </script>

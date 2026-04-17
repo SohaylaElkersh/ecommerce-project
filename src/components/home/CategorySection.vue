@@ -49,7 +49,7 @@ export default {
   },   
   methods: {
     selectedCategory(categorySlug) {
-      this.$store.dispatch('products/fetchProductsByCategory', categorySlug)
+      this.$router.push(`/explore/${categorySlug}`);
     }
   },
 }

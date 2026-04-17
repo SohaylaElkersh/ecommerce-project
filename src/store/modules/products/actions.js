@@ -42,12 +42,18 @@ export default {
         commit("setCategory", category);
       }
 
-      const api = category ? fetchProductsByCategoryApi : fetchProductsApi;
-
-      const data = await api(category, {
-        limit: state.limit,
-        skip: state.skip
-      });
+      let data;
+      if (category) {
+        data = await fetchProductsByCategoryApi(category, {
+          limit: state.limit,
+          skip: state.skip
+        });
+      } else {
+        data = await fetchProductsApi({
+          limit: state.limit,
+          skip: state.skip
+        });
+      }
 
       commit("appendProducts", data.products);
       commit("incrementSkip");

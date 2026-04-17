@@ -31,7 +31,7 @@ export default new Router({
           component: ContactUs
         },
         {
-          path: '/explore',
+          path: '/explore/:slug?',
           component: ExploreProducts
         },
         {
