@@ -4,10 +4,8 @@
       <img class="team__image" :src="member.image" alt="">
       <h4 class="team__name">{{ member.name }}</h4>
       <p class="team__role">{{ member.role }}</p>
-
       <div class="team__socials">
-        <a 
-          class="team__social-link" v-for="social in member.socials"  :key="social.icon"  :href="social.url">
+        <a class="team__social-link" v-for="social in member.socials"  :key="social.icon"  :href="social.url">
           <i :class="['fa-brands', social.icon, 'team__social-icon']"></i>
         </a>
       </div>
