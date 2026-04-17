@@ -1,5 +1,6 @@
 <template>
   <div class="product-details__wrapper">
+    <BreadcrumbHeader class="product-details__breadcrumb" :current-label="product && product.title ? product.title : ''"/>
     <ProductInfo :product="product" />
     <div class="product-details__related" v-if="relatedProducts.length > 0">
       <div class="product-details__related-header">
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+import BreadcrumbHeader from '@/components/layout/shared/BreadcrumbHeader.vue';
 import ProductCard from '@/components/products/ProductCard.vue';
 import HeaderColor from '@/components/UI/HeaderColor.vue';
 import ProductInfo from '@/components/products/ProductInfo.vue';
@@ -23,6 +25,7 @@ import ProductGrid from '@/components/products/ProductGrid.vue';
 export default {
   name: 'ProductDetails',
   components: {
+    BreadcrumbHeader,
     ProductCard,
     HeaderColor,
     ProductInfo,
@@ -69,6 +72,11 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.product-details__breadcrumb {
+  align-self: flex-start;
+  margin: 20px 125px;
 }
 
 .product-details__related {

@@ -20,22 +20,27 @@ export default new Router({
       children: [
         {
           path: '',
-          component:HomePage
+          name: 'HomePage',
+          component:HomePage,
         },
         {
           path: '/about',
+          name: 'AboutUs',
           component: AboutUs
         },
         {
           path: '/contact',
+          name: 'ContactUs',
           component: ContactUs
         },
         {
           path: '/explore/:slug?',
+          name: 'ExploreProducts',
           component: ExploreProducts
         },
         {
           path: '/product/:id',
+          name: 'ProductDetails',
           component: ProductDetails
         },
         {

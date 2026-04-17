@@ -1,5 +1,6 @@
 <template>
     <div class="explore-products__wrapper">
+      <BreadcrumbHeader class="explore-products__breadcrumb"/>
         <div class="explore-products__header">
             <h1>Explore Our Products</h1>
             <div class="sorting">
@@ -16,6 +17,7 @@
 </template>
 
 <script>   
+import BreadcrumbHeader from '@/components/layout/shared/BreadcrumbHeader.vue';
 import ProductCard from '@/components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
 import SortingSelect from '@/components/products/SortingSelect.vue';
@@ -24,10 +26,11 @@ import BaseButton from '@/components/UI/BaseButton.vue';
 export default {
   name: 'ExploreProducts',
   components: {
-      ProductCard,
-      ProductGrid,
-      BaseButton,
-      SortingSelect
+    BreadcrumbHeader,
+    ProductCard,
+    ProductGrid,
+    BaseButton,
+    SortingSelect
   },
   data() {
     return {
@@ -64,6 +67,9 @@ export default {
 <style scoped>
 .explore-products__wrapper {
   padding: 10px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .explore-products__header {
@@ -71,6 +77,11 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  width: 98%;
+}
+
+.explore-products__breadcrumb {
+  margin: 0px 0 20px 0;
 }
 
 .explore-products__load-more {

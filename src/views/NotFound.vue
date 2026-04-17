@@ -1,19 +1,38 @@
 <template>
     <div class="not-found">
+      <BreadcrumbHeader class="not-found__breadcrumb"/>
+      <div class="not-found__content">
         <h1 class="not-found__title">404 Not Found</h1>
         <p class="not-found__text">You visited not found page. you may go home page.</p>
         <router-link to="/" class="not-found__button">Back to home page</router-link>
+      </div>
     </div>
 </template>
 
 <script>
+import BreadcrumbHeader from '@/components/layout/shared/BreadcrumbHeader.vue';
+
 export default {
-  name: 'NotFound'
+  name: 'NotFound',
+  components: {
+    BreadcrumbHeader
+  }
 }
 </script>
 
 <style scoped>
 .not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.not-found__breadcrumb {
+  margin: 20px 0 50px 150px;
+}
+
+.not-found__content {
+  align-self: center;
   text-align: center;
   padding: 100px;
   display: flex;
