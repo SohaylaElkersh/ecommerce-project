@@ -23,6 +23,9 @@ export default {
     CategorySection,
     ExploreSection,
     QualitySection
+  },
+  mounted() {
+    this.$store.dispatch('products/fetchProducts', {reset: true});
   }
 }
 </script>
