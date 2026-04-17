@@ -7,7 +7,7 @@
         </HeaderColor>
     </div>
     <div class="category-grid" >
-        <div class="grid-box" v-for="(category, index) in categories" :key="category.slug">
+        <div class="grid-box" v-for="(category, index) in categories" :key="category.slug" @click="selectedCategory(category.slug)">
             <div class="icon">
                 <i :class="categoryIcons[index].icon"></i>
             </div>
@@ -47,6 +47,11 @@ export default {
   mounted() {
     this.$store.dispatch('products/fetchCategories')
   },   
+  methods: {
+    selectedCategory(categorySlug) {
+      this.$store.dispatch('products/fetchProductsByCategory', categorySlug)
+    }
+  },
 }
 </script>
 
