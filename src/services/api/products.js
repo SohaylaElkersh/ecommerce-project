@@ -24,3 +24,8 @@ export const fetchCategoriesApi = () => {
   return fetch(`${BASE_URL}/categories`)
     .then(res => res.json());
 };
+
+export const fetchProductsByCategoryApi = (category, { limit, skip }) => { 
+  return fetch(`${BASE_URL}/category/${category}?limit=${limit}&skip=${skip}`)
+   .then(res => res.json()); 
+};

@@ -1,6 +1,7 @@
 import {
   fetchProductsApi,
   fetchProductApi,
+  fetchProductsByCategoryApi,
   fetchRelatedProductsApi,
   fetchCategoriesApi
 } from "@/services/api/products";
@@ -41,5 +42,19 @@ export default {
   async fetchCategories({ commit }) {
     const data = await fetchCategoriesApi();
     commit('setCategories', data.slice(0, 8));
+  },
+
+  async fetchProductsByCategory({ commit, state }, category) {
+    commit("resetProductsByCategory", category);
+
+    const data = await fetchProductsByCategoryApi(category, {
+      limit: state.limit,
+      skip: state.skipByCategory
+    });
+
+    commit("appendProducts", data.products);
+    commit("incrementSkipByCategory");
+    commit("setTotalByCategory", data.total);
+    commit("setCurrentCategory", category);
   }
 };
