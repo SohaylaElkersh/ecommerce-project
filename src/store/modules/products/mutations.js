@@ -17,16 +17,12 @@ export default {
   setTotal(state, total) {
     state.total = total
   },
-  appendProductsByCategory(state, products) {
-    state.ProductsByCategory.push(...products)
+  setLoading(state, value) {
+    state.isLoading = value;
   },
-  setCurrentCategory(state, category) {
-    state.currentCategory = category;
-  },
-  incrementSkipByCategory(state) {
-    state.skipByCategory += state.limit;
-  },
-  setTotalByCategory(state, total) {
-    state.totalByCategory = total;
-  },
+  resetProducts(state) {
+    state.products = [];
+    state.skip = 0;
+    state.total = 0;
+  }    
 }

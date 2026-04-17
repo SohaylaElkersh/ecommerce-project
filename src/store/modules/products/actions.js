@@ -7,17 +7,6 @@ import {
 } from "@/services/api/products";
 
 export default {
-  async fetchProducts({ commit, state }) {
-    const data = await fetchProductsApi({
-      limit: state.limit,
-      skip: state.skip
-    });
-
-    commit('appendProducts', data.products);
-    commit('incrementSkip');
-    commit('setTotal', data.total);
-  },
-
   async fetchProduct({ commit }, id) {
     try {
       const data = await fetchProductApi(id);
@@ -43,18 +32,29 @@ export default {
     const data = await fetchCategoriesApi();
     commit('setCategories', data.slice(0, 8));
   },
+  
+  async fetchProducts({ state, commit }, { category = null, reset = false } = {}) {
+    commit("setLoading", true);
 
-  async fetchProductsByCategory({ commit, state }, category) {
-    commit("resetProductsByCategory", category);
+    try {
+      if (reset || state.currentCategory !== category) {
+        commit("resetProducts");
+        commit("setCategory", category);
+      }
 
-    const data = await fetchProductsByCategoryApi(category, {
-      limit: state.limit,
-      skip: state.skipByCategory
-    });
+      const api = category ? fetchProductsByCategoryApi : fetchProductsApi;
 
-    commit("appendProducts", data.products);
-    commit("incrementSkipByCategory");
-    commit("setTotalByCategory", data.total);
-    commit("setCurrentCategory", category);
+      const data = await api(category, {
+        limit: state.limit,
+        skip: state.skip
+      });
+
+      commit("appendProducts", data.products);
+      commit("incrementSkip");
+      commit("setTotal", data.total);
+
+    } finally {
+      commit("setLoading", false);
+    }
   }
 };
