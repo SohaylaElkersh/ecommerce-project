@@ -67,6 +67,7 @@ export default {
   cursor: pointer;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
+  border-radius: 4px;
 }
 
 .product-card:hover {
@@ -143,9 +144,6 @@ export default {
   transform: translateY(0);
 }
 
-.product-card__info {
-  margin-top: 10px;
-}
 
 .product-card__title {
   font-size: 16px;
@@ -156,6 +154,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  gap: 10px;
 }
 
 .product-card__price-original {
@@ -182,5 +181,6 @@ export default {
 .product-card__reviews {
   font-size: 16px;
   color: #868686;
+  margin: auto;
 }
 </style>
