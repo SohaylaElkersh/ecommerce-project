@@ -1,9 +1,9 @@
 <template>
-  <router-link v-if="to" :to="to" class="base-btn">
+  <router-link v-if="to" :to="to" class="base-btn base-btn--link">
     <slot />
   </router-link>
 
-  <button v-else class="base-btn" :type="type" :disabled="disabled" @click="$emit('click')">
+  <button v-else class="base-btn" :class="{ 'base-btn--disabled': disabled }" :type="type" :disabled="disabled" @click="$emit('click')">
     <slot />
   </button>
 </template>
@@ -41,9 +41,14 @@ export default {
   transform: translateY(-5px);
 }
 
-.base-btn:disabled {
+.base-btn--disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+}
+
+/* Optional semantic modifier for router-link */
+.base-btn--link {
+  display: inline-block;
 }
 </style>

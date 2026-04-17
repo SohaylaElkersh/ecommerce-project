@@ -1,12 +1,12 @@
 <template>
-    <div class="main-section">
-        <div class="card" v-for="(quality, index) in qualities" :key="index">
-          <div class="icon">
-            <img :src="quality.img" alt="">
+    <div class="quality">
+        <div class="quality__card" v-for="(quality, index) in qualities" :key="index">
+          <div class="quality__icon">
+            <img class="quality__image" :src="quality.img" alt="">
           </div>
-          <div class="content">
-            <h2>{{ quality.title }}</h2>
-            <p>{{ quality.description }}</p>
+          <div class="quality__content">
+            <h2 class="quality__title">{{ quality.title }}</h2>
+            <p class="quality__description">{{ quality.description }}</p>
           </div>
         </div>
     </div>
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style scoped>
-.main-section {
+.quality {
   display: flex;
   flex-direction: row;
   justify-content:space-evenly;
@@ -52,7 +52,7 @@ export default {
   width: 100%;
 }
 
-.card {
+.quality__card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,7 +60,7 @@ export default {
   max-width: 300px;
 }
 
-.icon {
+.quality__icon {
   width: 50px;
   height: 50px;
   background-color: #000;
@@ -68,19 +68,19 @@ export default {
   outline: 8px solid #c1c0c1;
 }
 
-.icon img {
+.quality__image {
   width: 70%;
   height: 70%;
   transform: translateY(20%);
 }
 
-.content h2 {
+.quality__title {
   font-size: 18px;
   margin: 0;
   color: #000;
 }
 
-.content p {
+.quality__description {
   margin: 10px 0 0 0;
   font-size: 14px;
   color: #000;

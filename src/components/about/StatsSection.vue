@@ -1,12 +1,12 @@
 <template>
-    <div class="main">
-        <div class="card" v-for="(stat, index) in stats" :key="index">
-            <div class="icon">
+    <div class="stats">
+        <div class="stats__card" v-for="(stat, index) in stats" :key="index">
+            <div class="stats__icon">
               <i :class="stat.icon"></i>
             </div>
-            <div class="content">
-              <h2>{{ stat.title }}</h2>
-              <p>{{ stat.description }}</p>
+            <div class="stats__content">
+              <h2 class="stats__title">{{ stat.title }}</h2>
+              <p class="stats__description">{{ stat.description }}</p>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.stats {
   display: flex;
   flex-direction: row;
   justify-content:space-evenly;
@@ -38,7 +38,7 @@ export default {
   margin: 50px;
 }
 
-.card {
+.stats__card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +50,7 @@ export default {
   padding: 30px;
 }
 
-.card:hover {
+.stats__card:hover {
   background-color: #db4444;
   color: #fff;
   transform: translateY(-10px);
@@ -58,7 +58,7 @@ export default {
   transition: all 0.5s ease;
 }
 
-.icon {
+.stats__icon {
   width: 50px;
   height: 50px;
   background-color: #000;
@@ -66,35 +66,35 @@ export default {
   outline: 8px solid #c1c0c1;
 }
 
-.card:hover .icon{
+.stats__card:hover .stats__icon{
   background-color: #fff;
   outline: 8px solid #e67c7c;
 }
 
-.icon i {
+.stats__icon i {
   color: #fff;
   transform: translateY(45%);
   font-size: 25px;
 }
 
-.card:hover .icon i {
+.stats__card:hover .stats__icon i {
   color: #000;
 }
 
-.content h2 {
+.stats__title {
   font-size: 18px;
   margin: 0;
   color: #000;
 }
 
-.content p {
+.stats__description {
   margin: 10px 0 0 0;
   font-size: 14px;
   color: #000;
 }
 
-.card:hover .content h2,
-.card:hover .content p {
+.stats__card:hover .stats__title,
+.stats__card:hover .stats__description {
   color: #fff;
 }
 </style>

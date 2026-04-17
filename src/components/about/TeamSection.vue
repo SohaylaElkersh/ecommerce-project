@@ -1,13 +1,14 @@
 <template>
-  <div class="main">
-    <div class="card" v-for="(member, index) in team" :key="index">
-      <img :src="member.image" alt="">
-      <h4>{{ member.name }}</h4>
-      <p>{{ member.role }}</p>
+  <div class="team">
+    <div class="team__card" v-for="(member, index) in team" :key="index">
+      <img class="team__image" :src="member.image" alt="">
+      <h4 class="team__name">{{ member.name }}</h4>
+      <p class="team__role">{{ member.role }}</p>
 
-      <div class="social-icons">
-        <a v-for="social in member.socials" :key="social.icon" :href="social.url">
-          <i :class="['fa-brands', social.icon]"></i>
+      <div class="team__socials">
+        <a 
+          class="team__social-link" v-for="social in member.socials"  :key="social.icon"  :href="social.url">
+          <i :class="['fa-brands', social.icon, 'team__social-icon']"></i>
         </a>
       </div>
     </div>
@@ -72,7 +73,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.team {
   display: flex;
   flex-direction: row;
   justify-content:space-evenly;
@@ -81,7 +82,7 @@ export default {
   gap: 10px;
 }
 
-.card {
+.team__card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -89,34 +90,33 @@ export default {
   padding: 50px 30px;
 }
 
-.card img {
+.team__image {
   width: 200px;
   height: auto;
 }
 
-.card h4 {
+.team__name {
   font-size: 22px;
   margin: 0;
 }
 
-.card p {
+.team__role {
   font-size: 16px;
   margin: 0;
 }
 
-.social-icons {
+.team__socials {
   display: flex;
   gap: 10px;
   font-size: 20px;
 }
 
-.social-icons a 
-{
+.team__social-link {
   color: black;
   transition: all 0.5s ease; 
 }
 
-.social-icons a:hover {
+.team__social-link:hover {
   transform: scale(1.2);
 }
 </style>

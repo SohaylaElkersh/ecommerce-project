@@ -1,11 +1,11 @@
 <template>
-    <div class="main">
-            <div class="content">
-                <h2>Our Story</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur efficitur. Sed at ligula a nisl convallis fermentum. Curabitur ac odio nec nisi efficitur tincidunt. Nulla facilisi. Proin ut ligula a nunc bibendum bibendum. Maecenas in velit sed enim commodo tincidunt. Donec at felis id metus efficitur efficitur.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, vitae. Nihil excepturi iusto eligendi, obcaecati praesentium laudantium aliquam cupiditate quisquam.</p>
+    <div class="story">
+            <div class="story__content">
+                <h2 class="story__title">Our Story</h2>
+                <p class="story__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur efficitur. Sed at ligula a nisl convallis fermentum. Curabitur ac odio nec nisi efficitur tincidunt. Nulla facilisi. Proin ut ligula a nunc bibendum bibendum. Maecenas in velit sed enim commodo tincidunt. Donec at felis id metus efficitur efficitur.</p>
+                <p class="story__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, vitae. Nihil excepturi iusto eligendi, obcaecati praesentium laudantium aliquam cupiditate quisquam.</p>
             </div>
-            <img src="../../assets/about/portrait-two-young-stylish-smiling-blond-women-holding-shopping-bags-women-dressed-summer-hipster-clothes-positive-models-posing-pink-wall.jpg" alt="About Us Image">
+            <img class="story__image" src="../../assets/about/portrait-two-young-stylish-smiling-blond-women-holding-shopping-bags-women-dressed-summer-hipster-clothes-positive-models-posing-pink-wall.jpg" alt="About Us Image">
     </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.story {
     display: flex;
     flex-direction: row;
     padding: 50px 90px;
@@ -24,23 +24,23 @@ export default {
     gap: 70px;
 }
 
-.content {
+.story__content {
     flex: 1;
     text-align: left;
 }
 
-.content h2 {
+.story__title {
     font-size: 48px;
     margin-bottom: 15px;
 }
 
-.content p {
+.story__text {
     font-size: 18px;
     line-height: 1.5;
     margin-bottom: 10px;
 }
 
-img {
+.story__image {
     width: 500px;
     height: auto;
 }

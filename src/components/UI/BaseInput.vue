@@ -1,6 +1,7 @@
 <template>
   <input
     class="base-input"
+    :class="{ 'base-input--disabled': disabled }"
     :type="type"
     :placeholder="placeholder"
     :value="modelValue"
@@ -17,7 +18,8 @@ export default {
       type: String,
       default: "text"
     },
-    placeholder: String
+    placeholder: String,
+    disabled: Boolean
   }
 };
 </script>
@@ -33,7 +35,7 @@ export default {
 }
 
 .base-input:focus {
-    border: 1px solid #ccc;
-    outline: none;
+  border: 1px solid #ccc;
+  outline: none;
 }
 </style>

@@ -1,47 +1,52 @@
 <template>
   <footer class="footer">
-    <div class="container footer__content">
+    <div class="footer__content">
       <div class="footer__brand">
-        <h2>Exclusive</h2>
-        <h4>Subscribe</h4>
-        <p>Get 10% off on your first order</p>
-          <div class="newsletter-box">
-          <input type="text" placeholder="Enter your email" />
-          <div class="send-icon">
+        <h2 class="footer__title">Exclusive</h2>
+        <h4 class="footer__subtitle">Subscribe</h4>
+        <p class="footer__text">Get 10% off on your first order</p>
+
+        <div class="footer__newsletter">
+          <input class="footer__input" type="text" placeholder="Enter your email" />
+          <div class="footer__send-icon">
             <i class="fa-solid fa-paper-plane"></i>
           </div>
         </div>
       </div>
 
       <div class="footer__links">
-        <div v-for="(section, index) in footerLinks" :key="index">
-          <h3>{{ section.title }}</h3>
+        <div class="footer__links-section" v-for="(section, index) in footerLinks" :key="index">
+          <h3 class="footer__links-title">{{ section.title }}</h3>
       
-          <a v-for="(link, i) in section.links" :key="i" :href="link.url">
+          <a 
+            class="footer__link" v-for="(link, i) in section.links"  :key="i"  :href="link.url">
             {{ link.name }}
           </a>
         </div>
       </div>
 
-      <div>
-        <h3>Download Our App</h3>
-        <p>Get the exclusive app and save more</p>
-        <div class="download-sec">
+      <div class="footer__app">
+        <h3 class="footer__app-title">Download Our App</h3>
+        <p class="footer__app-text">Get the exclusive app and save more</p>
+
+        <div class="footer__download">
             <div>
-              <img src="@/assets/footer/qrcode.jpg" alt="Download QR Code" class="qr-code"/>
+              <img src="@/assets/footer/qrcode.jpg" alt="Download QR Code" class="footer__qr"/>
             </div>
-            <div class="store-links">
-              <img src="@/assets/footer/playstore.png" alt="Play Store" class="store-link"/>
-              <img src="@/assets/footer/appstore.jpg" alt="App Store" class="store-link"/>
+            <div class="footer__stores">
+              <img src="@/assets/footer/playstore.png" alt="Play Store" class="footer__store-link"/>
+              <img src="@/assets/footer/appstore.jpg" alt="App Store" class="footer__store-link"/>
             </div>
         </div>
-        <div class="social-icons">
+
+        <div class="footer__socials">
           <a v-for="(social, index) in socialLinks" :key="index" :href="social.url">
-            <i :class="['fa-brands', social.icon]"></i>
+            <i :class="['fa-brands', social.icon, 'footer__social-icon']"></i>
           </a>
         </div>
       </div>
     </div>
+
     <div class="footer__bottom">
       © Copyright Rimmel 2022. All rights reserved.
     </div>
@@ -84,11 +89,11 @@ export default {
         }
       ],
       socialLinks: [
-      { icon: "fa-facebook", url: "#" },
-      { icon: "fa-twitter", url: "#" },
-      { icon: "fa-instagram", url: "#" },
-      { icon: "fa-linkedin-in", url: "#" }
-    ]
+        { icon: "fa-facebook", url: "#" },
+        { icon: "fa-twitter", url: "#" },
+        { icon: "fa-instagram", url: "#" },
+        { icon: "fa-linkedin-in", url: "#" }
+      ]
     }
   }
 }
@@ -118,24 +123,24 @@ export default {
   min-width: 250px;
 }
 
-.footer__brand h2 {
+.footer__title {
   font-size: 24px;
   margin: 0;
 }
 
-.footer__brand p {
+.footer__text {
   margin: 10px 0 20px 0;
   font-size: 14px;
   color: #fff;
 }
 
-.newsletter-box {
+.footer__newsletter {
   position: relative;
   width: 100%;
   max-width: 140px;
 }
 
-.newsletter-box input {
+.footer__input {
   width: 100%;
   padding: 10px 36px 10px 12px; 
   border: 1px solid #fff;
@@ -146,7 +151,7 @@ export default {
   font-size: 14px;
 }
 
-.newsletter-box .send-icon {
+.footer__send-icon {
   position: absolute;
   right: 0px; 
   left: 160px;
@@ -158,11 +163,11 @@ export default {
   cursor: pointer;
 }
 
-.send-icon i {
+.footer__send-icon i {
   transition: all 0.5s ease;
 }
 
-.send-icon i:hover {
+.footer__send-icon i:hover {
   transform: scale(1.1);
 } 
 
@@ -174,17 +179,17 @@ export default {
   gap: 20px;
 }
 
-.footer__links div {
+.footer__links-section {
   flex: 1 1 150px;
   min-width: 0; 
 }
 
-.footer__links h3 {
+.footer__links-title {
   font-size: 20px;
   margin-bottom: 10px;
 }
 
-.footer__links a {
+.footer__link {
   display: block;
   color: #ccc;
   text-decoration: none;
@@ -193,29 +198,29 @@ export default {
   transition: color 0.2s;
 }
 
-.footer__links a:hover {
+.footer__link:hover {
   color: #fff;
 }
 
-.footer__content > div:last-child {
+.footer__app {
   flex: 1 1 200px;
   min-width: 200px;
 }
 
-.download-sec {
+.footer__download {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 20px;
 }
 
-.footer__content .qr-code {
+.footer__qr {
   width: 80px;
   height: 80px;
   margin: 10px 0;
 }
 
-.store-links {
+.footer__stores {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -223,25 +228,24 @@ export default {
   margin: 10px 0;
 }
 
-.store-link {
+.footer__store-link {
   width: 100px;
   height: auto;
 }
 
-.social-icon {
+.footer__socials {
   display: flex;
   flex-direction: row;
   gap: 20px;
 }
 
-.social-icons i {
-  margin-right: 25px;
+.footer__social-icon {
   color: #fff;
   font-size: 20px;
   transition: all 0.5s ease; 
 }
 
-.social-icons i:hover {
+.footer__social-icon:hover {
   transform: scale(1.2);
 }
 
@@ -254,7 +258,6 @@ export default {
   color: #ccc;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .footer__content {
     flex-direction: column;
@@ -264,7 +267,7 @@ export default {
     flex-direction: column;
     gap: 20px;
   }
-  .footer__content > div:last-child {
+  .footer__app {
     margin-top: 30px;
   }
 }

@@ -1,12 +1,14 @@
 <template>
   <div class="quantity">
-    <div class="minus" @click="$emit('decrement')">
+    <div class="quantity__button quantity__button--minus" @click="$emit('decrement')">
       <i class="fa-solid fa-minus"></i>
     </div>
-    <div class="quantity-input">
-      <span>{{ modelValue }}</span>
+
+    <div class="quantity__value">
+      <span class="quantity__value-text">{{ modelValue }}</span>
     </div>
-    <div class="plus" @click="$emit('increment')">
+
+    <div class="quantity__button quantity__button--plus" @click="$emit('increment')">
       <i class="fa-solid fa-plus"></i>
     </div>
   </div>
@@ -31,7 +33,8 @@ export default {
   gap: 0px;
 }
 
-.quantity .minus, .quantity .plus {
+/* Base button style */
+.quantity__button {
   width: 30px;
   height: 35px;
   background-color: #fff;
@@ -44,23 +47,23 @@ export default {
   transition: all 0.5s ease;
 }
 
-.quantity .minus {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+.quantity__button--minus {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
-.quantity .plus {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+.quantity__button--plus {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
-.quantity .minus:hover, .quantity .plus:hover {
+.quantity__button:hover {
   background-color: #db4444;
   border: #db4444 solid 1px;
   color: #fff;
 }
 
-.quantity .quantity-input {
+.quantity__value {
   width: 50px;
   height: 35px;
   text-align: center;
@@ -69,13 +72,13 @@ export default {
   border-left: none;
   border-right: none;
   font-weight: bold;
+  background-color: #fff;
 }
 
-.quantity-input span {
+.quantity__value-text {
   display: block;
   width: 100%;
   height: 100%;
   line-height: 35px;
-  background-color: #fff
 }
 </style>

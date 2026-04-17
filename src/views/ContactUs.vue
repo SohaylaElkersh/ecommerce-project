@@ -1,30 +1,30 @@
 <template>
-    <div class="main">
-        <div class="contact-img">
-            <img src="../assets/contact/cyber-monday-shopping-sales.jpg" alt="contact">
+    <div class="contact">
+        <div class="contact__image-wrapper">
+            <img class="contact__image" src="../assets/contact/cyber-monday-shopping-sales.jpg" alt="contact">
         </div>
-        <div class="card">
-            <div class="call">
-                <div class="header">
-                    <i class="fa-solid fa-phone"></i>
-                    <h2>Call Us</h2>
+        <div class="contact__card">
+            <div class="contact__section contact__section--call">
+                <div class="contact__header">
+                    <i class="fa-solid fa-phone contact__icon"></i>
+                    <h2 class="contact__title">Call Us</h2>
                 </div>
-                <p>We are available 24/7, 7 days a week</p>
-                <p>+1 800 123 4567</p>
+                <p class="contact__text">We are available 24/7, 7 days a week</p>
+                <p class="contact__text">+1 800 123 4567</p>
             </div>
-            <div class="mail">
-                <div class="header">
-                    <i class="fa-solid fa-envelope"></i>
-                    <h2>Write to Us</h2>
+            <div class="contact__section contact__section--mail">
+                <div class="contact__header">
+                    <i class="fa-solid fa-envelope contact__icon"></i>
+                    <h2 class="contact__title">Write to Us</h2>
                 </div>
-                <p>Fill out our form and we will contact you within 24 hours.</p>
+                <p class="contact__text">Fill out our form and we will contact you within 24 hours.</p>
             </div>
-            <div class="form">
-                <div>
+            <div class="contact__form">
+                <div class="contact__form-row">
                   <BaseInput placeholder="Your Name" v-model="name" />
                   <BaseInput type="email" placeholder="Your Email" v-model="email" />
                 </div>
-                <textarea name="message" id="message" cols="20" rows="7" placeholder="Your Message"></textarea>
+                <textarea class="contact__textarea" name="message" id="message" cols="20" rows="7" placeholder="Your Message"></textarea>
             </div>
             <BaseButton>Send Message</BaseButton>
         </div>
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style scoped>  
-.main {
+.contact {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -54,19 +54,19 @@ export default {
     gap: 40px;
 }
 
-.contact-img {
+.contact__image-wrapper {
     width: 50%;
     border-radius: 4px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.contact-img img {
+.contact__image {
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
 
-.card {
+.contact__card {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -78,7 +78,7 @@ export default {
     border-radius: 4px;
 }
 
-.call, .mail {
+.contact__section {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -86,11 +86,11 @@ export default {
     gap: 10px;
 }
 
-.call {
+.contact__section--call {
     border-bottom: rgb(184, 184, 184) solid 1px;
 }
 
-.header {
+.contact__header {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -98,7 +98,7 @@ export default {
     gap: 15px;
 }
 
-.header i {
+.contact__icon {
     font-size: 20px;
     color: #fff;
     background-color: #db4444;
@@ -106,18 +106,18 @@ export default {
     padding: 10px;
 }
 
-.header h2 {
+.contact__title {
     font-size: 18px;
     color: #000;
 }
 
-.call p, .mail p {
+.contact__text {
     font-size: 14px;
     color: #000;
     margin-top: 0px;
 }
 
-.form {
+.contact__form {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -126,7 +126,7 @@ export default {
     width: 90%;
 }
 
-.form div {
+.contact__form-row {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -136,7 +136,7 @@ export default {
     margin-top: 0px;
 }
 
-.form textarea {
+.contact__textarea {
     width: 100%;
     padding: 10px;
     background-color: #f5f5f5;
@@ -144,7 +144,7 @@ export default {
     border: none;
 }
 
-.form textarea:focus {
+.contact__textarea:focus {
     border: 1px solid #ccc;
     outline: none;
 }

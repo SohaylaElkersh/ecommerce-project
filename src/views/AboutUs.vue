@@ -25,10 +25,4 @@ export default {
 </script>
 
 <style scoped>
-/* .main {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    padding: 20px;
-} */
 </style>
