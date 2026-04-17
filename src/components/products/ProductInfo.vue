@@ -60,7 +60,7 @@
 import BaseButton from '@/components/UI/BaseButton.vue';
 import star from '@/filters/ratingStar.js';
 import QuantityControl from '../UI/QuantityControl.vue';
-import { getDiscountedPrice } from '@/utils/pricing';
+import { getDiscountedPriceFromProduct } from '@/utils/pricing';
 
 export default {
   name: 'ProductProps',
@@ -82,10 +82,7 @@ export default {
   computed: {
     discountedPrice() {
       if (!this.product) return 0;
-      return getDiscountedPrice(
-        this.product.price,
-        this.product.discountPercentage
-      ).toFixed(2);
+      return getDiscountedPriceFromProduct(this.product).toFixed(2);
     }
   },
   methods: {

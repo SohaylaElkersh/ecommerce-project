@@ -2,7 +2,7 @@
   <div class="product-card">
     <div class="product-card__image-wrapper">
       <img class="product-card__image" :src="product.thumbnail" :alt="product.name"/>
-      <div class="product-card__discount">-{{ Math.ceil(product.discountPercentage) }}%</div>
+      <div class="product-card__discount">-{{ discountPercentage }}%</div>
       <div class="product-card__actions">
         <router-link class="product-card__action" :to="`/product/${product.id}`">
           <i class="fa-regular fa-eye"></i>
@@ -27,7 +27,7 @@
 
 <script>
 import star from "@/filters/ratingStar.js"; 
-import { getDiscountedPrice } from "@/utils/pricing";
+import { getDiscountPercentage, getDiscountedPriceFromProduct } from "@/utils/pricing";
 
 export default {
   name: "ProductCard",
@@ -50,12 +50,13 @@ export default {
         }
       };
     },
+    discountPercentage() {
+      if (!this.product) return 0;
+      return getDiscountPercentage(this.product);
+    },
     discountedPrice() {
       if (!this.product) return 0;
-      return getDiscountedPrice(
-        this.product.price,
-        this.product.discountPercentage
-      ).toFixed(2);
+      return getDiscountedPriceFromProduct(this.product).toFixed(2);
     }
   }
 };
