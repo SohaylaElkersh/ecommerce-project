@@ -1,17 +1,17 @@
 <template>
-    <div class="main">
-        <ProductInfo :product="product" />
-        <div class="similar-products" v-if="relatedProducts.length > 0">
-          <div class="header">
-            <HeaderColor>
-              <span slot="small">More of this category</span>
-            </HeaderColor>            
-          </div>
-          <ProductGrid>
-            <ProductCard v-for="prod in relatedProducts" :key="prod.id" :product="prod"/>
-          </ProductGrid>
-        </div>
+  <div class="product-details__wrapper">
+    <ProductInfo :product="product" />
+    <div class="product-details__related" v-if="relatedProducts.length > 0">
+      <div class="product-details__related-header">
+        <HeaderColor>
+          <span slot="small">More of this category</span>
+        </HeaderColor>
+      </div>
+      <ProductGrid>
+        <ProductCard v-for="prod in relatedProducts" :key="prod.id" :product="prod"/>
+      </ProductGrid>
     </div>
+  </div>
 </template>
 
 <script>
@@ -23,18 +23,18 @@ import ProductGrid from '@/components/products/ProductGrid.vue';
 export default {
   name: 'ProductDetails',
   components: {
-     ProductCard,
-     HeaderColor,
-     ProductInfo,
-     ProductGrid
+    ProductCard,
+    HeaderColor,
+    ProductInfo,
+    ProductGrid
   },
   computed: {
-      product() {
-        return this.$store.state.products.product
-      },
-      relatedProducts() {
-        return this.$store.state.products.relatedProducts;
-      }
+    product() {
+      return this.$store.state.products.product;
+    },
+    relatedProducts() {
+      return this.$store.state.products.relatedProducts;
+    }
   },
   methods: {
     fetchData(id) {
@@ -47,7 +47,7 @@ export default {
         })
         .catch(() => {
           if (this.$route.name !== "NotFound") {
-            this.$router.replace({name: "NotFound"}).catch(() => {});
+            this.$router.replace({ name: "NotFound" }).catch(() => {});
           }
         });
     }
@@ -59,24 +59,19 @@ export default {
     '$route.params.id'(newId) {
       this.fetchData(newId);
     }
- } 
+  }
 }
 </script>
 
 <style scoped>
-.main {
+.product-details__wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.header {
-  display: flex;
-  align-items: flex-start;
-}
-
-.similar-products {
+.product-details__related {
   margin-top: 0;
   max-width: 1200px;
   width: 100%;
@@ -84,5 +79,10 @@ export default {
   flex-direction: column;
   gap: 20px;
   justify-content: flex-start;
+}
+
+.product-details__related-header {
+  display: flex;
+  align-items: flex-start;
 }
 </style>

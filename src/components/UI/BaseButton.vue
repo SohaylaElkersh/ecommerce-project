@@ -47,7 +47,6 @@ export default {
   transform: none;
 }
 
-/* Optional semantic modifier for router-link */
 .base-btn--link {
   display: inline-block;
 }

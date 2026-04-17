@@ -1,5 +1,5 @@
 <template>
-  <div class="main-home">
+  <div class="home-page__wrapper">
     <CarouselSection/>
     <FlashSales/>
     <CategorySection/>
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped>
-.main-home {
+.home-page__wrapper {
   display: flex;
   flex-direction: column;
   align-items: stretch;

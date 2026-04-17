@@ -1,6 +1,6 @@
 <template>
-    <div class="main">
-        <div class="header">
+    <div class="explore-products__wrapper">
+        <div class="explore-products__header">
             <h1>Explore Our Products</h1>
             <div class="sorting">
               <SortingSelect v-model="selectedSort"/>
@@ -9,7 +9,7 @@
         <ProductGrid>
           <ProductCard v-for="product in products" :key="product.id" :product="product"/>
         </ProductGrid>
-        <BaseButton class="btn" @click="loadMore" :disabled="products.length >= total || isLoading">
+        <BaseButton class="explore-products__load-more" @click="loadMore" :disabled="products.length >= total || isLoading">
           {{ isLoading ? 'Loading...' : 'Load More...' }}
         </BaseButton>     
     </div>
@@ -57,18 +57,18 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.explore-products__wrapper {
   padding: 10px 60px;
 }
 
-.header {
+.explore-products__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.btn {
+.explore-products__load-more {
   margin: 50px;
   align-self: center;
 }
