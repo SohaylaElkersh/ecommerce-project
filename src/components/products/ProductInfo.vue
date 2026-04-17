@@ -1,56 +1,59 @@
 <template>
-    <div class="main">
-        <div class="product-details">
-            <div class="img-scroll">
-                <img v-for="img in product.images" :key="img" :src="img" :alt="product.title" />
-            </div>
-            <div class="main-img">
-                <img :src="product.thumbnail" :alt="product.title" />
-            </div>
-            <div class="details">
-                <div class="product-info">
-                    <h2>{{ product.title }}</h2>
-                    <p class="category">Category: <router-link to="">{{ product.category }}</router-link></p>
-                    <div class="rating">
-                      <p class="stars">{{ star(product.rating) }}</p>
-                      <p class="total-ratings">({{ product.reviews.length }} Reviews)</p>
-                      <p style="color: #555;">|</p>
-                      <p class="stock" :class="{ 'in-stock': product.stock > 0, 'out-stock': product.stock === 0 }">
-                        {{ product.stock > 0 ? "In Stock" : "Out of Stock" }}
-                      </p>
-                    </div>
-                    <div class="pricing">
-                        <p class="originalPrice">${{ product.price.toFixed(2) }}</p>
-                        <p class="discountedPrice">${{ discountedPrice }}</p> 
-                    </div>
-                    <p class="description">{{ product.description }}</p>
-                </div>
-                <div class="purchase-section">
-                    <QuantityControl class="quantity-control" :modelValue="quantity" @increment="incrementQuantity" @decrement="decrementQuantity"/>
-                    <div>
-                        <BaseButton @click="addToCart">Add to Cart</BaseButton>
-                        <button class="love"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                </div>
-                <div class="delivery-section">
-                    <div class="free">
-                        <div class="icon"><i class="fa-solid fa-truck-fast"></i></div>
-                        <div class="content">
-                            <h5>Free Delivery</h5>
-                            <router-link to="">Enter your postal code for delivery availability</router-link>
-                        </div>
-                    </div>
-                    <div class="return">
-                        <div class="icon"><i class="fa-solid fa-rotate-left"></i></div>
-                        <div class="content">
-                            <h5>Delivery Return</h5>
-                            <router-link to="">Free 30 days delivery returns. Details</router-link>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="product-detail">
+    <div class="product-detail__gallery">
+      <div class="product-detail__thumbs">
+        <img v-for="img in product.images" :key="img" :src="img" :alt="product.title"/>
+      </div>
+      <div class="product-detail__main-image">
+        <img :src="product.thumbnail" :alt="product.title" />
+      </div>
+      <div class="product-detail__content">
+        <div class="product-detail__info">
+          <h2 class="product-detail__title">{{ product.title }}</h2>
+          <p class="product-detail__category">Category:<router-link to="">{{ product.category }}</router-link></p>
+          <div class="product-detail__rating">
+            <p class="product-detail__stars">{{ star(product.rating) }}</p>
+            <p class="product-detail__reviews">({{ product.reviews.length }} Reviews)</p>
+            <p>|</p>
+            <p class="product-detail__stock" :class="{
+                'product-detail__stock--in': product.stock > 0,
+                'product-detail__stock--out': product.stock === 0
+              }">
+              {{ product.stock > 0 ? "In Stock" : "Out of Stock" }}
+            </p>
+          </div>
+          <div class="product-detail__pricing">
+            <p class="product-detail__price-original">${{ product.price.toFixed(2) }}</p>
+            <p class="product-detail__price-discount">${{ discountedPrice }}</p>
+          </div>
+          <p class="product-detail__description">{{ product.description }}</p>
         </div>
+        <div class="product-detail__actions">
+          <QuantityControl class="product-detail__quantity" :modelValue="quantity" @increment="incrementQuantity" @decrement="decrementQuantity"/>
+          <div>
+            <BaseButton @click="addToCart">Add to Cart</BaseButton>
+            <button class="product-detail__wishlist"><i class="fa-regular fa-heart"></i></button>
+          </div>
+        </div>
+        <div class="product-detail__delivery">
+          <div class="product-detail__delivery-item">
+            <div class="product-detail__delivery-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="product-detail__delivery-content">
+              <h5>Free Delivery</h5>
+              <router-link to="">Enter your postal code for delivery availability</router-link>
+            </div>
+          </div>
+          <div class="product-detail__delivery-item">
+            <div class="product-detail__delivery-icon"><i class="fa-solid fa-rotate-left"></i></div>
+            <div class="product-detail__delivery-content">
+              <h5>Delivery Return</h5>
+              <router-link to="">Free 30 days delivery returns. Details</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -60,33 +63,39 @@ import QuantityControl from '../UI/QuantityControl.vue';
 import { getDiscountedPrice } from '@/utils/pricing';
 
 export default {
-    name: 'ProductProps',
-    components: {
-      BaseButton,
-      QuantityControl
-    },
-    data() {
-      return {
-        quantity: 1
-      }
-    },
-    props: {
-      product: {
-        type: Object,
-        required: true
-      }
-    },
-    computed: {
-      discountedPrice() {
-        if (!this.product) return 0;
-        return getDiscountedPrice(this.product.price, this.product.discountPercentage).toFixed(2);
-      }
-    },
+  name: 'ProductProps',
+  components: {
+    BaseButton,
+    QuantityControl
+  },
+  data() {
+    return {
+      quantity: 1
+    };
+  },
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    discountedPrice() {
+      if (!this.product) return 0;
+      return getDiscountedPrice(
+        this.product.price,
+        this.product.discountPercentage
+      ).toFixed(2);
+    }
+  },
   methods: {
     star,
     addToCart() {
-      this.$store.dispatch('cart/addToCart', { ...this.product, quantity: this.quantity });
-    },      
+      this.$store.dispatch('cart/addToCart', {
+        ...this.product,
+        quantity: this.quantity
+      });
+    },
     incrementQuantity() {
       this.quantity++;
     },
@@ -94,13 +103,13 @@ export default {
       if (this.quantity > 1) {
         this.quantity--;
       }
-    },
-  },
-}
+    }
+  }
+};
 </script>
 
 <style scoped>
-.main {
+.product-detail {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -108,16 +117,16 @@ export default {
   align-items: center;
 }
 
-.product-details {
+.product-detail__gallery {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   gap: 50px;
   max-width: 1200px;
-  width: 100%;      
+  width: 100%;
 }
 
-.img-scroll {
+.product-detail__thumbs {
   display: flex;
   flex-direction: column;
   gap: 33px;
@@ -125,24 +134,23 @@ export default {
   width: 100px;
 }
 
-.img-scroll img {
+.product-detail__thumbs img {
   width: 100px;
   height: 100px;
   object-fit: cover;
   cursor: pointer;
-  aspect-ratio: 1 / 1; 
-  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 
-.main-img {
+.product-detail__main-image {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   height: 500px;
   width: 500px;
 }
 
-.main-img img {
+.product-detail__main-image img {
   width: 100%;
   max-width: 500px;
   height: 500px;
@@ -150,7 +158,7 @@ export default {
   aspect-ratio: 1 / 1;
 }
 
-.details {
+.product-detail__content {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -159,7 +167,7 @@ export default {
   width: 500px;
 }
 
-.product-info {
+.product-detail__info {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -168,108 +176,107 @@ export default {
   border-bottom: #555 solid 2px;
 }
 
-.product-info h2 {
+.product-detail__title {
   font-size: 24px;
   margin: 0;
 }
 
-.product-info .category {
+.product-detail__category {
   font-size: 15px;
   margin: 12px 0 0 0;
 }
 
-.product-info .category a {
+.product-detail__category a {
   color: #000;
   font-weight: bold;
 }
 
-.product-info .rating {
+.product-detail__rating {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.product-info .rating .stars {
+.product-detail__stars {
   font-size: x-large;
   color: rgb(244, 192, 60);
   margin: 0;
 }
 
-.product-info .rating .total-ratings {
+.product-detail__reviews {
   font-size: 14px;
   color: #555;
   margin: 0;
 }
 
-.product-info .rating .stock {
+.product-detail__stock {
   font-size: 14px;
   margin: 0;
 }
 
-.product-info .rating .stock.in-stock {
+.product-detail__stock--in {
   color: #66ffa3;
 }
 
-.product-info .rating .stock.out-stock {
+.product-detail__stock--out {
   color: #db4444;
 }
 
-.product-info .pricing {
+.product-detail__pricing {
   display: flex;
   gap: 20px;
 }
 
-.pricing .originalPrice {
+.product-detail__price-original {
   font-size: 22px;
   font-weight: bold;
-  margin: 0;  
+  margin: 0;
   color: gray;
   text-decoration: line-through;
 }
 
-.pricing .discountedPrice {
+.product-detail__price-discount {
   font-size: 22px;
   font-weight: bold;
-  margin: 0;  
+  margin: 0;
 }
 
-.product-info .description {
+.product-detail__description {
   font-size: 14px;
   margin-bottom: 20px;
   text-align: left;
   max-width: 50ch;
 }
 
-.purchase-section {
+.product-detail__actions {
   display: flex;
   gap: 20px;
   align-items: center;
 }
 
-.love {
-    padding: 7px 7px;
-    margin-left: 20px;
-    background-color: #fff;
-    color: #000;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    font-size: large;
+.product-detail__wishlist {
+  padding: 7px;
+  margin-left: 20px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: large;
 }
 
-.love:hover {
-    background-color: #ccc;
-    border: #000 solid 1px;
+.product-detail__wishlist:hover {
+  background-color: #ccc;
+  border: #000 solid 1px;
 }
 
-.delivery-section {
+.product-detail__delivery {
   display: flex;
   flex-direction: column;
-  gap: 0px;
 }
 
-.delivery-section .free, .delivery-section .return {
+.product-detail__delivery-item {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -277,33 +284,22 @@ export default {
   border: 1px solid #ccc;
 }
 
-.delivery-section .free {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom: none;
-}
-
-.delivery-section .return {
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-
-.delivery-section .icon {
+.product-detail__delivery-icon {
   font-size: 25px;
 }
 
-.delivery-section .content {
+.product-detail__delivery-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.delivery-section .content h5 {
+.product-detail__delivery-content h5 {
   margin: 10px 0;
   font-size: 18px;
 }
 
-.delivery-section .content a , .delivery-section .content p {
+.product-detail__delivery-content a {
   color: #000;
   font-size: smaller;
 }
