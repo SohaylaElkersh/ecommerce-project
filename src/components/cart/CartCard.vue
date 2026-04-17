@@ -1,11 +1,15 @@
 <template>
-    <div class="main">
-        <div class="card">
-            <div class="xmark" @click="removeFromCart"><i class="fa-solid fa-circle-xmark"></i></div>
-            <img :src="product.thumbnail" :alt="product.title" />
-            <p class="title">{{ product.title }}</p>
-            <QuantityControl :modelValue="product.quantity" @increment="incrementQuantity" @decrement="decrementQuantity"/>
-            <p>${{ product.price }}</p>
+    <div class="cart-card-wrapper">
+        <div class="cart-card">
+            <div class="cart-card__remove" @click="removeFromCart">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <img class="cart-card__image" :src="product.thumbnail" :alt="product.title" />
+            <p class="cart-card__title">{{ product.title }}</p>
+            <QuantityControl  class="cart-card__quantity" :modelValue="product.quantity" 
+              @increment="incrementQuantity"  
+              @decrement="decrementQuantity"/>
+            <p class="cart-card__price">${{ product.price }}</p>
         </div>
     </div>
 </template>
@@ -43,7 +47,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.cart-card-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +58,7 @@ export default {
     box-sizing: border-box;
 }
 
-.card {
+.cart-card {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,38 +73,38 @@ export default {
     box-sizing: border-box;
 }
 
-.card:hover {
+.cart-card:hover {
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
   transform: translateY(-10px);
   background-color: #f5f5f5;
 }
 
-.card .xmark,
-.card img,
-.quantity,
-.card p:last-child {
+.cart-card__remove,
+.cart-card__image,
+.cart-card__quantity,
+.cart-card__price {
   flex-shrink: 0;
 }
 
-.card .xmark {
+.cart-card__remove {
     color: #db4444;
     font-size: 20px;
     transition: all 0.5s ease;
     cursor: pointer;
 }
 
-.card:hover .xmark:hover {
+.cart-card:hover .cart-card__remove:hover {
     transform: scale(1.1);
     color: #c03939;
 }
 
-.card img {
+.cart-card__image {
     width: 70px;
     height: auto;
     aspect-ratio: 1 / 1;
 }
 
-.title {
+.cart-card__title {
   flex: 0.8;                 
   min-width: 0;           
   white-space: nowrap;     

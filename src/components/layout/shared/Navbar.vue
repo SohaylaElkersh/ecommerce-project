@@ -1,56 +1,35 @@
 <template>
   <header class="navbar">
-    <div class="container navbar__content">
-      
+    <div class="navbar__container navbar__content">
       <div class="navbar__logo">
-        <router-link to="/">Exclusive</router-link>
+        <router-link class="navbar__logo-link" to="/">Exclusive</router-link>
       </div>
-
       <nav class="navbar__links">
-        <router-link v-for="(link, index) in navLinks" :key="index" :to="link.path">
+        <router-link v-for="(link, index) in navLinks" :key="index" :to="link.path" class="navbar__link">
           {{ link.name }}
         </router-link>
       </nav>
-
       <div class="navbar__actions">
-        <div class="search-box">
-            <BaseInput class="search-box-base-input" placeholder="What are you looking for?" v-model="search"/>
-            <div class="search-icon">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
+        <div class="navbar__search">
+          <BaseInput class="navbar__search-input" placeholder="What are you looking for?" v-model="search"/>
+          <div class="navbar__search-icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
         </div>
-        <button
-          type="button"
-          class="cart cart-btn"
-          aria-label="Open shopping cart"
-          :aria-expanded="cartOpen ? 'true' : 'false'"
-          @click="openCart"
-        >
+        <button type="button" class="navbar__cart" aria-label="Open shopping cart"
+          :aria-expanded="cartOpen ? 'true' : 'false'" @click="openCart">
           <i class="fa-solid fa-cart-shopping"></i>
-          <span v-if="cartItemCount > 0" class="cart-badge">
-            {{ cartItemCount }}
-          </span>
+          <span v-if="cartItemCount > 0" class="navbar__cart-badge">{{ cartItemCount }}</span>
         </button>
       </div>
-
     </div>
 
     <transition name="cart-overlay">
-      <div
-        v-if="cartOpen"
-        class="cart-drawer__overlay"
-        aria-hidden="true"
-        @click="closeCart"
-      />
+      <div v-if="cartOpen" class="cart-drawer__overlay" aria-hidden="true" @click="closeCart"/>
     </transition>
+
     <transition name="cart-slide">
-      <aside
-        v-if="cartOpen"
-        class="cart-drawer"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Shopping cart"
-      >
+      <aside v-if="cartOpen" class="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
         <SliderCart @close="closeCart" />
       </aside>
     </transition>
@@ -124,7 +103,7 @@ export default {
   margin-bottom: 50px;
 }
 
-.container {
+.navbar__container {
   max-width: 1200px;
   margin: auto;
   padding: 0 20px;
@@ -137,14 +116,14 @@ export default {
   height: 70px;
 }
 
-.navbar__logo a {
+.navbar__logo-link {
   font-weight: bold;
   color: #000;
   text-decoration: none;
   font-size: 23px;
 }
 
-.navbar__links a {
+.navbar__link {
   display: inline-block;
   margin: 0 25px;
   text-decoration: none;
@@ -152,7 +131,7 @@ export default {
   transition: transform 0.5s ease, color 0.5s ease;
 }
 
-.navbar__links a:hover {
+.navbar__link:hover {
   color: #000;
   text-decoration: underline;
   transform: scale(1.1);
@@ -164,16 +143,16 @@ export default {
   gap: 15px;
 }
 
-.search-box {
+.navbar__search {
   position: relative;
   margin-right: 70px;
 }
 
-.search-box-base-input {
+.navbar__search-input {
   width: 240px;
 }
 
-.search-icon {
+.navbar__search-icon {
   position: absolute;
   right: 10px;
   top: 50%;
@@ -184,15 +163,15 @@ export default {
   font-size: 15px;
 }
   
-.search-icon i {
+.navbar__search-icon i {
   transition: all 0.5s ease;
 }
 
-.search-icon i:hover {
+.navbar__search-icon i:hover {
   transform: scale(1.2);  
 }
 
-.cart-btn {
+.navbar__cart {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -206,11 +185,11 @@ export default {
   position: relative;
 }
 
-.cart-btn:hover {
+.navbar__cart:hover {
   transform: scale(1.2);
 }
 
-.cart-badge {
+.navbar__cart-badge {
   position: absolute;
   top: -10px;
   left: 15px;
@@ -228,7 +207,7 @@ export default {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .cart-overlay-enter-active,

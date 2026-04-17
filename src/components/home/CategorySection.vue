@@ -1,14 +1,14 @@
 <template>
-  <div class="main">
-    <div class="header">
+  <div class="category-section">
+    <div class="category-section__header">
         <HeaderColor>
           <span slot="small">Categories</span>
           <span slot="big">Browse By Category</span>
         </HeaderColor>
     </div>
-    <div class="category-grid" >
-        <div class="grid-box" v-for="(category, index) in categories" :key="category.slug" @click="selectedCategory(category.slug)">
-            <div class="icon">
+    <div class="category-section__grid" >
+        <div class="category-section__item" v-for="(category, index) in categories" :key="category.slug" @click="selectedCategory(category.slug)">
+            <div class="category-section__icon">
                 <i :class="categoryIcons[index].icon"></i>
             </div>
             <p>{{ category.name }}</p>
@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.category-section {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -64,7 +64,7 @@ export default {
   border-bottom: solid #ccc 1px;
 }
 
-.category-grid{
+.category-section__grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 30px;
@@ -72,7 +72,7 @@ export default {
   padding: 0 0 40px;
 }
 
-.grid-box {
+.category-section__item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,14 +83,14 @@ export default {
   transition: all 0.5s ease; 
 }
 
-.grid-box:hover {
+.category-section__item:hover {
   background-color: #db4444;
   color: #fff;
   border: solid #db4444 1px;
   transform: translateY(-10px);
 }
 
-.icon i {
+.category-section__icon i {
   font-size: 40px;
   padding: 15px ; 
 }

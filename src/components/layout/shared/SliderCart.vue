@@ -1,24 +1,19 @@
 <template>
-  <div class="main">
-    <div class="header">
-      <h1>Shopping Cart</h1>
-      <button
-        type="button"
-        class="header__close"
-        aria-label="Close shopping cart"
-        @click="$emit('close')"
-      >
+  <div class="cart-drawer">
+    <div class="cart-drawer__header">
+      <h1 class="cart-drawer__title">Shopping Cart</h1>
+      <button type="button" class="cart-drawer__close" aria-label="Close shopping cart" @click="$emit('close')">
         <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
       </button>
     </div>
-    <div class="cart-content">
-      <div class="cart-content__inner">
-        <div v-if="cartProducts.length > 0" class="cart-items">
-          <CartCard v-for="product in cartProducts" :key="product.id" :product="product" />
+    <div class="cart-drawer__content">
+      <div class="cart-drawer__inner">
+        <div v-if="cartProducts.length > 0" class="cart-drawer__items">
+          <CartCard v-for="product in cartProducts" :key="product.id" :product="product"/>
         </div>
-        <PaymentSection  v-if="cartProducts.length > 0"/>
-        <div v-else class="empty-cart-message">
-          <h1>Your Cart is Empty!</h1>
+        <PaymentSection class="cart-drawer__payment-section" v-if="cartProducts.length > 0"/>
+        <div v-else class="cart-drawer__empty">
+          <h1 class="cart-drawer__empty-title">Your Cart is Empty!</h1>
         </div>
       </div>
     </div>
@@ -44,7 +39,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.cart-drawer {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -55,7 +50,7 @@ export default {
   margin: 0;
 }
 
-.header {
+.cart-drawer__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,19 +59,19 @@ export default {
   margin-bottom: 10px;
   padding: 0 20px;
   border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;  
+  border-bottom-right-radius: 40px;
   width: 100%;
   box-sizing: border-box;
   height: 75px;
 }
 
-.header h1 {
+.cart-drawer__title {
   color: #fff;
   font-size: 25px;
   margin: 0;
 }
 
-.header__close {
+.cart-drawer__close {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -91,17 +86,17 @@ export default {
   transition: all 0.5s ease;
 }
 
-.header__close:hover {
+.cart-drawer__close:hover {
   transform: scale(1.2);
 }
 
-.header__close:focus-visible {
+.cart-drawer__close:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-.cart-content {
+.cart-drawer__content {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
@@ -110,7 +105,7 @@ export default {
   -webkit-overflow-scrolling: touch;
 }
 
-.cart-content__inner {
+.cart-drawer__inner {
   width: 500px;
   max-width: 100%;
   margin: 0 auto;
@@ -121,14 +116,21 @@ export default {
   align-items: center;
 }
 
-.cart-items {
+.cart-drawer__items {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.empty-cart-message {
+.cart-drawer__payment-section {
+  width: 500px;
+  max-width: 100%;
+  box-sizing: border-box;  
+  padding: 10px;
+}
+
+.cart-drawer__empty {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,7 +140,7 @@ export default {
   margin: auto;
 }
 
-.empty-cart-message h1 {
+.cart-drawer__empty-title {
   color: #000;
   margin: auto;
 }

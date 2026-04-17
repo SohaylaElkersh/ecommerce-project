@@ -2,8 +2,8 @@
  so i just fetched a sliced array of products by fetchProducts action-->
 
 <template>
-    <div class="main">
-        <div class="header">
+    <div class="flash-sales">
+        <div class="flash-sales__header">
             <HeaderColor>
               <span slot="small">Today's</span>
               <span slot="big">Flash Sales</span>
@@ -12,7 +12,7 @@
         <ProductGrid>
           <ProductCard v-for="product in products" :key="product.id" :product="product"/>
         </ProductGrid>
-        <BaseButton class="btn" to="/explore">View All Products</BaseButton>
+        <BaseButton class="flash-sales__button" to="/explore">View All Products</BaseButton>
     </div>
 </template>
 
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.flash-sales {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -48,7 +48,7 @@ export default {
   padding-bottom: 40px;
 }
 
-.btn {
+.flash-sales__button {
   margin: 50px;
   align-self: center;
 }

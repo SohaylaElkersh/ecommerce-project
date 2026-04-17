@@ -1,28 +1,28 @@
 <template>
-    <div class="main">
-        <div class="payment">
-          <div class="money" v-for="(amount, index) in money" :key="index">
-            <p>{{ amount.title }}:</p>
-            <p>${{ amount.amount }}</p>
-          </div>
-          <div class="payment-method">
-            <h4>Payment Method:</h4>
-            <div class="method">
-              <input type="radio" id="bank" name="method" />
-              <label for="bank">Bank</label>
-            </div>
-            <div class="method">
-              <input type="radio" id="cash" name="method" />
-              <label for="cash">Cash on delivery</label>
-            </div>
-          </div>
+  <div class="payment-section">
+    <div class="payment-section__summary">
+      <div class="payment-section__row" v-for="(amount, index) in money" :key="index">
+        <p>{{ amount.title }}:</p>
+        <p>${{ amount.amount }}</p>
+      </div>
+      <div class="payment-section__methods">
+        <h4>Payment Method:</h4>
+        <div class="payment-section__method">
+          <input type="radio" id="bank" name="method" />
+          <label for="bank">Bank</label>
         </div>
-        <div class="coupon">
-          <BaseInput class="coupon-input" type="text" placeholder="Coupon Code"/>
-          <BaseButton>Apply</BaseButton>
+        <div class="payment-section__method">
+          <input type="radio" id="cash" name="method" />
+          <label for="cash">Cash on delivery</label>
         </div>
-        <BaseButton class="order-btn">Place Order</BaseButton>
-      </div>        
+      </div>
+    </div>
+    <div class="payment-section__coupon">
+      <BaseInput class="payment-section__coupon-input" type="text" placeholder="Coupon Code"/>
+      <BaseButton>Apply</BaseButton>
+    </div>
+    <BaseButton class="payment-section__order-button">Place Order</BaseButton>
+  </div>
 </template>
 
 <script>
@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style scoped>
-.payment {
+.payment-section__summary {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -67,7 +67,7 @@ export default {
   box-sizing: border-box;
 }
 
-.money {
+.payment-section__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,7 +76,7 @@ export default {
   gap: 15px;
 }
 
-.payment-method {
+.payment-section__methods {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -87,15 +87,15 @@ export default {
   margin-bottom: 30px;
 }
 
-.method label {
+.payment-section__method label {
   margin-left: 10px;
 }
 
-.method input {
+.payment-section__method input {
   accent-color: #000;
 }
 
-.coupon {
+.payment-section__coupon {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -105,11 +105,11 @@ export default {
   margin: 25px 0;
 }
 
-.coupon-input {
+.payment-section__coupon-input {
   max-width: calc(100% - 110px);
 }
 
-.order-btn {
+.payment-section__order-button {
   width: fit-content;
   align-self: center;
 }

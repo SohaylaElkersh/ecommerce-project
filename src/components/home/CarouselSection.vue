@@ -1,41 +1,40 @@
 <template>
-    <div class="carousel">
-    <button class="nav left" @click="prevSlide">
-      <span class="inner">
+  <div class="carousel">
+
+    <button class="carousel__nav carousel__nav--left" @click="prevSlide">
+      <span class="carousel__nav-inner">
         <i class="fa-solid fa-arrow-left"></i>
       </span>
     </button>
-    <button class="nav right" @click="nextSlide">
-      <span class="inner">
+
+    <button class="carousel__nav carousel__nav--right" @click="nextSlide">
+      <span class="carousel__nav-inner">
         <i class="fa-solid fa-arrow-right"></i>
       </span>
     </button>
+
     <div
-      class="carousel-track" :style="{transform: `translateX(-${currentIndex * 100}%)`, transition: isTransitioning ? 'transform 0.6s ease' : 'none'}">
-      <div
-        class="slide"
-        v-for="(slide, index) in computedSlides" :key="index" :style="{ backgroundImage: `url(${slide.image})` }">
-        <div class="overlay">
-          <div class="content">
-            <p class="brand">{{ slide.description }}</p>
-            <h1>{{ slide.title }}</h1>
-            <a href="#" class="shop">Shop Now →</a>
+      class="carousel__track"
+      :style="{
+        transform: `translateX(-${currentIndex * 100}%)`,
+        transition: isTransitioning ? 'transform 0.6s ease' : 'none'}">
+      <div class="carousel__slide" v-for="(slide, index) in computedSlides" :key="index" :style="{ backgroundImage: `url(${slide.image})` }">
+        <div class="carousel__overlay">
+          <div class="carousel__content">
+            <p class="carousel__brand">{{ slide.description }}</p>
+            <h1 class="carousel__title">{{ slide.title }}</h1>
+            <a href="#" class="carousel__link">Shop Now →</a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="dots">
-      <span
-        v-for="(slide, index) in slides"
-        :key="index"
-        :class="{
-          active:
-            index ===
-            ((currentIndex - 1 + slides.length) % slides.length)
-        }"
-      ></span>
+    <div class="carousel__dots">
+      <span v-for="(slide, index) in slides" :key="index" class="carousel__dot" :class="{
+          'carousel__dot--active': index === ((currentIndex - 1 + slides.length) % slides.length)
+        }"></span>
     </div>
+
   </div>
 </template>
 
@@ -141,12 +140,12 @@ export default {
   border-radius: 10px;
 }
 
-.carousel-track {
+.carousel__track {
   display: flex;
   height: 100%;
 }
 
-.slide {
+.carousel__slide {
   min-width: 100%;
   height: 100%;
   background-size: cover;
@@ -154,7 +153,7 @@ export default {
   position: relative;
 }
 
-.overlay {
+.carousel__overlay {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
@@ -162,7 +161,7 @@ export default {
   align-items: center;
 }
 
-.content {
+.carousel__content {
   color: white;
   max-width: 500px;
   position: absolute;
@@ -171,30 +170,30 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-.brand {
+.carousel__brand {
   opacity: 0.7;
   margin-bottom: 10px;
 }
 
-h1 {
+.carousel__title {
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
-.shop {
+.carousel__link {
   color: white;
   text-decoration: none;
   font-size: 14px;
 }
 
-.dots {
+.carousel__dots {
   position: absolute;
   bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.dots span {
+.carousel__dot {
   display: inline-block;
   width: 8px;
   height: 8px;
@@ -203,12 +202,12 @@ h1 {
   border-radius: 50%;
 }
 
-.dots span.active {
+.carousel__dot--active {
   background: #db4444;
   border: solid 2px #fff;
 }
 
-.nav {
+.carousel__nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -222,24 +221,25 @@ h1 {
   z-index: 10;
   transition: all 0.5s ease;
 }
-.inner {
+
+.carousel__nav-inner {
   display: inline-block;
   transition: transform 0.3s ease;
 }
 
-.nav.left {
+.carousel__nav--left {
   left: 15px;
 }
 
-.nav.right {
+.carousel__nav--right {
   right: 15px;
 }
 
-.nav:hover {
+.carousel__nav:hover {
   background: rgba(0, 0, 0, 0.8);
 }
 
-.nav:hover .inner {
+.carousel__nav:hover .carousel__nav-inner {
   transform: scale(1.1);
 }
 </style>

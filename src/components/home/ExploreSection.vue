@@ -1,6 +1,6 @@
 <template>
-    <div class="main">
-        <div class="header">
+    <div class="explore-section">
+        <div class="explore-section__header">
             <HeaderColor>
               <span slot="small">Our Products</span>
               <span slot="big">Explore Our Products</span>
@@ -9,7 +9,7 @@
         <ProductGrid>
           <ProductCard v-for="product in products" :key="product.id" :product="product"/>
         </ProductGrid>
-        <BaseButton class="btn" to="/explore">View All Products</BaseButton>
+        <BaseButton class="explore-section__button" to="/explore">View All Products</BaseButton>
     </div>
 </template>
 
@@ -36,14 +36,14 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.explore-section {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-.btn {
+.explore-section__button {
   margin: 50px;
   align-self: center;
 }
