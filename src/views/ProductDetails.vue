@@ -55,13 +55,15 @@ export default {
         });
     }
   },
-  mounted() {
-    this.fetchData(this.$route.params.id);
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.fetchData(to.params.id);
+    });
   },
-  watch: {
-    '$route.params.id'(newId) {
-      this.fetchData(newId);
-    }
+  beforeRouteUpdate(to, from, next) {
+    this.fetchData(to.params.id)
+      .then(() => next())
+      .catch(() => next());
   }
 }
 </script>
