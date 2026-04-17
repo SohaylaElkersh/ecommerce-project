@@ -24,7 +24,11 @@ export default {
         { value: "nothing", label: "Default" },
         { value: "rating", label: "Highest Rating" },
         { value: "priceLowHigh", label: "Price: Low to High" },
-        { value: "priceHighLow", label: "Price: High to Low" }
+        { value: "priceHighLow", label: "Price: High to Low" },
+        { value: "discountLowHigh", label: "Discount: Low to High"},
+        { value: "discountHighLow", label: "Discount: High to Low"},
+        { value: "nameAZ", label: "A-Z"},
+        { value: "nameZA", label: "Z-A"}
       ]
     }
   },
