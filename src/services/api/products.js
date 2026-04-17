@@ -1,32 +1,37 @@
-const BASE_URL = "https://dummyjson.com/products";
+import { api } from "./axios";
 
-export const fetchProductsApi = ({ limit, skip }) => {
-  return fetch(
-    `${BASE_URL}?limit=${limit}&skip=${skip}&select=id,title,thumbnail,price,rating,reviews,discountPercentage`
-  ).then(res => res.json());
-};
 
-export const fetchProductApi = (id) => {
-  return fetch(
-    `${BASE_URL}/${id}?select=id,thumbnail,images,title,price,rating,description,reviews,discountPercentage,category,stock,description`
-  ).then(res => {
-    if (!res.ok) throw new Error("Product not found");
-    return res.json();
+export const fetchProductsApi = async ({ limit, skip }) => {
+  const res = await api.get("", {
+    params: { limit, skip, select: "id,title,thumbnail,price,rating,reviews,discountPercentage", },
   });
+  return res.data;
 };
 
-export const fetchRelatedProductsApi = (category) => {
-  return fetch(`${BASE_URL}/category/${category}`)
-    .then(res => res.json());
+export const fetchProductApi = async (id) => {
+  try {
+    const res = await api.get(`/${id}`, {
+      params: { select: "id,thumbnail,images,title,price,rating,description,reviews,discountPercentage,category,stock,description", },
+    });
+    return res.data;
+  } catch (err) {
+    throw new Error("Product not found");
+  }
 };
 
-export const fetchCategoriesApi = () => {
-  return fetch(`${BASE_URL}/categories`)
-    .then(res => res.json());
+export const fetchRelatedProductsApi = async (category) => {
+  const res = await api.get(`/category/${category}`);
+  return res.data;
 };
 
-export const fetchProductsByCategoryApi = ({ category, limit, skip }) => {
-  return fetch(
-    `${BASE_URL}/category/${category}?limit=${limit}&skip=${skip}&select=id,title,thumbnail,price,rating,reviews,discountPercentage`
-  ).then(res => res.json());
+export const fetchCategoriesApi = async () => {
+  const res = await api.get("/categories");
+  return res.data;
+};
+
+export const fetchProductsByCategoryApi = async ({ category, limit, skip, }) => {
+  const res = await api.get(`/category/${category}`, {
+    params: { limit, skip, select: "id,title,thumbnail,price,rating,reviews,discountPercentage", },
+  });
+  return res.data;
 };
