@@ -1,8 +1,8 @@
 <template>
-    <div class="notfound">
-        <h1>404 Not Found</h1>
-        <p>You visited not found page.  you may go home page.</p>
-        <router-link to="/" class="btn">Back to home page</router-link>
+    <div class="not-found">
+        <h1 class="not-found__title">404 Not Found</h1>
+        <p class="not-found__text">You visited not found page. you may go home page.</p>
+        <router-link to="/" class="not-found__button">Back to home page</router-link>
     </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style scoped>
-.notfound {
+.not-found {
   text-align: center;
   padding: 100px;
   display: flex;
@@ -22,19 +22,19 @@ export default {
   gap: 20px;
 }
 
-.notfound h1 {
+.not-found__title {
   font-size: 70px;
   color: #000;
   margin: 0;
   letter-spacing: 5px;
 }
 
-.notfound p {
+.not-found__text {
   font-size: 18px;
   color: #000;
 }
 
-.notfound .btn {
+.not-found__button {
   display: inline-block;
   padding: 10px 20px;
   background-color: #DB4444;
@@ -44,7 +44,7 @@ export default {
   transition: all 0.5s ease;
 }
 
-.notfound .btn:hover {
+.not-found__button:hover {
   background-color: #c03939;
   transform: translateY(-5px);
 }
