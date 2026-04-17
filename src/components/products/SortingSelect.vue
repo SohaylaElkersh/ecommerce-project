@@ -1,7 +1,7 @@
 <template>
-  <div class="custom-select">
-    <p>Sort By:</p>
-    <select :value="value" @change="onChange">
+  <div class="sort-select">
+    <p class="sort-select__label">Sort By:</p>
+    <select class="sort-select__control" :value="value" @change="onChange">
       <option v-for="option in sortOptions" :key="option.value" :value="option.value">
         {{ option.label }}
       </option>
@@ -37,16 +37,16 @@ export default {
 </script>
 
 <style scoped>
-.custom-select {
-    display: flex;
+.sort-select {
+  display: flex;
 }
 
-.custom-select p {
-    font-size: 24px;
-    margin: auto 20px;
+.sort-select__label {
+  font-size: 24px;
+  margin: auto 20px;
 }
 
-.custom-select select {
+.sort-select__control {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -54,7 +54,7 @@ export default {
   cursor: pointer;
 }
 
-.custom-select select:focus {
+.sort-select__control:focus {
   outline: none;
   border-color: #888;
 }

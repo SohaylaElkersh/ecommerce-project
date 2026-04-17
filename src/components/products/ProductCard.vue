@@ -1,24 +1,24 @@
 <template>
-  <div class="card">
-    <div class="image-container">
-      <img :src="product.thumbnail" :alt="product.name" />
-      <div class="discount">-{{ Math.ceil(product.discountPercentage) }}%</div>
-      <div class="icons">
-        <router-link :to="`/product/${product.id}`">
+  <div class="product-card">
+    <div class="product-card__image-wrapper">
+      <img class="product-card__image" :src="product.thumbnail" :alt="product.name"/>
+      <div class="product-card__discount">-{{ Math.ceil(product.discountPercentage) }}%</div>
+      <div class="product-card__actions">
+        <router-link class="product-card__action" :to="`/product/${product.id}`">
           <i class="fa-regular fa-eye"></i>
         </router-link>
-        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-heart product-card__action"></i>
       </div>
-      <div class="add-to-cart" @click="addToCart">Add to Cart</div>
+      <div class="product-card__cart" @click="addToCart">Add to Cart</div>
     </div>
-    <div class="info">
-      <h4>{{ product.title }}</h4>
-      <div>
-        <p class="originalPrice">${{ product.price.toFixed(2) }}</p>
-        <p class="discountedPrice">${{ discountedPrice }}</p>        
-        <div class="rating">
-          <p class="stars">{{ star(product.rating) }}</p>
-          <p class="total-ratings">({{ product.reviews.length }})</p>
+    <div class="product-card__info">
+      <h4 class="product-card__title">{{ product.title }}</h4>
+      <div class="product-card__pricing">
+        <p class="product-card__price-original">${{ product.price.toFixed(2) }}</p>
+        <p class="product-card__price-discount">${{ discountedPrice }}</p>
+        <div class="product-card__rating">
+          <p class="product-card__stars">{{ star(product.rating) }}</p>
+          <p class="product-card__reviews">({{ product.reviews.length }})</p>
         </div>
       </div>
     </div>
@@ -41,25 +41,28 @@ export default {
   computed: {
     discountedPrice() {
       if (!this.product) return 0;
-      return getDiscountedPrice(this.product.price, this.product.discountPercentage).toFixed(2);
+      return getDiscountedPrice(
+        this.product.price,
+        this.product.discountPercentage
+      ).toFixed(2);
     }
   }
 };
 </script>
 
 <style scoped>
-.card {
+.product-card {
   cursor: pointer;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
 }
 
-.card:hover {
+.product-card:hover {
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
   transform: translateY(-10px);
 }
 
-.image-container {
+.product-card__image-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1; 
@@ -68,13 +71,13 @@ export default {
   background: #f5f5f5;
 }
 
-.image-container img {
+.product-card__image {
   width: 100%;
   height: 100%;
   object-fit: cover; 
 }
 
-.discount {
+.product-card__discount {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -85,7 +88,7 @@ export default {
   font-size: small;
 }
 
-.icons {
+.product-card__actions {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -94,24 +97,21 @@ export default {
   gap: 10px;
 }
 
-.icons i {
+.product-card__action {
   background: #fff;
   padding: 8px;
   border-radius: 50%;
   font-size: 14px;
   cursor: pointer;
   transition: transform 0.2s ease;
-}
-
-.icons i:hover {
-  transform: scale(1.2);
-}
-
-.icons a {
   color: #000;
 }
 
-.add-to-cart {
+.product-card__action:hover {
+  transform: scale(1.2);
+}
+
+.product-card__cart {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -120,54 +120,54 @@ export default {
   color: #fff;
   text-align: center;
   padding: 10px;
-  
+
   opacity: 0;
   transform: translateY(100%);
   transition: all 0.3s ease;
 }
 
-.image-container:hover .add-to-cart {
+.product-card__image-wrapper:hover .product-card__cart {
   opacity: 1;
   transform: translateY(0);
 }
 
-.info {
+.product-card__info {
   margin-top: 10px;
 }
 
-.info h4 {
+.product-card__title {
   font-size: 16px;
   margin-bottom: 1px;
 }
 
-.info div {
+.product-card__pricing {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.originalPrice {
+.product-card__price-original {
   color: gray;
   text-decoration: line-through;
 }
 
-.discountedPrice {
+.product-card__price-discount {
   color: #db4444;
 }
 
-.rating {
+.product-card__rating {
   display: flex;
   flex-direction: row;
   gap: 5px;
 }
 
-.stars {
+.product-card__stars {
   font-size: x-large;
   color: rgb(244, 192, 60);
   padding-bottom: 5px;
 }
 
-.total-ratings {
+.product-card__reviews {
   font-size: 16px;
   color: #868686;
 }
