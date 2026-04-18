@@ -1,12 +1,14 @@
+@use '../abstracts' as *;
+
 .not-found {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
   &__breadcrumb {
-    margin: 20px;
+    margin: space(20);
 
-   @media (min-width: 768px) {
+   @include respond-min(sm) {
       margin-left: 150px;
     }
   }
@@ -14,41 +16,41 @@
   &__content {
     align-self: center;
     text-align: center;
-    padding: 100px;
+    padding: space(100);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: space(20);
     
-    @media (max-width: 768px) {
-      padding: 40px 20px;
+    @include respond-max(sm) {
+      padding: space(40) space(20);
     }  
   }
 
   &__title {
-    font-size: 70px;
-    color: #000;
+    font-size: font-size(hero);
+    color: color(black);
     margin: 0;
-    letter-spacing: 5px;
+    letter-spacing: space(5);
   }
 
   &__text {
-    font-size: 18px;
-    color: #000;
+    font-size: font-size(lg);
+    color: color(black);
   }
 
   &__button {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #DB4444;
-    color: #fff;
+    padding: space(10) space(20);
+    background-color: color(primary);
+    color: color(white);
     text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.5s ease;
+    border-radius: radius(sm);
+    transition: transition(base);
 
     &:hover {
-      background-color: #c03939;
-      transform: translateY(-5px);
+      background-color: color(primary-hover);
+      transform: translateY(-#{space(5)});
     }
   }
 }

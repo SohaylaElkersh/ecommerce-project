@@ -1,3 +1,5 @@
+@use '../../abstracts' as *;
+
 .cart-drawer {
   display: flex;
   flex-direction: column;
@@ -6,51 +8,51 @@
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  margin: 0;
+  margin: space(0);
 
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
-    background-color: #db4444;
-    margin-bottom: 10px;
-    padding: 0 20px;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
+    background-color: color(primary);
+    margin-bottom: space(10);
+    padding: 0 space(20);
+    border-bottom-left-radius: space(40);
+    border-bottom-right-radius: space(40);
     width: 100%;
     box-sizing: border-box;
     height: 75px;
   }
 
   &__title {
-    color: #fff;
-    font-size: 25px;
-    margin: 0;
+    color: color(white);
+    font-size: font-size(display-md);
+    margin: space(0);
   }
 
   &__close {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 4px;
-    margin: 0;
+    padding: space(4);
+    margin: space(0);
     border: none;
     background: transparent;
-    color: #fff;
-    font-size: 25px;
+    color: color(white);
+    font-size: font-size(display-md);
     line-height: 1;
     cursor: pointer;
-    transition: all 0.5s ease;
+    transition: transition(base);
 
     &:hover {
       transform: scale(1.2);
     }
 
     &:focus-visible {
-      outline: 2px solid #fff;
+      outline: 2px solid color(white);
       outline-offset: 2px;
-      border-radius: 4px;
+      border-radius: radius(sm);
     }
   }
 
@@ -67,7 +69,7 @@
     width: 500px;
     max-width: 100%;
     margin: 0 auto;
-    padding: 20px 16px 32px;
+    padding: space(20) space(16) 32px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -85,7 +87,7 @@
     width: 500px;
     max-width: 100%;
     box-sizing: border-box;  
-    padding: 10px;
+    padding: space(10);
   }
 
   &__empty {
@@ -93,12 +95,12 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 40px 20px;
+    padding: space(40) space(20);
     text-align: center;
     margin: auto;
 
     &-title {
-      color: #000;
+      color: color(black);
       margin: auto;
     }
   }

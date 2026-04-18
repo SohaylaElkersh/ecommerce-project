@@ -1,18 +1,20 @@
+@use '../../abstracts' as *;
+
 .footer {
-  background-color: #000;
-  color: #fff;
-  margin-top: 50px;
-  font-family: Arial, sans-serif;
+  background-color: color(black);
+  color: color(white);
+  margin-top: space(50);
+  font-family: $font-family-base;
   text-align: left;
 
   &__content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 50px 20px 10px;
+    padding: space(50) space(20) space(10);
     max-width: 1200px;
     margin: auto;
-    gap: 30px;
+    gap: space(30);
   }
 
   &__brand {
@@ -21,14 +23,14 @@
   }
 
   &__title {
-    font-size: 24px;
-    margin: 0;
+    font-size: font-size(display-sm);
+    margin: space(0);
   }
 
   &__text {
-    margin: 10px 0 20px 0;
-    font-size: 14px;
-    color: #fff;
+    margin: space(10) 0 space(20) 0;
+    font-size: font-size(md);
+    color: color(white);
   }
 
   &__newsletter {
@@ -39,28 +41,28 @@
 
   &__input {
     width: 100%;
-    padding: 10px 36px 10px 12px;
-    border: 1px solid #fff;
-    border-radius: 4px;
+    padding: space(10) 36px space(10) space(12);
+    border: 1px solid color(white);
+    border-radius: radius(sm);
     outline: none;
     background-color: black;
-    color: #fff;
-    font-size: 14px;
+    color: color(white);
+    font-size: font-size(md);
   }
 
   &__send-icon {
     position: absolute;
-    right: 0px;
+    right: 0;
     left: 160px;
     top: 50%;
     transform: translateY(-50%);
-    color: #fff;
+    color: color(white);
     width: 18px;
     height: 18px;
     cursor: pointer;
 
     i {
-      transition: all 0.5s ease;
+      transition: transition(base);
 
       &:hover {
         transform: scale(1.1);
@@ -73,7 +75,7 @@
     flex: 2 1 500px;
     justify-content: space-between;
     flex-wrap: nowrap;
-    gap: 20px;
+    gap: space(20);
   }
 
   &__links-section {
@@ -82,20 +84,20 @@
   }
 
   &__links-title {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: font-size(xl);
+    margin-bottom: space(10);
   }
 
   &__link {
     display: block;
-    color: #ccc;
+    color: color(gray-300);
     text-decoration: none;
-    margin: 20px 0;
-    font-size: 14px;
+    margin: space(20) 0;
+    font-size: font-size(md);
     transition: color 0.2s;
 
     &:hover {
-      color: #fff;
+      color: color(white);
     }
   }
 
@@ -108,13 +110,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
+    gap: space(20);
   }
 
   &__qr {
     width: 80px;
     height: 80px;
-    margin: 10px 0;
+    margin: space(10) 0;
   }
 
   &__stores {
@@ -122,7 +124,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 3px;
-    margin: 10px 0;
+    margin: space(10) 0;
   }
 
   &__store-link {
@@ -133,13 +135,13 @@
   &__socials {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: space(20);
   }
 
   &__social-icon {
-    color: #fff;
-    font-size: 20px;
-    transition: all 0.5s ease;
+    color: color(white);
+    font-size: font-size(xl);
+    transition: transition(base);
 
     &:hover {
       transform: scale(1.2);
@@ -148,14 +150,14 @@
 
   &__bottom {
     text-align: center;
-    padding: 20px;
-    border-top: 1px solid #333;
-    font-size: 13px;
-    margin-top: 20px;
-    color: #ccc;
+    padding: space(20);
+    border-top: 1px solid color(text-dark);
+    font-size: font-size(sm);
+    margin-top: space(20);
+    color: color(gray-300);
   }
 
-  @media (max-width: 900px) {
+  @include respond-max(md) {
     &__content {
       flex-direction: column;
       align-items: flex-start;
@@ -163,11 +165,11 @@
 
     &__links {
       flex-direction: column;
-      gap: 20px;
+      gap: space(20);
     }
 
     &__app {
-      margin-top: 30px;
+      margin-top: space(30);
     }
   }
 }

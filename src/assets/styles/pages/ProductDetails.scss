@@ -1,3 +1,5 @@
+@use '../abstracts' as *;
+
 .product-details {
   &__wrapper {
     display: flex;
@@ -8,10 +10,10 @@
 
   &__breadcrumb {
     align-self: flex-start;
-    margin: 20px 125px;
+    margin: space(20) 125px;
     
-    @media (max-width: 768px) {
-      margin: 20px;
+    @include respond-max(sm) {
+      margin: space(20);
     }
   }
 
@@ -21,7 +23,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: space(20);
     justify-content: flex-start;
   }
 
