@@ -31,11 +31,11 @@
 
         <div class="footer__download">
             <div>
-              <img src="@/assets/footer/qrcode.jpg" alt="Download QR Code" class="footer__qr"/>
+              <img src="@/assets/images/footer/qrcode.jpg" alt="Download QR Code" class="footer__qr"/>
             </div>
             <div class="footer__stores">
-              <img src="@/assets/footer/playstore.png" alt="Play Store" class="footer__store-link"/>
-              <img src="@/assets/footer/appstore.jpg" alt="App Store" class="footer__store-link"/>
+              <img src="@/assets/images/footer/playstore.png" alt="Play Store" class="footer__store-link"/>
+              <img src="@/assets/images/footer/appstore.jpg" alt="App Store" class="footer__store-link"/>
             </div>
         </div>
 

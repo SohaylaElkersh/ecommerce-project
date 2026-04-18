@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import carouselBackground from '../../assets/carousel/young-happy-women-with-shopping-bags-walking-street.jpg'
+import carouselBackground from '@/assets/images/carousel/young-happy-women-with-shopping-bags-walking-street.jpg'
 
 export default {
   data() {

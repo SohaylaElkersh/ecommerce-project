@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import founderPic from '../../assets/about/corporate-headshots-professional-photography-connecticut-ct-photo-studio-nlalor-3.jpg'
-import coFounderPic from '../../assets/about/linkedin-sales-solutions-pAtA8xe_iVM-unsplash.jpg'
-import marketingDirectorPic from '../../assets/about/c76b3f38a6b60c338d6534b4eacc9af2.jpg'
-import salesManagerPic from '../../assets/about/man-portrait-posing-loft-modern-space.jpg'
+import founderPic from '@/assets/images/about/team/corporate-headshots-professional-photography-connecticut-ct-photo-studio-nlalor-3.jpg'
+import coFounderPic from '@/assets/images/about/team/linkedin-sales-solutions-pAtA8xe_iVM-unsplash.jpg'
+import marketingDirectorPic from '@/assets//images/about/team/c76b3f38a6b60c338d6534b4eacc9af2.jpg'
+import salesManagerPic from '@/assets/images/about/team/man-portrait-posing-loft-modern-space.jpg'
 
 export default {
   name: 'TeamSection',

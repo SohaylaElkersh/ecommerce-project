@@ -3,7 +3,7 @@
         <BreadcrumbHeader class="contact__breadcrumb"/>
         <div class=" contact__wrapper">
             <div class="contact__image-wrapper">
-                <img class="contact__image" src="../assets/contact/cyber-monday-shopping-sales.jpg" alt="contact">
+                <img class="contact__image" src="@/assets/images/contact/cyber-monday-shopping-sales.jpg" alt="contact">
             </div>
             <div class="contact__card">
                 <div class="contact__section contact__section--call">
