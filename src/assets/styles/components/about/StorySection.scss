@@ -1,62 +1,64 @@
+@use '../../abstracts' as *;
+
 .story {
   display: flex;
   flex-direction: row;
-  padding: 50px 90px;
-  margin: 50px;
-  gap: 70px;
+  padding: space(50) space(90);
+  margin: space(50);
+  gap: space(70);
   align-items: center;
 
-  @media (max-width: 1024px) {
-    padding: 40px 40px;
-    gap: 40px;
+  @include respond-max(xl) {
+    padding: space(40) space(40);
+    gap: space(40);
   }
 
-  @media (max-width: 768px) {
+  @include respond-max(sm) {
     flex-direction: column;
-    padding: 30px 20px;
-    margin: 20px;
-    gap: 30px;
+    padding: space(30) space(20);
+    margin: space(20);
+    gap: space(30);
   }
 
   &__content {
     flex: 1;
     text-align: left;
 
-    @media (max-width: 768px) {
+    @include respond-max(sm) {
       text-align: center;
     }
   }
 
   &__title {
     font-size: 48px;
-    margin-bottom: 15px;
+    margin-bottom: space(15);
 
-    @media (max-width: 768px) {
+    @include respond-max(sm) {
       font-size: 32px;
     }
   }
 
   &__text {
-    font-size: 18px;
+    font-size: font-size(lg);
     line-height: 1.5;
-    margin-bottom: 10px;
+    margin-bottom: space(10);
 
-    @media (max-width: 768px) {
-      font-size: 16px;
+    @include respond-max(sm) {
+      font-size: font-size(base);
     }
   }
 
   &__image {
     width: 500px;
     height: auto;
-    border-radius: 4px;
+    border-radius: radius(sm);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
 
-    @media (max-width: 1024px) {
+    @include respond-max(xl) {
       width: 400px;
     }
 
-    @media (max-width: 768px) {
+    @include respond-max(sm) {
       width: 100%;
       max-width: 350px;
     }

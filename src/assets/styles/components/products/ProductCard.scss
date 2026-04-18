@@ -1,13 +1,15 @@
+@use '../../abstracts' as *;
+
 .product-card {
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.5s ease;
-  border-radius: 4px;
+  box-shadow: shadow(sm);
+  transition: transition(base);
+  border-radius: radius(sm);
   overflow: hidden;
 
   &:hover {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    transform: translateY(-10px);
+    box-shadow: shadow(md);
+    transform: translateY(-#{space(10)});
 
     .product-card__cart {
       opacity: 1;
@@ -20,7 +22,7 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    background: #f5f5f5;
+    background: color(gray-100);
   }
 
   &__image {
@@ -31,32 +33,32 @@
 
   &__discount {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    border-radius: 4px;
-    padding: 5px 10px;
-    background-color: #db4444;
-    color: #fff;
-    font-size: 12px;
+    top: space(10);
+    left: space(10);
+    border-radius: radius(sm);
+    padding: space(5) space(10);
+    background-color: color(primary);
+    color: color(white);
+    font-size: font-size(xs);
   }
 
   &__actions {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: space(10);
+    right: space(10);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: space(10);
   }
 
   &__action {
-    background: #fff;
-    padding: 8px;
-    border-radius: 50%;
-    font-size: 14px;
+    background: color(white);
+    padding: space(8);
+    border-radius: radius(round);
+    font-size: font-size(md);
     cursor: pointer;
     transition: transform 0.2s ease;
-    color: #000;
+    color: color(black);
 
     &:hover {
       transform: scale(1.2);
@@ -68,30 +70,30 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #000;
-    color: #fff;
+    background: color(black);
+    color: color(white);
     text-align: center;
-    padding: 10px;
+    padding: space(10);
 
     opacity: 0;
     transform: translateY(100%);
-    transition: all 0.3s ease;
+    transition: transition(fast);
   }
 
   &__info {
-    padding: 10px;
+    padding: space(10);
   }
 
   &__title {
-    font-size: 16px;
-    margin-bottom: 5px;
+    font-size: font-size(base);
+    margin-bottom: space(5);
   }
 
   &__pricing {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: space(10);
   }
 
   &__price-original {
@@ -100,22 +102,22 @@
   }
 
   &__price-discount {
-    color: #db4444;
+    color: color(primary);
   }
 
   &__rating {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: space(5);
   }
 
   &__stars {
-    font-size: 20px;
-    color: rgb(244, 192, 60);
+    font-size: font-size(xl);
+    color: color(rating);
   }
 
   &__reviews {
-    font-size: 14px;
-    color: #868686;
+    font-size: font-size(md);
+    color: color(text-light);
   }
 }

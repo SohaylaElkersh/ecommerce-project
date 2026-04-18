@@ -1,17 +1,19 @@
+@use '../../abstracts' as *;
+
 .flash-sales {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  border-bottom: solid #ccc 1px;
-  padding-bottom: 40px;
+  border-bottom: solid color(gray-300) 1px;
+  padding-bottom: space(40);
 
   &__button {
-    margin: 50px;
+    margin: space(50);
     align-self: center;
 
-    @media (max-width: 768px) {
-      margin: 30px 0;
+    @include respond-max(sm) {
+      margin: space(30) 0;
     }
   }
 }

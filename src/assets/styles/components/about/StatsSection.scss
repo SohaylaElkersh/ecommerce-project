@@ -1,56 +1,58 @@
+@use '../../abstracts' as *;
+
 .stats {
   display: flex;
   justify-content: space-evenly;
-  padding: 50px 30px;
-  gap: 10px;
-  margin: 50px;
+  padding: space(50) space(30);
+  gap: space(10);
+  margin: space(50);
 
-  @media (max-width: 1024px) {
+  @include respond-max(xl) {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: space(20);
   }
 
-  @media (max-width: 768px) {
-    margin: 20px;
-    padding: 30px 10px;
+  @include respond-max(sm) {
+    margin: space(20);
+    padding: space(30) space(10);
   }
 
   &__card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: space(20);
     max-width: 300px;
     border: rgb(178, 178, 178) solid 1px;
-    border-radius: 4px;
-    background-color: #fff;
-    padding: 30px;
-    transition: all 0.5s ease;
+    border-radius: radius(sm);
+    background-color: color(white);
+    padding: space(30);
+    transition: transition(base);
 
-    @media (max-width: 768px) {
+    @include respond-max(sm) {
       max-width: 100%;
       width: 100%;
     }
 
     &:hover {
-      background-color: #db4444;
-      color: #fff;
-      transform: translateY(-10px);
+      background-color: color(primary);
+      color: color(white);
+      transform: translateY(-#{space(10)});
       border: none;
 
       .stats__icon {
-        background-color: #fff;
+        background-color: color(white);
         outline: 8px solid #e67c7c;
 
         i {
-          color: #000;
+          color: color(black);
         }
       }
 
       .stats__title,
       .stats__description {
-        color: #fff;
+        color: color(white);
       }
     }
   }
@@ -58,28 +60,28 @@
   &__icon {
     width: 50px;
     height: 50px;
-    background-color: #000;
-    border-radius: 50%;
+    background-color: color(black);
+    border-radius: radius(round);
     outline: 8px solid #c1c0c1;
     display: flex;
     align-items: center;
     justify-content: center;
 
     i {
-      color: #fff;
-      font-size: 25px;
+      color: color(white);
+      font-size: font-size(display-md);
     }
   }
 
   &__title {
-    font-size: 18px;
+    font-size: font-size(lg);
     margin: 0;
-    color: #000;
+    color: color(black);
   }
 
   &__description {
-    margin: 10px 0 0 0;
-    font-size: 14px;
-    color: #000;
+    margin: space(10) 0 0 0;
+    font-size: font-size(md);
+    color: color(black);
   }
 }

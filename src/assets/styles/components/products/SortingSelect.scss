@@ -1,18 +1,20 @@
+@use '../../abstracts' as *;
+
 .sort-select {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: space(12);
 
   &__label {
-    font-size: 20px;
+    font-size: font-size(xl);
     margin: 0;
     white-space: nowrap;
   }
 
   &__control {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: space(10);
+    border: 1px solid color(gray-300);
+    border-radius: radius(sm);
     min-width: 200px;
     cursor: pointer;
     transition: border-color 0.3s ease;

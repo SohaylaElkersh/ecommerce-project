@@ -1,23 +1,25 @@
+@use '../../abstracts' as *;
+
 .quality {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  padding: 50px 30px;
+  padding: space(50) space(30);
   width: 100%;
 
   &__card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: space(20);
     max-width: 300px;
   }
 
   &__icon {
     width: 50px;
     height: 50px;
-    background-color: #000;
-    border-radius: 50%;
+    background-color: color(black);
+    border-radius: radius(round);
     outline: 8px solid #c1c0c1;
   }
 
@@ -28,42 +30,42 @@
   }
 
   &__title {
-    font-size: 18px;
+    font-size: font-size(lg);
     margin: 0;
-    color: #000;
+    color: color(black);
   }
 
   &__description {
-    margin: 10px 0 0 0;
-    font-size: 14px;
-    color: #000;
+    margin: space(10) 0 0 0;
+    font-size: font-size(md);
+    color: color(black);
   }
 
-  @media (max-width: 992px) {
+  @include respond-max(lg) {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: space(30);
 
     &__card {
       max-width: 250px;
     }
   }
 
-  @media (max-width: 600px) {
+  @include respond-max(xs) {
     flex-direction: column;
     align-items: center;
-    padding: 30px 20px;
+    padding: space(30) space(20);
 
     &__card {
       max-width: 100%;
     }
 
     &__title {
-      font-size: 16px;
+      font-size: font-size(base);
     }
 
     &__description {
-      font-size: 13px;
+      font-size: font-size(sm);
     }
   }
 }

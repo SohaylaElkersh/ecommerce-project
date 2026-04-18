@@ -1,3 +1,5 @@
+@use '../../abstracts' as *;
+
 .quantity {
   display: flex;
   align-items: center;
@@ -5,27 +7,27 @@
   &__button {
     width: 30px;
     height: 35px;
-    background-color: #fff;
-    color: #000;
+    background-color: color(white);
+    color: color(black);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border: 1px solid #ccc;
-    transition: all 0.3s ease;
+    border: 1px solid color(gray-300);
+    transition: transition(fast);
 
     &:hover {
-      background-color: #db4444;
-      border-color: #db4444;
-      color: #fff;
+      background-color: color(primary);
+      border-color: color(primary);
+      color: color(white);
     }
 
     &--minus {
-      border-radius: 4px 0 0 4px;
+      border-radius: radius(sm) 0 0 radius(sm);
     }
 
     &--plus {
-      border-radius: 0 4px 4px 0;
+      border-radius: 0 radius(sm) radius(sm) 0;
     }
   }
 
@@ -36,8 +38,8 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    background-color: #fff;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    background-color: color(white);
+    border-top: 1px solid color(gray-300);
+    border-bottom: 1px solid color(gray-300);
   }
 }

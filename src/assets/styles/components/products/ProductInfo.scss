@@ -1,11 +1,13 @@
+@use '../../abstracts' as *;
+
 .product-detail {
-  padding: 20px;
+  padding: space(20);
   display: flex;
   justify-content: center;
 
   &__gallery {
     display: flex;
-    gap: 50px;
+    gap: space(50);
     max-width: 1200px;
     width: 100%;
     align-items: stretch;
@@ -14,7 +16,7 @@
   &__thumbs {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: space(20);
     width: 100px;
     height: 500px;
 
@@ -42,7 +44,7 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: space(30);
     width: 500px;
     height: 500px;
   }
@@ -51,21 +53,21 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 5px;
-    border-bottom: #555 solid 2px;
+    gap: space(5);
+    border-bottom: color(text-muted) solid 2px;
   }
 
   &__title {
-    font-size: 24px;
-    margin: 0;
+    font-size: font-size(display-sm);
+    margin: space(0);
   }
 
   &__category {
     font-size: 15px;
-    margin: 12px 0 0;
+    margin: space(12) 0 0;
 
     a {
-      color: #000;
+      color: color(black);
       font-weight: bold;
     }
   }
@@ -73,78 +75,78 @@
   &__rating {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: space(10);
   }
 
   &__stars {
-    font-size: 20px;
-    color: rgb(244, 192, 60);
-    margin: 0;
+    font-size: font-size(xl);
+    color: color(rating);
+    margin: space(0);
   }
 
   &__reviews {
-    font-size: 14px;
-    color: #555;
-    margin: 0;
+    font-size: font-size(md);
+    color: color(text-muted);
+    margin: space(0);
   }
 
   &__stock {
-    font-size: 14px;
-    margin: 0;
+    font-size: font-size(md);
+    margin: space(0);
 
     &--in {
-      color: #66ffa3;
+      color: color(success);
     }
 
     &--out {
-      color: #db4444;
+      color: color(primary);
     }
   }
 
   &__pricing {
     display: flex;
-    gap: 20px;
+    gap: space(20);
   }
 
   &__price-original {
-    font-size: 22px;
+    font-size: font-size(xxl);
     font-weight: bold;
-    margin: 0;
+    margin: space(0);
     color: gray;
     text-decoration: line-through;
   }
 
   &__price-discount {
-    font-size: 22px;
+    font-size: font-size(xxl);
     font-weight: bold;
-    margin: 0;
+    margin: space(0);
   }
 
   &__description {
-    font-size: 14px;
+    font-size: font-size(md);
     max-width: 50ch;
     text-align: left;
   }
 
   &__actions {
     display: flex;
-    gap: 20px;
+    gap: space(20);
     align-items: center;
   }
 
   &__wishlist {
     padding: 7px;
-    margin-left: 20px;
-    background: #fff;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    margin-left: space(20);
+    background: color(white);
+    border-radius: radius(sm);
+    border: 1px solid color(gray-300);
     cursor: pointer;
     font-size: large;
-    transition: all 0.3s ease;
+    transition: transition(fast);
 
     &:hover {
-      background: #ccc;
-      border-color: #555;
+      background: color(gray-300);
+      border-color: color(text-muted);
     }
   }
 
@@ -155,13 +157,13 @@
     &-item {
       display: flex;
       align-items: center;
-      gap: 20px;
-      padding: 10px 10px 15px;
-      border: 1px solid #ccc;
+      gap: space(20);
+      padding: space(10) space(10) space(15);
+      border: 1px solid color(gray-300);
     }
 
     &-icon {
-      font-size: 25px;
+      font-size: font-size(display-md);
     }
 
     &-content {
@@ -170,18 +172,18 @@
       align-items: flex-start;
 
       h5 {
-        margin: 10px 0;
-        font-size: 18px;
+        margin: space(10) 0;
+        font-size: font-size(lg);
       }
 
       a {
-        color: #000;
-        font-size: 12px;
+        color: color(black);
+        font-size: font-size(xs);
       }
     }
   }
 
-  @media (max-width: 1100px) {
+  @include respond-max(xxl) {
     &__gallery {
       flex-direction: column;
       align-items: center;
@@ -202,7 +204,7 @@
     }
   }
 
-  @media (max-width: 600px) {
+  @include respond-max(xs) {
     &__actions {
       flex-direction: column;
       align-items: stretch;
@@ -210,7 +212,7 @@
 
     &__pricing {
       flex-direction: column;
-      gap: 5px;
+      gap: space(5);
     }
   }  
 }

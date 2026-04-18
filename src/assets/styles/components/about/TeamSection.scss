@@ -1,32 +1,34 @@
+@use '../../abstracts' as *;
+
 .team {
   display: flex;
   justify-content: space-evenly;
-  padding: 50px 30px;
-  margin: 50px;
-  gap: 10px;
+  padding: space(50) space(30);
+  margin: space(50);
+  gap: space(10);
 
-  @media (max-width: 1024px) {
+  @include respond-max(xl) {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: space(30);
   }
 
-  @media (max-width: 768px) {
-    margin: 20px;
-    padding: 30px 10px;
+  @include respond-max(sm) {
+    margin: space(20);
+    padding: space(30) space(10);
   }
 
   &__card {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
-    padding: 50px 30px;
+    gap: space(10);
+    padding: space(50) space(30);
 
-    @media (max-width: 768px) {
+    @include respond-max(sm) {
       align-items: center;
       text-align: center;
-      padding: 20px;
+      padding: space(20);
       width: 100%;
       max-width: 280px;
     }
@@ -35,41 +37,41 @@
   &__image {
     width: 200px;
     height: auto;
-    border-radius: 4px;
+    border-radius: radius(sm);
 
-    @media (max-width: 768px) {
+    @include respond-max(sm) {
       width: 160px;
     }
   }
 
   &__name {
-    font-size: 22px;
+    font-size: font-size(xxl);
     margin: 0;
 
-    @media (max-width: 768px) {
-      font-size: 18px;
+    @include respond-max(sm) {
+      font-size: font-size(lg);
     }
   }
 
   &__role {
-    font-size: 16px;
+    font-size: font-size(base);
     margin: 0;
 
-    @media (max-width: 768px) {
-      font-size: 14px;
+    @include respond-max(sm) {
+      font-size: font-size(md);
     }
   }
 
   &__socials {
     display: flex;
-    gap: 10px;
-    font-size: 20px;
-    margin-top: 5px;
+    gap: space(10);
+    font-size: font-size(xl);
+    margin-top: space(5);
   }
 
   &__social-link {
-    color: black;
-    transition: all 0.3s ease;
+    color: color(black);
+    transition: transition(fast);
 
     &:hover {
       transform: scale(1.2);

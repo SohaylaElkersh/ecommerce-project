@@ -1,26 +1,28 @@
+@use '../../abstracts' as *;
+
 .category-section {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  border-bottom: solid #ccc 1px;
+  border-bottom: solid color(gray-300) 1px;
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 20px;
+    gap: space(20);
     align-items: stretch;
-    padding: 0 0 40px;
+    padding: 0 0 space(40);
     width: 100%;
 
-    @media (max-width: 900px) {
+    @include respond-max(md) {
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
+      gap: space(15);
     }
 
-    @media (max-width: 600px) {
+    @include respond-max(xs) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: space(12);
     }
   }
 
@@ -29,26 +31,26 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #ccc;
-    transition: all 0.3s ease;
+    border-radius: radius(sm);
+    background-color: color(white);
+    color: color(black);
+    border: 1px solid color(gray-300);
+    transition: transition(fast);
     cursor: pointer;
-    padding: 15px 5px;
+    padding: space(15) space(5);
     text-align: center;
     min-height: 90px;
-    gap: 10px;
+    gap: space(10);
 
-    @media (max-width: 600px) {
+    @include respond-max(xs) {
       min-height: 100px;
-      padding: 12px 8px;
+      padding: space(12) space(8);
     }
 
     &:hover {
-      background-color: #db4444;
-      color: #fff;
-      border: 1px solid #db4444;
+      background-color: color(primary);
+      color: color(white);
+      border: 1px solid color(primary);
       transform: translateY(-6px);
 
       .category-section__icon i {
@@ -65,10 +67,10 @@
   &__icon {
     i {
       font-size: 34px;
-      margin-bottom: 8px;
+      margin-bottom: space(8);
       transition: transform 0.3s ease;
 
-      @media (max-width: 600px) {
+      @include respond-max(xs) {
         font-size: 28px;
       }
     }
