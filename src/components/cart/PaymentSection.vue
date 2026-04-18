@@ -56,61 +56,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.payment-section__summary {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 50px;
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
-}
-
-.payment-section__row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: #ccc solid 2px;
-  width: 100%;
-  gap: 15px;
-}
-
-.payment-section__methods {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  gap: 10px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-.payment-section__method label {
-  margin-left: 10px;
-}
-
-.payment-section__method input {
-  accent-color: #000;
-}
-
-.payment-section__coupon {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
-  margin: 25px 0;
-}
-
-.payment-section__coupon-input {
-  max-width: calc(100% - 110px);
-}
-
-.payment-section__order-button {
-  width: fit-content;
-  align-self: center;
-}
+<style lang="scss">
+@import "@/assets/styles/components/cart/PaymentSection.scss";
 </style>
