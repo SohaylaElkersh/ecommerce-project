@@ -63,31 +63,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    color: #7d8184;
-    font-size: 17px;
-}
-
-.breadcrumb__link {
-    color: #7d8184;
-    text-decoration: none;
-    transition: all 0.5s ease;
-}
-
-.breadcrumb__link:hover {
-    color: #db4444;
-}
-
-.breadcrumb__separator {
-    color: #7d8184;
-}
-
-.breadcrumb__current {
-    color: #000;
-}
+<style lang="scss">
+@import "@/assets/styles/components/navigation/BreadcrumbHeader.scss";
 </style>
