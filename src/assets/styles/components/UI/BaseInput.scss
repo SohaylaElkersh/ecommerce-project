@@ -1,14 +1,16 @@
+@use '../../abstracts' as *;
+
 .base-input {
   width: 100%;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border-radius: 4px;
+  padding: space(10);
+  background-color: color(gray-100);
+  border-radius: radius(sm);
   border: 1px solid transparent;
   box-sizing: border-box;
-  transition: border 0.2s ease;
+  transition: transition(border);
 
   &:focus {
-    border-color: #ccc;
+    border-color: color(gray-300);
     outline: none;
   }
 
