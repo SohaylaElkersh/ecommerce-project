@@ -13,7 +13,7 @@ import CarouselSection from '@/components/home/CarouselSection.vue';
 import FlashSales from '@/components/home/FlashSales.vue';
 import CategorySection from '@/components/home/CategorySection.vue';
 import ExploreSection from '@/components/home/ExploreSection.vue'
-import QualitySection from '@/components/layout/shared/QualitySection.vue';
+import QualitySection from '@/components/sections/QualitySection.vue';
 
 export default {
   name: 'HomePage',

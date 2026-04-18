@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import BreadcrumbHeader from '@/components/layout/shared/BreadcrumbHeader.vue';
+import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 import BaseInput from '@/components/UI/BaseInput.vue';
 

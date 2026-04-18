@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BreadcrumbHeader from '@/components/layout/shared/BreadcrumbHeader.vue';
+import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue';
 
 export default {
   name: 'NotFound',

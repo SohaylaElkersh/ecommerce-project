@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import AppNavbar from "@/components/layout/shared/Navbar.vue";
-import AppFooter from "@/components/layout/shared/AppFooter.vue";
+import AppNavbar from "@/components/layout/Navbar.vue";
+import AppFooter from "@/components/layout/AppFooter.vue";
 
 export default {
   name: "MainLayout",

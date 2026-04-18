@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import SliderCart from '@/components/layout/shared/SliderCart.vue'
+import SliderCart from '@/components/layout/SliderCart.vue'
 import BaseInput from '@/components/UI/BaseInput.vue'
 
 export default {

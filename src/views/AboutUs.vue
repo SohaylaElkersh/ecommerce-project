@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import BreadcrumbHeader from '@/components/layout/shared/BreadcrumbHeader.vue';
+import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue';
 import StorySection from '@/components/about/StorySection.vue';
 import StatsSection from '@/components/about/StatsSection.vue';
 import TeamSection from '@/components/about/TeamSection.vue';   
-import QualitySection from '@/components/layout/shared/QualitySection.vue';
+import QualitySection from '@/components/sections/QualitySection.vue';
 
 export default {
   name: 'AboutUs',

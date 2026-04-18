@@ -17,7 +17,7 @@
 </template>
 
 <script>   
-import BreadcrumbHeader from '@/components/layout/shared/BreadcrumbHeader.vue';
+import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue';
 import ProductCard from '@/components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
 import SortingSelect from '@/components/products/SortingSelect.vue';

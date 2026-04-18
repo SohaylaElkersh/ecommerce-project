@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import BreadcrumbHeader from '@/components/layout/shared/BreadcrumbHeader.vue';
+import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue';
 import ProductCard from '@/components/products/ProductCard.vue';
 import HeaderColor from '@/components/UI/HeaderColor.vue';
 import ProductInfo from '@/components/products/ProductInfo.vue';
