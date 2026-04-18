@@ -40,26 +40,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.sort-select {
-  display: flex;
-}
-
-.sort-select__label {
-  font-size: 24px;
-  margin: auto 20px;
-}
-
-.sort-select__control {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  min-width: 200px;
-  cursor: pointer;
-}
-
-.sort-select__control:focus {
-  outline: none;
-  border-color: #888;
-}
+<style lang="scss">
+@import "@/assets/styles/components/products/SortingSelect.scss";
 </style>
