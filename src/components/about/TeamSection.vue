@@ -70,51 +70,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.team {
-  display: flex;
-  flex-direction: row;
-  justify-content:space-evenly;
-  padding: 50px 30px;
-  margin: 50px;
-  gap: 10px;
-}
-
-.team__card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 50px 30px;
-}
-
-.team__image {
-  width: 200px;
-  height: auto;
-}
-
-.team__name {
-  font-size: 22px;
-  margin: 0;
-}
-
-.team__role {
-  font-size: 16px;
-  margin: 0;
-}
-
-.team__socials {
-  display: flex;
-  gap: 10px;
-  font-size: 20px;
-}
-
-.team__social-link {
-  color: black;
-  transition: all 0.5s ease; 
-}
-
-.team__social-link:hover {
-  transform: scale(1.2);
-}
+<style lang="scss">
+@import "@/assets/styles/components/about/TeamSection.scss"
 </style>

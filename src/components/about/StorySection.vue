@@ -15,33 +15,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.story {
-    display: flex;
-    flex-direction: row;
-    padding: 50px 90px;
-    margin: 50px;
-    gap: 70px;
-}
-
-.story__content {
-    flex: 1;
-    text-align: left;
-}
-
-.story__title {
-    font-size: 48px;
-    margin-bottom: 15px;
-}
-
-.story__text {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 10px;
-}
-
-.story__image {
-    width: 500px;
-    height: auto;
-}
+<style lang="scss">
+@import "@/assets/styles/components/about/StorySection.scss"
 </style>
