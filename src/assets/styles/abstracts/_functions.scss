@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use './variables' as v;
+
+@function color($name) {
+  @return map.get(v.$colors, $name);
+}
+
+@function space($size) {
+  @return map.get(v.$spacing, $size);
+}
+
+@function radius($name) {
+  @return map.get(v.$radius, $name);
+}
+
+@function font-size($name) {
+  @return map.get(v.$font-sizes, $name);
+}
+
+@function bp($name) {
+  @return map.get(v.$breakpoints, $name);
+}
+
+@function transition($name) {
+  @return map.get(v.$transitions, $name);
+}
+
+@function shadow($name) {
+  @return map.get(v.$shadows, $name);
+}

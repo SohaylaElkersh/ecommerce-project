@@ -1,0 +1,42 @@
+@use './functions' as fn;
+
+@mixin respond-max($breakpoint) {
+  @media (max-width: fn.bp($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin respond-min($breakpoint) {
+  @media (min-width: fn.bp($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin flex-center($direction: row, $gap: null) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+
+  @if $gap != null {
+    gap: $gap;
+  }
+}
+
+@mixin flex-between($align: center, $gap: null) {
+  display: flex;
+  justify-content: space-between;
+  align-items: $align;
+
+  @if $gap != null {
+    gap: $gap;
+  }
+}
+
+@mixin hover-scale($scale: 1.1, $transition-name: base) {
+  transition: fn.transition($transition-name);
+
+  &:hover {
+    transform: scale($scale);
+  }
+}

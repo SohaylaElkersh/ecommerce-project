@@ -1,0 +1,83 @@
+$colors: (
+  primary: #db4444,
+  primary-hover: #c03939,
+  black: #000,
+  white: #fff,
+  text-dark: #333,
+  text-muted: #555,
+  text-light: #868686,
+  gray-100: #f5f5f5,
+  gray-200: #eee,
+  gray-300: #ccc,
+  gray-500: #7d8184,
+  gray-700: #333,
+  success: #66ffa3,
+  rating: rgb(244, 192, 60)
+);
+
+$spacing: (
+  0: 0,
+  4: 4px,
+  5: 5px,
+  8: 8px,
+  10: 10px,
+  12: 12px,
+  15: 15px,
+  20: 20px,
+  25: 25px,
+  30: 30px,
+  40: 40px,
+  50: 50px,
+  60: 60px,
+  70: 70px,
+  75: 75px,
+  90: 90px,
+  100: 100px
+);
+
+$radius: (
+  sm: 4px,
+  round: 50%
+);
+
+$font-sizes: (
+  xs: 12px,
+  sm: 13px,
+  md: 14px,
+  base: 16px,
+  lg: 18px,
+  xl: 20px,
+  xxl: 22px,
+  display-sm: 24px,
+  display-md: 25px,
+  display-lg: 34px,
+  display-xl: 48px,
+  hero: 70px
+);
+
+$breakpoints: (
+  xs: 600px,
+  sm: 768px,
+  md: 900px,
+  md-lg: 970px,
+  lg: 992px,
+  xl: 1024px,
+  xxl: 1100px,
+  wide: 1200px
+);
+
+$transitions: (
+  fast: all 0.3s ease,
+  base: all 0.5s ease,
+  border: border 0.2s ease,
+  drawer: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+  fade: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1)
+);
+
+$shadows: (
+  sm: 0 0 10px rgba(0, 0, 0, 0.1),
+  md: 0 0 15px rgba(0, 0, 0, 0.2),
+  drawer: -4px 0 24px rgba(0, 0, 0, 0.12)
+);
+
+$font-family-base: Arial, sans-serif;

@@ -1,0 +1,23 @@
+@use '../abstracts' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: space(0);
+  padding: space(0);
+}
+
+body {
+  color: color(black);
+  background-color: color(white);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
