@@ -1,0 +1,115 @@
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 20px 50px;
+    gap: 20px;
+
+    &__breadcrumb {
+        margin-left: 20px;
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 20px;
+        gap: 40px;
+    }
+
+    &__image-wrapper {
+        width: 50%;
+        border-radius: 4px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    &__image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 20px;
+        width: 50%;
+        padding: 30px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 10px;
+
+        &--call {
+            border-bottom: rgb(184, 184, 184) solid 1px;
+        }
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 15px;
+    }
+
+    &__icon {
+        font-size: 20px;
+        color: #fff;
+        background-color: #db4444;
+        border-radius: 50%;
+        padding: 10px;
+    }
+
+    &__title {
+        font-size: 18px;
+        color: #000;
+    }
+
+    &__text {
+        font-size: 14px;
+        color: #000;
+        margin-top: 0px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 20px;
+        width: 90%;
+    }
+
+    &__form-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        margin-top: 0px;
+    }
+
+    &__textarea {
+        width: 100%;
+        padding: 10px;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        border: none;
+
+        &:focus {
+            border: 1px solid #ccc;
+            outline: none;
+        }
+    }
+}

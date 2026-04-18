@@ -30,12 +30,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.home-page__wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 0px 75px;
-  gap: 100px;
-}
+<style lang="scss">
+@import "@/assets/styles/pages/HomePage.scss"
 </style>

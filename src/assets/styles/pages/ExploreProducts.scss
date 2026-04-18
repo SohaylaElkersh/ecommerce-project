@@ -1,0 +1,31 @@
+.explore-products {
+  &__wrapper {
+    padding: 10px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    @media (max-width: 768px) {
+      padding: 10px 20px;
+    }
+  }
+
+  &__breadcrumb {
+    margin: 0 0 20px 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 98%;
+  }
+
+  &__load-more {
+    margin: 50px;
+    align-self: center;
+  }
+
+
+}

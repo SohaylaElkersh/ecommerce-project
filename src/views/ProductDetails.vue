@@ -68,31 +68,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.product-details__wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.product-details__breadcrumb {
-  align-self: flex-start;
-  margin: 20px 125px;
-}
-
-.product-details__related {
-  margin-top: 0;
-  max-width: 1200px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: flex-start;
-}
-
-.product-details__related-header {
-  display: flex;
-  align-items: flex-start;
-}
+<style lang="scss">
+@import "@/assets/styles/pages/ProductDetails.scss";
 </style>

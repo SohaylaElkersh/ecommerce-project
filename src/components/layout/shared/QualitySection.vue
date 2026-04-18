@@ -85,4 +85,36 @@ export default {
   font-size: 14px;
   color: #000;
 }
+
+@media (max-width: 992px) {
+  .quality {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .quality__card {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  .quality {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+  }
+
+  .quality__card {
+    max-width: 100%;
+  }
+
+  .quality__title {
+    font-size: 16px;
+  }
+
+  .quality__description {
+    font-size: 13px;
+  }
+}
 </style>

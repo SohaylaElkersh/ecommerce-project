@@ -29,13 +29,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.about {
-  position: relative;
-}
-
-.about__breadcrumb {
-  position: absolute;
-  left: 135px;
-}
+<style lang="scss">
+@import "@/assets/styles/pages/AboutUs.scss"
 </style>

@@ -3,7 +3,7 @@
       <BreadcrumbHeader class="explore-products__breadcrumb"/>
         <div class="explore-products__header">
             <h1>Explore Our Products</h1>
-            <div class="sorting">
+            <div class="explore-products__sorting">
               <SortingSelect v-model="selectedSort"/>
             </div>
         </div>
@@ -64,28 +64,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.explore-products__wrapper {
-  padding: 10px 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.explore-products__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  width: 98%;
-}
-
-.explore-products__breadcrumb {
-  margin: 0px 0 20px 0;
-}
-
-.explore-products__load-more {
-  margin: 50px;
-  align-self: center;
-}
+<style lang="scss">
+@import "@/assets/styles/pages/ExploreProducts.scss";
 </style>
