@@ -18,38 +18,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.header-color {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin-bottom: 30px;
-}
-
-.header-color__top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.header-color__badge {
-  padding: 10px 4px;
-  border-radius: 4px;
-  background-color: #db4444;
-  color: #db4444;
-}
-
-.header-color__small {
-  font-size: 20px;
-  margin: auto 0;
-  color: #db4444;
-}
-
-.header-color__big {
-  margin-top: 0px;
-  margin-bottom: 15px;
-}
+<style lang="scss">
+@import "@/assets/styles/layout/UI/HeaderColor.scss"
 </style>

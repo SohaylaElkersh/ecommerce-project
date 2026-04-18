@@ -22,32 +22,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.base-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #db4444;
-  color: #fff;
-  border-radius: 4px;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.5s ease;
-}
-
-.base-btn:hover {
-  background-color: #c03939;
-  transform: translateY(-5px);
-}
-
-.base-btn--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.base-btn--link {
-  display: inline-block;
-}
+<style lang="scss">
+@import "@/assets/styles/layout/UI/BaseButton.scss"
 </style>

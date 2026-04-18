@@ -1,0 +1,43 @@
+.quantity {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    width: 30px;
+    height: 35px;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #db4444;
+      border-color: #db4444;
+      color: #fff;
+    }
+
+    &--minus {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &--plus {
+      border-radius: 0 4px 4px 0;
+    }
+  }
+
+  &__value {
+    width: 50px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+}

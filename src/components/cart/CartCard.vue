@@ -46,6 +46,6 @@ export default {
 }
 </script>
 
-<style >
+<style lang="scss">
 @import "@/assets/styles/components/cart/CartCard.scss"
 </style>
