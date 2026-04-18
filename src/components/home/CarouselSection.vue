@@ -42,6 +42,7 @@
 import carouselBackground from '@/assets/images/carousel/young-happy-women-with-shopping-bags-walking-street.jpg'
 
 export default {
+  name: 'CarouselSection',
   data() {
     return {
       currentIndex: 1, 
@@ -131,115 +132,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.carousel {
-  width: 100%;
-  height: 500px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-}
-
-.carousel__track {
-  display: flex;
-  height: 100%;
-}
-
-.carousel__slide {
-  min-width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.carousel__overlay {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-}
-
-.carousel__content {
-  color: white;
-  max-width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.carousel__brand {
-  opacity: 0.7;
-  margin-bottom: 10px;
-}
-
-.carousel__title {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.carousel__link {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.carousel__dots {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.carousel__dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin: 0 5px;
-  background: gray;
-  border-radius: 50%;
-}
-
-.carousel__dot--active {
-  background: #db4444;
-  border: solid 2px #fff;
-}
-
-.carousel__nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  font-size: 20px;
-  padding: 13px 15px;
-  cursor: pointer;
-  border-radius: 60%;
-  z-index: 10;
-  transition: all 0.5s ease;
-}
-
-.carousel__nav-inner {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.carousel__nav--left {
-  left: 15px;
-}
-
-.carousel__nav--right {
-  right: 15px;
-}
-
-.carousel__nav:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.carousel__nav:hover .carousel__nav-inner {
-  transform: scale(1.1);
-}
+<style lang="scss">
+@import "@/assets/styles/components/home/CarouselSection.scss";
 </style>

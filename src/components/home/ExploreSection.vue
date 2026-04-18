@@ -35,16 +35,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.explore-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.explore-section__button {
-  margin: 50px;
-  align-self: center;
-}
+<style lang="scss">
+@import "@/assets/styles/components/home/ExploreSection.scss";
 </style>

@@ -38,18 +38,6 @@ export default {
 }
 </script>
 
-<style scoped>
-.flash-sales {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  border-bottom: solid #ccc 1px;
-  padding-bottom: 40px;
-}
-
-.flash-sales__button {
-  margin: 50px;
-  align-self: center;
-}
+<style scoped lang="scss">
+@import "@/assets/styles/components/home/FlashSales.scss";
 </style>

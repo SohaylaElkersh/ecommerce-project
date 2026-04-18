@@ -1,0 +1,17 @@
+.flash-sales {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-bottom: solid #ccc 1px;
+  padding-bottom: 40px;
+
+  &__button {
+    margin: 50px;
+    align-self: center;
+
+    @media (max-width: 768px) {
+      margin: 30px 0;
+    }
+  }
+}
