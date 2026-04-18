@@ -23,5 +23,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/layout/UI/BaseButton.scss"
+@import "@/assets/styles/components/UI/BaseButton.scss"
 </style>

@@ -27,5 +27,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/layout/UI/QuantityControl.scss"
+@import "@/assets/styles/components/UI/QuantityControl.scss"
 </style>

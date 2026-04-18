@@ -19,5 +19,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/layout/UI/HeaderColor.scss"
+@import "@/assets/styles/components/UI/HeaderColor.scss"
 </style>

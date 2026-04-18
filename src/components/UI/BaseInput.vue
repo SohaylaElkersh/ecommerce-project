@@ -25,5 +25,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/layout/UI/BaseInput.scss"
+@import "@/assets/styles/components/UI/BaseInput.scss"
 </style>
