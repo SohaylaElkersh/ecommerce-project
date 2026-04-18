@@ -81,7 +81,7 @@
   }
 
   &__info {
-    padding: space(30) space(10);
+    padding: space(30) space(15);
   }
 
   &__title {
@@ -112,12 +112,13 @@
   }
 
   &__stars {
-    font-size: font-size(xl);
+    font-size: font-size(display-md);
     color: color(rating);
+    margin-bottom: space(5);
   }
 
   &__reviews {
-    font-size: font-size(md);
+    font-size: font-size(base);
     color: color(text-light);
   }
 }
