@@ -25,4 +25,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ### Project Link
-https://ecommerce-project-azure-three.vercel.app/
+https://ecommerce-project-three-bay.vercel.app/
