@@ -1,8 +1,7 @@
 export default {
   appendProducts(state, products) {
-    const safeProducts = Array.isArray(products) ? products : [];
-  
-    state.products = state.products.concat(safeProducts);
+    if (!Array.isArray(products)) return;
+    state.products = [...state.products, ...products];
   },
   setCategory(state, category) {
     state.currentCategory = category
