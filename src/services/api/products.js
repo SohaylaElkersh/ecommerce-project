@@ -2,7 +2,7 @@ import { api } from "./axios";
 
 
 export const fetchProductsApi = async ({ limit, skip }) => {
-  const res = await api.get("", {
+  const res = await api.get("/products", {
     params: { limit, skip, select: "id,title,thumbnail,price,rating,reviews,discountPercentage", },
   });
   return res.data;
@@ -10,7 +10,7 @@ export const fetchProductsApi = async ({ limit, skip }) => {
 
 export const fetchProductApi = async (id) => {
   try {
-    const res = await api.get(`/${id}`, {
+    const res = await api.get(`/products/${id}`, {
       params: { select: "id,thumbnail,images,title,price,rating,description,reviews,discountPercentage,category,stock,description", },
     });
     return res.data;
@@ -25,12 +25,12 @@ export const fetchRelatedProductsApi = async (category) => {
 };
 
 export const fetchCategoriesApi = async () => {
-  const res = await api.get("/categories");
+  const res = await api.get("/products/categories");
   return res.data;
 };
 
 export const fetchProductsByCategoryApi = async ({ category, limit, skip, }) => {
-  const res = await api.get(`/category/${category}`, {
+  const res = await api.get(`/products/category/${category}`, {
     params: { limit, skip, select: "id,title,thumbnail,price,rating,reviews,discountPercentage", },
   });
   return res.data;
