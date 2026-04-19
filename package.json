@@ -44,9 +44,6 @@
       "node": true,
       "jest": true
     },
-    "plugins": [
-      "jest"
-    ],
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
