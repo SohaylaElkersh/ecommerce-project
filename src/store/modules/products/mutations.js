@@ -1,11 +1,8 @@
 export default {
   appendProducts(state, products) {
-    if (!Array.isArray(products)) {
-      console.warn("appendProducts received invalid value:", products);
-      return;
-    }
+    const safeProducts = Array.isArray(products) ? products : [];
   
-    state.products = [...state.products, ...products];
+    state.products = state.products.concat(safeProducts);
   },
   setCategory(state, category) {
     state.currentCategory = category
