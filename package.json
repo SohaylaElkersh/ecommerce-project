@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "jest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -22,20 +23,30 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@babel/preset-env": "^7.29.2",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/test-utils": "^1.3.6",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^27.5.1",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "jest": "^27.5.1",
     "sass": "^1.99.0",
     "sass-loader": "^16.0.7",
+    "vue-jest": "^3.0.7",
     "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "jest": true
     },
+    "plugins": [
+      "jest"
+    ],
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
