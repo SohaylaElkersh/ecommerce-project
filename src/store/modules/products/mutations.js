@@ -1,6 +1,7 @@
 export default {
   appendProducts(state, products) {
-    state.products = [...state.products, ...products]
+    if (!Array.isArray(products)) return;
+    state.products = [...state.products, ...products];
   },
   setCategory(state, category) {
     state.currentCategory = category
