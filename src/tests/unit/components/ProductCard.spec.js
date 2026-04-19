@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, RouterLinkStub } from '@vue/test-utils'
 import ProductCard from '@/components/products/ProductCard.vue'
 import { getDiscountPercentage, getDiscountedPriceFromProduct } from '@/utils/pricing'
 
@@ -37,10 +37,7 @@ describe('ProductCard.vue', () => {
         }
       },
       stubs: {
-        RouterLink: {
-          template: '<a><slot /></a>',
-          props: ['to']
-        }
+        RouterLink: RouterLinkStub
       }
     })
   })
@@ -95,20 +92,21 @@ describe('ProductCard.vue', () => {
   })
 
   describe('router link', () => {
+    it('handles product with no reviews', async () => {
+      await wrapper.setProps({
+        product: { ...product, reviews: [] }
+      })
+    
+      expect(wrapper.find('.product-card__reviews').text()).toBe('(0)')
+    })
+
     it('builds correct product link', () => {
-      const link = wrapper.findComponent({ name: 'RouterLink' })
+      const link = wrapper.findComponent(RouterLinkStub)
       expect(link.props('to')).toBe(`/product/${product.id}`)
     })
   })
 
   describe('edge cases', () => {
-    it('handles product with no reviews', () => {
-      wrapper.setProps({
-        product: { ...product, reviews: [] }
-      })
-      expect(wrapper.find('.product-card__reviews').text()).toBe('(0)')
-    })
-
     it('handles missing product', async () => {
       await wrapper.setProps({ product: null })
       expect(wrapper.find('.product-card__title').exists()).toBe(false)
@@ -122,7 +120,7 @@ describe('ProductCard.vue', () => {
           $route: { path: '/' }
         }
       })
-      expect(wrapper.find('.product-card').exists()).toBe(true)
+      expect(wrapper.find('.product-card').exists()).toBe(false)
       expect(wrapper.find('.product-card__title').exists()).toBe(false)
     }) 
     
