@@ -39,17 +39,6 @@ export default {
     },
   },
   computed: {
-    productDetailsRoute() {
-      const fromExplore = this.$route.path.startsWith('/explore');
-
-      return {
-        path: `/product/${this.product.id}`,
-        query: {
-          breadcrumb: 'Explore',
-          breadcrumbTo: fromExplore ? this.$route.path : '/explore'
-        }
-      };
-    },
     discountPercentage() {
       if (!this.product) return 0;
       return getDiscountPercentage(this.product);
