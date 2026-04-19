@@ -56,7 +56,7 @@ export default {
         });
       }
 
-      commit("appendProducts", data.products);
+      commit("appendProducts", data?.products || []);
       commit("incrementSkip");
       commit("setTotal", data.total);
 

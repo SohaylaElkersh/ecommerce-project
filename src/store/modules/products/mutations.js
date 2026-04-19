@@ -1,6 +1,10 @@
 export default {
   appendProducts(state, products) {
-    if (!Array.isArray(products)) return;
+    if (!Array.isArray(products)) {
+      console.warn("appendProducts received invalid value:", products);
+      return;
+    }
+  
     state.products = [...state.products, ...products];
   },
   setCategory(state, category) {
