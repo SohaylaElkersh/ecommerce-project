@@ -1,6 +1,7 @@
 @use '../../abstracts' as *;
 
 .product-card {
+  width: 305px;
   cursor: pointer;
   box-shadow: shadow(sm);
   transition: transition(base);
@@ -81,17 +82,17 @@
   }
 
   &__info {
-    padding: space(30) space(15);
+    padding: space(20);
   }
 
   &__title {
     font-size: font-size(base);
-    margin-bottom: space(20);
+    margin-bottom: space(10);
   }
 
   &__pricing {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: space(10);
   }
@@ -107,8 +108,8 @@
 
   &__rating {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: space(5);
   }
 
   &__stars {

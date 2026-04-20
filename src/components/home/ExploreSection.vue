@@ -7,7 +7,12 @@
             </HeaderColor>
         </div>
         <ProductGrid>
-          <ProductCard v-for="product in products" :key="product.id" :product="product"/>
+          <template v-if="loading">
+            <ProductCardSkeleton v-for="n in 8" :key="n" />
+          </template>
+          <template v-else>
+            <ProductCard v-for="product in products" :key="product.id" :product="product"/>
+          </template>
         </ProductGrid>
         <BaseButton class="explore-section__button" to="/explore">View All Products</BaseButton>
     </div>
@@ -18,10 +23,12 @@ import HeaderColor from '@/components/UI/HeaderColor.vue';
 import ProductCard from '@/components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
+import ProductCardSkeleton from '@/components/products/ProductCardSkeleton.vue';
 
 export default {
     name: 'ExploreSection',
     components: {
+        ProductCardSkeleton,
         HeaderColor,
         ProductCard,
         ProductGrid,
@@ -31,7 +38,10 @@ export default {
       products() {
         return this.$store.state.products.products.slice(0,8);
       },
-    }
+      loading() {
+        return this.$store.state.products.isLoading; 
+      }
+    },
 }
 </script>
 

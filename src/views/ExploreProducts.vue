@@ -8,7 +8,12 @@
             </div>
         </div>
         <ProductGrid>
-          <ProductCard v-for="product in products" :key="product.id" :product="product"/>
+          <template v-if="isLoading">
+            <ProductCardSkeleton v-for="n in 12" :key="n" />
+          </template>
+          <template v-else>
+            <ProductCard v-for="product in products" :key="product.id" :product="product"/>
+          </template>
         </ProductGrid>
         <BaseButton class="explore-products__load-more" @click="loadMore" :disabled="products.length >= total || isLoading">
           {{ isLoading ? 'Loading...' : 'Load More...' }}
@@ -22,10 +27,12 @@ import ProductCard from '@/components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
 import SortingSelect from '@/components/products/SortingSelect.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
+import ProductCardSkeleton from '@/components/products/ProductCardSkeleton.vue';
 
 export default {
   name: 'ExploreProducts',
   components: {
+    ProductCardSkeleton,
     BreadcrumbHeader,
     ProductCard,
     ProductGrid,
