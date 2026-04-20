@@ -1,0 +1,31 @@
+@use '../../abstracts' as *;
+
+.category-section {
+  &--skeleton {
+    pointer-events: none;
+
+    .skeleton {
+      background: linear-gradient(
+        90deg,
+        color(gray-100) 25%,
+        color(gray-200) 37%,
+        color(gray-100) 63%
+      );
+      background-size: 400% 100%;
+      animation: shimmer 5s ease infinite;
+      border-radius: radius(sm);
+    }
+
+    .skeleton-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: radius(round);
+      margin-bottom: space(8);
+    }
+
+    .skeleton-text {
+      width: 60%;
+      height: 12px;
+    }
+  }
+}
