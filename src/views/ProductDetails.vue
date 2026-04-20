@@ -9,12 +9,7 @@
         </HeaderColor>
       </div>
       <ProductGrid>
-        <template v-if="loading">
-          <ProductCardSkeleton v-for="n in 4" :key="n" />
-        </template>
-        <template>
-          <ProductCard v-for="prod in relatedProducts" :key="prod.id" :product="prod"/>
-        </template>
+        <ProductCard v-for="prod in relatedProducts" :key="prod.id" :product="prod"/>
       </ProductGrid>
     </div>
   </div>
@@ -26,12 +21,10 @@ import ProductCard from '@/components/products/ProductCard.vue';
 import HeaderColor from '@/components/UI/HeaderColor.vue';
 import ProductInfo from '@/components/products/ProductInfo.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
-import ProductCardSkeleton from '@/components/products/ProductCardSkeleton.vue';
 
 export default {
   name: 'ProductDetails',
   components: {
-    ProductCardSkeleton,
     BreadcrumbHeader,
     ProductCard,
     HeaderColor,
@@ -44,7 +37,7 @@ export default {
     },
     relatedProducts() {
       return this.$store.state.products.relatedProducts;
-    }
+    },
   },
   methods: {
     fetchData(id) {

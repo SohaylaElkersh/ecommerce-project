@@ -1,7 +1,6 @@
 @use '../../abstracts' as *;
 
 .product-card {
-  width: 305px;
   cursor: pointer;
   box-shadow: shadow(sm);
   transition: transition(base);

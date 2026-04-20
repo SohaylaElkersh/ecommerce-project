@@ -1,9 +1,9 @@
 @use '../../abstracts' as *;
 
 .product-card {
-// width: 300px;
   &--skeleton {
     pointer-events: none;
+    width: 305px;
      
     .skeleton {
       background: linear-gradient(
