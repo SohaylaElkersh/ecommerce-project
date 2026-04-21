@@ -14,40 +14,30 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import QuantityControl from '@/components/UI/QuantityControl.vue';
 import { useCartStore } from '@/store/cart'
 
-export default {
-  name: "CartCard",
-  components: {
-    QuantityControl
-  },
-  setup() {
-    const cartStore = useCartStore()
-    return { cartStore }
-  },  
-  props: {
-    product: {
-      type: Object,
-      required: true,
-    },
-  },
-  methods: {
-    incrementQuantity() {
-      this.$store.dispatch('cart/updateCartQuantity', 
-      {productId: this.product.id, quantity: this.product.quantity + 1});
-    },
-    decrementQuantity() {
-      if (this.product.quantity > 1) {
-        this.$store.dispatch('cart/updateCartQuantity', 
-        {productId: this.product.id, quantity: this.product.quantity - 1});
-      }
-    },
-    removeFromCart() {
-      this.cartStore.removeFromCart(this.product.id);
-    }
+const props = defineProps({
+  product: {
+    type: Object,
+    required: true
   }
+})
+const cartStore = useCartStore()
+
+function incrementQuantity() {
+  cartStore.updateCartQuantity({ productId: props.product.id, quantity: props.quantity + 1 })
+}
+
+function decrementQuantity() {
+  if (props.product.quantity > 1) {
+  cartStore.updateCartQuantity({ productId: props.product.id, quantity: props.quantity - 1 })
+  }
+}
+
+function removeFromCart() {
+  cartStore.removeFromCart(props.product.id)
 }
 </script>
 
