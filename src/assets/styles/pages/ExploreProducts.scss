@@ -15,13 +15,31 @@
   &__breadcrumb {
     margin: 0 0 space(20) 0;
   }
-
+  
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: space(40);
     width: 98%;
+  
+    @include respond-max(md) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: space(20);
+    }
+  
+    h1 {
+      @include respond-max(sm) {
+        font-size: 1.5rem;
+      }
+    }
+  
+    .explore-products__sorting {
+      @include respond-max(sm) {
+        width: 100%;
+      }
+    }
   }
 
   &__load-more {
