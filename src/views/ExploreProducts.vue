@@ -28,6 +28,7 @@ import ProductGrid from '@/components/products/ProductGrid.vue';
 import SortingSelect from '@/components/products/SortingSelect.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 import ProductCardSkeleton from '@/components/products/ProductCardSkeleton.vue';
+import { useProductsStore } from '@/store/modules/products';
 
 export default {
   name: 'ExploreProducts',
@@ -39,6 +40,10 @@ export default {
     BaseButton,
     SortingSelect
   },
+  setup() {
+    const productsStore = useProductsStore()
+    return { productsStore }
+  },    
   data() {
     return {
       selectedSort: 'nothing',
@@ -46,25 +51,25 @@ export default {
   },
   computed: {
     products() {
-      return this.$store.getters['products/sortedProducts'](this.selectedSort)
+      return this.productsStore.sortedProducts(this.selectedSort)
     },
     isLoading() {
-    return this.$store.state.products.isLoading;
+    return this.productsStore.isLoading;
     },
     total() {
-      return this.$store.state.products.total
+      return this.productsStore.total
     }
   },
   methods: {
     async loadMore() {
-      await this.$store.dispatch('products/fetchProducts', {category: this.$route.params.slug || null});
+      await this.productsStore.fetchProducts({ category: this.$route.params.slug || null });
     }
   },
   watch: {
   '$route.params.slug': {
     immediate: true,
     handler(slug) {
-      this.$store.dispatch('products/fetchProducts', {category: slug || null, reset: true});
+      this.productsStore.fetchProducts({ category: slug || null, reset: true });
     }
   }
 }
