@@ -1,5 +1,5 @@
 import { getDiscountedPriceFromProduct } from '@/utils/pricing'
-import getters from '@/store/modules/products/getters' 
+import getters from '@/store/products/getters' 
 
 jest.mock('@/utils/pricing', () => ({
   getDiscountedPriceFromProduct: jest.fn()
