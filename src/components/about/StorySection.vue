@@ -9,12 +9,6 @@
     </div>
 </template>
 
-<script>
-export default {
-  name: 'StorySection'
-}
-</script>
-
 <style lang="scss">
 @import "@/assets/styles/components/about/StorySection.scss"
 </style>
