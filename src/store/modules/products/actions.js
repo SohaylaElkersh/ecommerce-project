@@ -4,64 +4,58 @@ import {
   fetchProductsByCategoryApi,
   fetchRelatedProductsApi,
   fetchCategoriesApi
-} from "@/services/api/products";
+} from "@/services/api/products"
 
 export default {
-  async fetchProduct({ commit }, id) {
+  async fetchProduct(id) {
     try {
       const data = await fetchProductApi(id);
-      commit('setProduct', data);
+      this.product = data;
       return data;
     } catch (error) {
-      commit('setProduct', null);
+      this.product = null;
       throw error;
     }
   },
 
-  async fetchRelatedProducts({ commit }, { category, productId }) {
+  async fetchRelatedProducts({ category, productId }) {
     const data = await fetchRelatedProductsApi(category);
-
-    const filtered = data.products
-      .filter(p => p.id !== productId)
-      .slice(0, 4);
-
-    commit('setRelatedProducts', filtered);
+    const filtered = data.products.filter(p => p.id !== productId).slice(0, 4);
+    this.relatedProducts = filtered;
   },
 
-  async fetchCategories({ commit }) {
+  async fetchCategories() {
     const data = await fetchCategoriesApi();
-    commit('setCategories', data.slice(0, 8));
+    this.categories = data.slice(0, 8);
   },
-  
-  async fetchProducts({ state, commit }, { category = null, reset = false } = {}) {
-    commit("setLoading", true);
 
+  async fetchProducts({ category = null, reset = false } = {}) {
+    this.isLoading = true;
     try {
-      if (reset || state.currentCategory !== category) {
-        commit("resetProducts");
-        commit("setCategory", category);
+      if (reset || this.currentCategory !== category) {
+        this.products = []
+        this.skip = 0
+        this.total = 0
+        this.currentCategory = category
       }
-
       let data;
       if (category) {
         data = await fetchProductsByCategoryApi({
           category,
-          limit: state.limit,
-          skip: state.skip
-        });
+          limit: this.limit,
+          skip: this.skip
+        })
       } else {
         data = await fetchProductsApi({
-          limit: state.limit,
-          skip: state.skip
-        });
+          limit: this.limit,
+          skip: this.skip
+        })
       }
-
-      commit("appendProducts", data.products);
-      commit("incrementSkip");
-      commit("setTotal", data.total);
-
+      this.products = [...this.products, ...data.products]
+      this.skip += this.limit
+      this.total = data.total
     } finally {
-      commit("setLoading", false);
+      this.isLoading = false
     }
   }
-};
+}
