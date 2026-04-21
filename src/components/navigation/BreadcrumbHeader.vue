@@ -2,7 +2,7 @@
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <router-link to="/" class="breadcrumb__link">Home</router-link>
     <span v-for="(item, index) in breadcrumbItems" :key="item.to || index">
-      <span class="breadcrumb__separator">/  </span>
+      <span class="breadcrumb__separator">/</span>
       <router-link v-if="!item.isCurrent" :to="item.to" class="breadcrumb__link">
         {{ item.label }}
       </router-link>
