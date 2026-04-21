@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import App from './App.vue'
-import './assets/styles/main.scss'
-import router from './router'
-import store from './store'
-import axios from "axios";
+import { createApp } from 'vue'
+import App from '@/App.vue'
+import '@/assets/styles/main.scss'
+import router from '@/router'
+import store from '@/store'
+import axios from 'axios'
 
-Vue.prototype.$http = axios;
-Vue.config.productionTip = false
+const app = createApp(App)
 
-new Vue({
-  store,
-  router,
-  render: h => h(App),
-}).$mount('#app')
+app.config.globalProperties.$http = axios
+
+app.use(router)
+app.use(store)
+
+app.mount('#app')
