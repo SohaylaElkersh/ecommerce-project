@@ -28,6 +28,7 @@
 <script>
 import BaseButton from '@/components/UI/BaseButton.vue';
 import BaseInput from '@/components/UI//BaseInput.vue';
+import { useCartStore } from '@/store/cart'
 
 export default {
   name: 'PaymentSection',
@@ -35,9 +36,13 @@ export default {
     BaseButton,
     BaseInput
   },
-  computed: {
+  setup() {
+    const cartStore = useCartStore()
+    return { cartStore }
+  },  
+  computed: {  
     subtotal() {
-      return this.$store.getters['cart/cartTotal'];
+      return this.cartStore.cartTotal;
     },
     shipping() {
       return this.subtotal * 0.1;       //shipping is 1% of the subtotal
