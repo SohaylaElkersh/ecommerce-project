@@ -1,11 +1,11 @@
 <template>
   <div class="product-details__wrapper">
     <BreadcrumbHeader class="product-details__breadcrumb" :current-label="product && product.title ? product.title : ''"/>
-    <ProductInfo :product="product" />
+    <ProductInfo v-if="product" :product="product" />
     <div class="product-details__related" v-if="relatedProducts.length > 0">
       <div class="product-details__related-header">
         <HeaderColor>
-          <span slot="small">More of this category</span>
+          <template #small>More of this category</template>
         </HeaderColor>
       </div>
       <ProductGrid>
@@ -21,6 +21,7 @@ import ProductCard from '@/components/products/ProductCard.vue';
 import HeaderColor from '@/components/UI/HeaderColor.vue';
 import ProductInfo from '@/components/products/ProductInfo.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
+import { useProductsStore } from '@/store/products';
 
 export default {
   name: 'ProductDetails',
@@ -31,19 +32,23 @@ export default {
     ProductInfo,
     ProductGrid
   },
+  setup() {
+    const productsStore = useProductsStore()
+    return { productsStore }
+  },    
   computed: {
     product() {
-      return this.$store.state.products.product;
+      return this.productsStore.product;
     },
     relatedProducts() {
-      return this.$store.state.products.relatedProducts;
+      return this.productsStore.relatedProducts;
     },
   },
   methods: {
     fetchData(id) {
-      return this.$store.dispatch('products/fetchProduct', id)
+      return this.productsStore.fetchProduct(id)
         .then(product => {
-          return this.$store.dispatch('products/fetchRelatedProducts', {
+          return this.productsStore.fetchRelatedProducts({
             category: product.category,
             productId: product.id
           });

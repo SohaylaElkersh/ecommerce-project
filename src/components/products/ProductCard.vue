@@ -28,14 +28,19 @@
 <script>
 import star from "@/filters/ratingStar.js"; 
 import { getDiscountPercentage, getDiscountedPriceFromProduct } from "@/utils/pricing";
+import { useProductsStore } from '@/store/products';
 
 export default {
   name: "ProductCard",
   props: ["product"],
+  setup() {
+    const productsStore = useProductsStore()
+    return { productsStore }
+  },  
   methods: {
     star,
     addToCart() {
-      this.$store.dispatch('cart/addToCart', this.product);
+      this.productsStore.addToCart(this.product);
     },
   },
   computed: {

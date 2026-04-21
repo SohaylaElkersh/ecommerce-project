@@ -16,9 +16,9 @@
     "@fortawesome/vue-fontawesome": "^3.0.0",
     "axios": "^1.15.0",
     "core-js": "^3.8.3",
+    "pinia": "^2.3.1",
     "vue": "^3.5.0",
-    "vue-router": "^4.0.0",
-    "vuex": "^4.0.0"
+    "vue-router": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
@@ -27,11 +27,12 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
-    "babel-core": "^7.0.0-bridge.0",
+    "@vue/test-utils": "^2.4.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
+    "eslint-plugin-vue": "^9.0.0",
     "sass": "^1.99.0",
-    "sass-loader": "^16.0.7"
+    "sass-loader": "^16.0.7",
+    "vitest": "^1.0.0"
   },
   "eslintConfig": {
     "root": true,

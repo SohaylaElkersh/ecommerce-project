@@ -4,10 +4,10 @@
 <template>
     <div class="flash-sales">
         <div class="flash-sales__header">
-            <HeaderColor>
-              <span slot="small">Today's</span>
-              <span slot="big">Flash Sales</span>
-            </HeaderColor>
+          <HeaderColor>
+            <template #small>Today's</template>
+            <template #big>Flash Sales</template>
+          </HeaderColor>             
         </div>
         <ProductGrid>
           <template v-if="loading">
@@ -27,24 +27,29 @@ import ProductCard from '@/components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 import ProductCardSkeleton from '@/components/products/ProductCardSkeleton.vue';
+import { useProductsStore } from '@/store/products';
 
 export default {
-    name: 'FlashSales',
-    components: {
-      ProductCardSkeleton,
-        HeaderColor,
-        ProductCard,
-        ProductGrid,
-        BaseButton
+  name: 'FlashSales',
+  components: {
+    ProductCardSkeleton,
+      HeaderColor,
+      ProductCard,
+      ProductGrid,
+      BaseButton
+  },
+  setup() {
+    const productsStore = useProductsStore()
+    return { productsStore }
+  },  
+  computed: {
+    products() {
+      return this.productsStore.randomProducts;
     },
-    computed: {
-      products() {
-        return this.$store.getters['products/randomProducts'];
-      },
-      loading() {
-        return this.$store.state.products.isLoading; 
-      }      
-    }
+    loading() {
+      return this.productsStore.isLoading; 
+    }      
+  }
 }
 </script>
 

@@ -1,10 +1,10 @@
 <template>
   <div class="category-section">
     <div class="category-section__header">
-        <HeaderColor>
-          <span slot="small">Categories</span>
-          <span slot="big">Browse By Category</span>
-        </HeaderColor>
+      <HeaderColor>
+        <template #small>Categories</template>
+        <template #big>Browse By Category</template>
+      </HeaderColor>
     </div>
     <div class="category-section__grid" >
         <div class="category-section__item" v-for="(category, index) in categories" :key="category.slug" @click="selectedCategory(category.slug)">
@@ -19,11 +19,16 @@
 
 <script>
 import HeaderColor from '@/components/UI/HeaderColor.vue';
+import { useProductsStore } from '@/store/products';
 
 export default {   
   name: 'CategorySection',
   components: {
     HeaderColor
+  },
+  setup() {
+    const productsStore = useProductsStore()
+    return { productsStore }
   },
   data() {
     return {
@@ -41,11 +46,11 @@ export default {
   }, 
   computed: {
     categories() {
-        return this.$store.state.products.categories
+      return this.productsStore.categories
     }
   },
   mounted() {
-    this.$store.dispatch('products/fetchCategories')
+    this.productsStore.fetchCategories()
   },   
   methods: {
     selectedCategory(categorySlug) {

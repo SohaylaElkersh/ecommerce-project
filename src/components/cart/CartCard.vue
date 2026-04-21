@@ -15,13 +15,18 @@
 </template>
 
 <script>
-import QuantityControl from '../UI/QuantityControl.vue';
+import QuantityControl from '@/components/UI/QuantityControl.vue';
+import { useCartStore } from '@/store/cart'
 
 export default {
   name: "CartCard",
   components: {
     QuantityControl
   },
+  setup() {
+    const cartStore = useCartStore()
+    return { cartStore }
+  },  
   props: {
     product: {
       type: Object,
@@ -40,7 +45,7 @@ export default {
       }
     },
     removeFromCart() {
-      this.$store.dispatch('cart/removeFromCart', this.product.id);
+      this.cartStore.removeFromCart(this.product.id);
     }
   }
 }

@@ -1,4 +1,4 @@
-import mutations from '@/store/modules/cart/mutations'
+import mutations from '@/store/cart/actions'
 
 describe('cart mutations', () => {
   let state

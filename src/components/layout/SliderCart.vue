@@ -23,6 +23,7 @@
 <script>
 import CartCard from '@/components/cart/CartCard.vue'
 import PaymentSection from '@/components/cart/PaymentSection.vue';
+import { useCartStore } from '@/store/cart'
 
 export default {
   name: 'SliderCart',
@@ -30,9 +31,13 @@ export default {
     CartCard,
     PaymentSection
   },
+  setup() {
+    const cartStore = useCartStore()
+    return { cartStore }
+  },   
   computed: {
     cartProducts() {
-      return this.$store.getters['cart/cartProducts'];
+      return this.cartStore.cartProducts;
     }
   }
 }

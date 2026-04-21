@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
   color: color(gray-500);
   font-size: 17px;
 
@@ -20,6 +19,7 @@
 
   &__separator {
     color: color(gray-500);
+    margin: 0 space(10);
   }
 
   &__current {

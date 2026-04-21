@@ -1,10 +1,10 @@
 <template>
     <div class="explore-section">
         <div class="explore-section__header">
-            <HeaderColor>
-              <span slot="small">Our Products</span>
-              <span slot="big">Explore Our Products</span>
-            </HeaderColor>
+          <HeaderColor>
+            <template #small>Our Products</template>
+            <template #big>Explore Our Products</template>
+          </HeaderColor>            
         </div>
         <ProductGrid>
           <template v-if="loading">
@@ -24,24 +24,29 @@ import ProductCard from '@/components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 import ProductCardSkeleton from '@/components/products/ProductCardSkeleton.vue';
+import { useProductsStore } from '@/store/products';
 
 export default {
-    name: 'ExploreSection',
-    components: {
-        ProductCardSkeleton,
-        HeaderColor,
-        ProductCard,
-        ProductGrid,
-        BaseButton
+  name: 'ExploreSection',
+  components: {
+      ProductCardSkeleton,
+      HeaderColor,
+      ProductCard,
+      ProductGrid,
+      BaseButton
+  },
+  setup() {
+    const productsStore = useProductsStore()
+    return { productsStore }
+  },      
+  computed: {
+    products() {
+      return this.productsStore.products.slice(0,8);
     },
-    computed: {
-      products() {
-        return this.$store.state.products.products.slice(0,8);
-      },
-      loading() {
-        return this.$store.state.products.isLoading; 
-      }
-    },
+    loading() {
+      return this.productsStore.isLoading; 
+    }
+  },
 }
 </script>
 

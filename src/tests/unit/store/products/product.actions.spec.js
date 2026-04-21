@@ -1,4 +1,4 @@
-import actions from '@/store/modules/products/actions'
+import actions from '@/store/products/actions'
 import * as api from '@/services/api/products'
 
 jest.mock('@/services/api/products')

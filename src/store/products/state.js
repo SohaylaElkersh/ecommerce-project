@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   products: [],
   product: null,
   categories: [],
@@ -8,4 +8,4 @@ export default {
   total: 0,
   currentCategory: null,
   isLoading: false
-}
+})

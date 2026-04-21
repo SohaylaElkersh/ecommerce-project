@@ -3,7 +3,7 @@
     <CarouselSection/>
     <FlashSales/>
     <CategorySectionSkeleton v-if="loading" />
-<CategorySection v-else />
+    <CategorySection v-else />
     <ExploreSection/>
     <QualitySection/>
   </div>
@@ -16,6 +16,7 @@ import CategorySection from '@/components/home/CategorySection.vue';
 import ExploreSection from '@/components/home/ExploreSection.vue'
 import QualitySection from '@/components/sections/QualitySection.vue';
 import CategorySectionSkeleton from '@/components/home/CategorySectionSkeleton.vue';
+import { useProductsStore } from '@/store/products';
 
 export default {
   name: 'HomePage',
@@ -27,12 +28,16 @@ export default {
     QualitySection,
     CategorySectionSkeleton
   },
+  setup() {
+    const productsStore = useProductsStore()
+    return { productsStore }
+  },  
   mounted() {
-    this.$store.dispatch('products/fetchProducts', {reset: true});
+    this.productsStore.fetchProducts({ reset: true });
   },
   computed: {
     loading() {
-      return this.$store.state.products.isLoading
+      return this.productsStore.isLoading
     }
   }
 }

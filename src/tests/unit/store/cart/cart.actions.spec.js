@@ -1,4 +1,4 @@
-import actions from '@/store/modules/cart/actions'
+import actions from '@/store/cart/actions'
 
 describe('cart actions', () => {
   it('dispatches addToCart mutation', () => {

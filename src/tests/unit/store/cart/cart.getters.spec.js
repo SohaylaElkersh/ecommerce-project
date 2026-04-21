@@ -1,4 +1,4 @@
-import getters from '@/store/modules/cart/getters'
+import getters from '@/store/cart/getters'
 
 describe('cart getters', () => {
   const state = {

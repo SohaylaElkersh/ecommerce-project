@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import MainLayout from '@/layout/MainLayout.vue'
 import HomePage from '@/views/HomePage.vue'
@@ -9,46 +8,48 @@ import AboutUs from '@/views/AboutUs.vue'
 import ContactUs from '@/views/ContactUs.vue'
 import ProductDetails from '@/views/ProductDetails.vue'
 
-Vue.use(Router)
+const routes = [
+  {
+    path: '/',
+    component: MainLayout,
+    children: [
+      {
+        path: '',
+        name: 'HomePage',
+        component: HomePage,
+      },
+      {
+        path: 'about',
+        name: 'AboutUs',
+        component: AboutUs
+      },
+      {
+        path: 'contact',
+        name: 'ContactUs',
+        component: ContactUs
+      },
+      {
+        path: 'explore/:slug?',
+        name: 'ExploreProducts',
+        component: ExploreProducts
+      },
+      {
+        path: 'product/:id',
+        name: 'ProductDetails',
+        component: ProductDetails
+      },
+      {
+        path: '/:pathMatch(.*)*', // ✅ replaces '*'
+        name: 'NotFound',
+        component: NotFound
+      }
+    ]
+  }
+]
 
-export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      component: MainLayout,
-      children: [
-        {
-          path: '',
-          name: 'HomePage',
-          component:HomePage,
-        },
-        {
-          path: '/about',
-          name: 'AboutUs',
-          component: AboutUs
-        },
-        {
-          path: '/contact',
-          name: 'ContactUs',
-          component: ContactUs
-        },
-        {
-          path: '/explore/:slug?',
-          name: 'ExploreProducts',
-          component: ExploreProducts
-        },
-        {
-          path: '/product/:id',
-          name: 'ProductDetails',
-          component: ProductDetails
-        },
-        {
-          path: '*',
-          name: 'NotFound',
-          component: NotFound
-        }
-      ]
-    }
-  ]
+const router = createRouter({
+  history: createWebHistory(),
+  routes
 })
+
+export default router

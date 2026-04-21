@@ -1,7 +1,7 @@
 <template>
   <div class="product-detail">
     <div class="product-detail__gallery">
-      <div class="product-detail__thumbs">
+      <div class="product-detail__thumbs" v-if="product && product.images">
         <img v-for="img in product.images" :key="img" :src="img" :alt="product.title"/>
       </div>
       <div class="product-detail__main-image">
@@ -61,6 +61,7 @@ import BaseButton from '@/components/UI/BaseButton.vue';
 import star from '@/filters/ratingStar.js';
 import QuantityControl from '../UI/QuantityControl.vue';
 import { getDiscountedPriceFromProduct } from '@/utils/pricing';
+import { useCartStore } from '@/store/cart';
 
 export default {
   name: 'ProductInfo',
@@ -68,6 +69,10 @@ export default {
     BaseButton,
     QuantityControl
   },
+  setup() {
+    const cartStore = useCartStore()
+    return { cartStore }
+  },   
   data() {
     return {
       quantity: 1
@@ -88,10 +93,7 @@ export default {
   methods: {
     star,
     addToCart() {
-      this.$store.dispatch('cart/addToCart', {
-        ...this.product,
-        quantity: this.quantity
-      });
+      this.cartStore.addToCart({ ...this.product, quantity: this.quantity });
     },
     incrementQuantity() {
       this.quantity++;
