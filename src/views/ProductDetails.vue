@@ -1,11 +1,11 @@
 <template>
   <div class="product-details__wrapper">
     <BreadcrumbHeader class="product-details__breadcrumb" :current-label="product && product.title ? product.title : ''"/>
-    <ProductInfo :product="product" />
+    <ProductInfo v-if="product" :product="product" />
     <div class="product-details__related" v-if="relatedProducts.length > 0">
       <div class="product-details__related-header">
         <HeaderColor>
-          <span slot="small">More of this category</span>
+          <template #small>More of this category</template>
         </HeaderColor>
       </div>
       <ProductGrid>

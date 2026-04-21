@@ -1,10 +1,10 @@
 <template>
     <div class="explore-section">
         <div class="explore-section__header">
-            <HeaderColor>
-              <span slot="small">Our Products</span>
-              <span slot="big">Explore Our Products</span>
-            </HeaderColor>
+          <HeaderColor>
+            <template #small>Our Products</template>
+            <template #big>Explore Our Products</template>
+          </HeaderColor>            
         </div>
         <ProductGrid>
           <template v-if="loading">

@@ -3,7 +3,7 @@
     <CarouselSection/>
     <FlashSales/>
     <CategorySectionSkeleton v-if="loading" />
-<CategorySection v-else />
+    <CategorySection v-else />
     <ExploreSection/>
     <QualitySection/>
   </div>

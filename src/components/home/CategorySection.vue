@@ -1,10 +1,10 @@
 <template>
   <div class="category-section">
     <div class="category-section__header">
-        <HeaderColor>
-          <span slot="small">Categories</span>
-          <span slot="big">Browse By Category</span>
-        </HeaderColor>
+      <HeaderColor>
+        <template #small>Categories</template>
+        <template #big>Browse By Category</template>
+      </HeaderColor>
     </div>
     <div class="category-section__grid" >
         <div class="category-section__item" v-for="(category, index) in categories" :key="category.slug" @click="selectedCategory(category.slug)">

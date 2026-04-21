@@ -4,10 +4,10 @@
 <template>
     <div class="flash-sales">
         <div class="flash-sales__header">
-            <HeaderColor>
-              <span slot="small">Today's</span>
-              <span slot="big">Flash Sales</span>
-            </HeaderColor>
+          <HeaderColor>
+            <template #small>Today's</template>
+            <template #big>Flash Sales</template>
+          </HeaderColor>             
         </div>
         <ProductGrid>
           <template v-if="loading">

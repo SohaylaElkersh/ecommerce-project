@@ -3,11 +3,11 @@
     <div class="header-color__top">
       <span class="header-color__badge">L</span>
       <h4 class="header-color__small">
-        <slot name="small"></slot>
+        <slot name="small" />
       </h4>              
     </div>
     <h2 class="header-color__big">
-      <slot name="big"></slot>
+      <slot name="big" />
     </h2>
   </div>
 </template>

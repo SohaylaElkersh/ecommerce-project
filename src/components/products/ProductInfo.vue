@@ -1,7 +1,7 @@
 <template>
   <div class="product-detail">
     <div class="product-detail__gallery">
-      <div class="product-detail__thumbs">
+      <div class="product-detail__thumbs" v-if="product && product.images">
         <img v-for="img in product.images" :key="img" :src="img" :alt="product.title"/>
       </div>
       <div class="product-detail__main-image">
