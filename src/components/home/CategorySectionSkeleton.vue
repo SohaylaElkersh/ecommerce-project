@@ -6,13 +6,8 @@
         <span slot="big">Browse By Category</span>
       </HeaderColor>
     </div>
-
     <div class="category-section__grid">
-      <div
-        class="category-section__item"
-        v-for="n in 8"
-        :key="n"
-      >
+      <div class="category-section__item" v-for="n in 8" :key="n">
         <div class="category-section__icon">
           <div class="skeleton skeleton-icon"></div>
         </div>
