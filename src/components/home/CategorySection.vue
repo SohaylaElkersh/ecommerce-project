@@ -46,11 +46,11 @@ export default {
   }, 
   computed: {
     categories() {
-        return this.productsStore.categories
+      return this.productsStore.categories
     }
   },
   mounted() {
-    this.productsStore.fetchCategories
+    this.productsStore.fetchCategories()
   },   
   methods: {
     selectedCategory(categorySlug) {

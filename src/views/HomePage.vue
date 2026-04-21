@@ -16,7 +16,7 @@ import CategorySection from '@/components/home/CategorySection.vue';
 import ExploreSection from '@/components/home/ExploreSection.vue'
 import QualitySection from '@/components/sections/QualitySection.vue';
 import CategorySectionSkeleton from '@/components/home/CategorySectionSkeleton.vue';
-import { useProductsStore } from '@/store/modules/products';
+import { useProductsStore } from '@/store/products';
 
 export default {
   name: 'HomePage',

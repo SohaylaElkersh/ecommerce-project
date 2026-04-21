@@ -21,7 +21,7 @@ import ProductCard from '@/components/products/ProductCard.vue';
 import HeaderColor from '@/components/UI/HeaderColor.vue';
 import ProductInfo from '@/components/products/ProductInfo.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
-import { useProductsStore } from '@/store/modules/products';
+import { useProductsStore } from '@/store/products';
 
 export default {
   name: 'ProductDetails',
