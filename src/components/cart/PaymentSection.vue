@@ -25,40 +25,21 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import BaseButton from '@/components/UI/BaseButton.vue';
 import BaseInput from '@/components/UI//BaseInput.vue';
 import { useCartStore } from '@/store/cart'
+import { computed } from 'vue'
 
-export default {
-  name: 'PaymentSection',
-  components: {
-    BaseButton,
-    BaseInput
-  },
-  setup() {
-    const cartStore = useCartStore()
-    return { cartStore }
-  },  
-  computed: {  
-    subtotal() {
-      return this.cartStore.cartTotal;
-    },
-    shipping() {
-      return this.subtotal * 0.1;       //shipping is 1% of the subtotal
-    },
-    total() {
-      return this.subtotal + this.shipping;
-    },
-    money() {
-      return [
-        { title: 'Subtotal', amount: this.subtotal.toFixed(2) },
-        { title: 'Shipping', amount: this.shipping.toFixed(2) },
-        { title: 'Total', amount: this.total.toFixed(2) }
-      ];
-    }
-  }
-}
+const cartStore = useCartStore()
+const subtotal = computed(() => cartStore.cartTotal)
+const shipping = computed(() => subtotal.value * 0.1)      //shipping is 1% of the subtotal
+const total = computed(() => subtotal.value + shipping.value)
+const money = computed(() => [
+  { title: 'Subtotal', amount: subtotal.value.toFixed(2) },
+  { title: 'Shipping', amount: shipping.value.toFixed(2) },
+  { title: 'Total', amount: total.value.toFixed(2) }
+])
 </script>
 
 <style lang="scss">

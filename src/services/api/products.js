@@ -1,6 +1,5 @@
 import { api } from "./axios";
 
-
 export const fetchProductsApi = async ({ limit, skip }) => {
   const res = await api.get("", {
     params: { limit, skip, select: "id,title,thumbnail,price,rating,reviews,discountPercentage", },
