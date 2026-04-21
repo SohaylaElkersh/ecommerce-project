@@ -39,6 +39,7 @@
 <script>
 import SliderCart from '@/components/layout/SliderCart.vue'
 import BaseInput from '@/components/UI/BaseInput.vue'
+import { useCartStore } from '@/store/cart'
 
 export default {
   name: "AppNavbar",
@@ -46,6 +47,10 @@ export default {
     SliderCart, 
     BaseInput 
   },
+  setup() {
+    const cartStore = useCartStore()
+    return { cartStore }
+  },  
   data() {
     return {
       cartOpen: false,
@@ -60,7 +65,7 @@ export default {
   },
   computed: {
     cartItemCount() {
-      return this.$store.getters['cart/cartItemCount'];
+      return this.cartStore.cartItemCount;
     }
   },
   watch: {

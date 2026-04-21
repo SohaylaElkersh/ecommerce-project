@@ -17,9 +17,7 @@
       <div class="footer__links">
         <div class="footer__links-section" v-for="(section, index) in footerLinks" :key="index">
           <h3 class="footer__links-title">{{ section.title }}</h3>
-      
-          <a 
-            class="footer__link" v-for="(link, i) in section.links"  :key="i"  :href="link.url">
+          <a class="footer__link" v-for="(link, i) in section.links"  :key="i"  :href="link.url">
             {{ link.name }}
           </a>
         </div>
