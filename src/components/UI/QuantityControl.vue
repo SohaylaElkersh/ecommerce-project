@@ -15,6 +15,8 @@
 </template>
 
 <script setup>
+
+// Current quantity value displayed in the component
 defineProps ({
   modelValue: {
     type: Number,
@@ -26,3 +28,20 @@ defineProps ({
 <style lang="scss">
 @import "@/assets/styles/components/UI/QuantityControl.scss"
 </style>
+
+
+
+// Component Purpose:
+// Provides a simple UI control for increasing or decreasing a numeric value,
+// typically used for product quantity selection in cart or product pages.
+
+// Events:
+//  increment:
+//   Triggered when user clicks "+" button
+//  decrement:
+//   Triggered when user clicks "-" button
+
+
+// Behavior:
+//   Does not manage internal state
+//   Fully controlled by parent component via props/events
