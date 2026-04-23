@@ -10,3 +10,9 @@ export default function star(rating, maxRating = 5) {
 
   return filled + empty;
 }
+
+
+
+// Purpose:
+// Converts a numeric rating value into a visual star representation
+// using filled and empty star characters.

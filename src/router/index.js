@@ -11,7 +11,7 @@ import ProductDetails from '@/views/ProductDetails.vue'
 const routes = [
   {
     path: '/',
-    component: MainLayout,
+    component: MainLayout,     // Acts as the parent layout for all main pages.  Contains Navbar, Footer, and router-view.
     children: [
       {
         path: '',
@@ -31,7 +31,7 @@ const routes = [
       {
         path: 'explore/:slug?',
         name: 'ExploreProducts',
-        component: ExploreProducts
+        component: ExploreProducts     // Product listing page with optional category filter (slug)
       },
       {
         path: 'product/:id',
@@ -53,3 +53,8 @@ const router = createRouter({
 })
 
 export default router
+
+
+// Router Setup:
+//  Uses createWebHistory for clean URLs (no hash #)
+//  All routes are nested under MainLayout for consistent UI structure
