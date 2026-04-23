@@ -1,11 +1,11 @@
 <template>
-  <div class="product-detail">
+  <div v-if="product" class="product-detail">
     <div class="product-detail__gallery">
-      <div class="product-detail__thumbs" v-if="product && product.images">
-        <img v-for="img in product.images" :key="img" :src="img" :alt="product.title"/>
+      <div class="product-detail__thumbs" v-if="product.images?.length">
+        <img v-for="img in product.images" :key="img" :src="img" :alt="product.title || ''"/>
       </div>
       <div class="product-detail__main-image">
-        <img :src="product.thumbnail" :alt="product.title" />
+        <img :src="product.thumbnail" :alt="product.title || ''"/>
       </div>
       <div class="product-detail__content">
         <div class="product-detail__info">
@@ -13,7 +13,7 @@
           <p class="product-detail__category">Category: <router-link to="">{{ product.category }}</router-link></p>
           <div class="product-detail__rating">
             <p class="product-detail__stars">{{ star(product.rating) }}</p>
-            <p class="product-detail__reviews">({{ product.reviews.length }} Reviews)</p>
+            <p class="product-detail__reviews">({{ product.reviews?.length || 0 }} Reviews)</p>
             <p>|</p>
             <p class="product-detail__stock" :class="{
                 'product-detail__stock--in': product.stock > 0,
@@ -23,7 +23,7 @@
             </p>
           </div>
           <div class="product-detail__pricing">
-            <p class="product-detail__price-original">${{ product.price.toFixed(2) }}</p>
+            <p class="product-detail__price-original">${{ product.price?.toFixed(2) || '0.00' }}</p>
             <p class="product-detail__price-discount">${{ discountedPrice }}</p>
           </div>
           <p class="product-detail__description">{{ product.description }}</p>
