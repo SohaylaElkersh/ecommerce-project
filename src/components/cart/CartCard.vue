@@ -18,6 +18,7 @@
 import QuantityControl from '@/components/UI/QuantityControl.vue';
 import { useCartStore } from '@/store/cart'
 
+// Receives an object as a prop (product) from parent.
 const props = defineProps({
   product: {
     type: Object,
@@ -26,16 +27,19 @@ const props = defineProps({
 })
 const cartStore = useCartStore()
 
+// Increases product quantity via cart store update.
 function incrementQuantity() {
   cartStore.updateCartQuantity({ productId: props.product.id, quantity: props.quantity + 1 })
 }
 
+// Decreases product quantity (minimum enforced at 1).
 function decrementQuantity() {
   if (props.product.quantity > 1) {
   cartStore.updateCartQuantity({ productId: props.product.id, quantity: props.quantity - 1 })
   }
 }
 
+// Removes product entirely from cart store.
 function removeFromCart() {
   cartStore.removeFromCart(props.product.id)
 }
@@ -44,3 +48,9 @@ function removeFromCart() {
 <style lang="scss">
 @import "@/assets/styles/components/cart/CartCard.scss"
 </style>
+
+
+
+//  Component Purpose:
+//  Represents a single product item inside the shopping cart UI.
+//  Allows users to view product details and modify or remove the item.

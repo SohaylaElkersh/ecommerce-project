@@ -57,22 +57,28 @@ const navLinks = [
   { name: "About Us", path: "/about" }  
 ]
 
+// Retrieves total cart items from Pinia cart store
 const cartItemCount = computed(() => cartStore.cartItemCount)
 
+// openCart(): Opens cart drawer
 function openCart() {
   cartOpen.value = true
 }
 
+// closeCart(): Closes cart drawer
 function closeCart() {
   cartOpen.value = false
 }
 
+// onEscape(): Closes cart when ESC key is pressed
 function onEscape(e) {
   if (e.key === 'Escape') {
     closeCart()
   }
 }
 
+// Toggles `cart-drawer-open` class on <html> to control page scroll/behavior
+// Adds/removes keyboard event listener for ESC key
 watch(cartOpen, (open) => {
   document.documentElement.classList.toggle('cart-drawer-open', open)
   if (open) {
@@ -82,6 +88,7 @@ watch(cartOpen, (open) => {
   }
 })
 
+// Cleans up event listeners and removes global CSS class
 onBeforeUnmount(() => {
   document.removeEventListener('keydown', onEscape)
   document.documentElement.classList.remove('cart-drawer-open')
@@ -91,3 +98,9 @@ onBeforeUnmount(() => {
 <style lang="scss">
 @import "@/assets/styles/layout/shared/NavBar.scss";
 </style>
+
+
+
+// Component Purpose:
+// Provides the main site navigation bar, including routing links,
+// search input, and shopping cart drawer functionality.

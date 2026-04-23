@@ -32,9 +32,17 @@ import { useCartStore } from '@/store/cart'
 import { computed } from 'vue'
 
 const cartStore = useCartStore()
+
+// subtotal: total cart value
 const subtotal = computed(() => cartStore.cartTotal)
-const shipping = computed(() => subtotal.value * 0.1)      //shipping is 1% of the subtotal
+
+// shipping: 10% of subtotal
+const shipping = computed(() => subtotal.value * 0.1)      
+
+// total: subtotal + shipping
 const total = computed(() => subtotal.value + shipping.value)
+
+// money: formatted array used for rendering summary rows
 const money = computed(() => [
   { title: 'Subtotal', amount: subtotal.value.toFixed(2) },
   { title: 'Shipping', amount: shipping.value.toFixed(2) },
@@ -45,3 +53,9 @@ const money = computed(() => [
 <style lang="scss">
 @import "@/assets/styles/components/cart/PaymentSection.scss";
 </style>
+
+
+
+// Component Purpose:
+// Displays the checkout summary and payment options in the cart/checkout page.
+// It calculates and presents pricing details and allows users to proceed with order placement.

@@ -27,9 +27,23 @@ import { useCartStore } from '@/store/cart'
 import { computed } from 'vue';
 
 const cartStore = useCartStore()
+
+// Reactive list of products currently in the cart
 const cartProducts = computed(() => cartStore.cartProducts)
 </script>
 
 <style lang="scss">
 @import "@/assets/styles/layout/shared/SliderCart.scss";
 </style>
+
+
+
+// Component Purpose:
+// Provides a slide-out shopping cart interface that displays
+// all cart items and checkout summary, or an empty state if no items exist.
+
+// Behavior:
+// Emits "close" event when user clicks close icon
+// Dynamically switches between:
+//   Cart items view
+//   Empty cart view
