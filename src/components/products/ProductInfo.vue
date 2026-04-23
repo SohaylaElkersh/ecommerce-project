@@ -56,55 +56,42 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import BaseButton from '@/components/UI/BaseButton.vue';
 import star from '@/filters/ratingStar.js';
 import QuantityControl from '../UI/QuantityControl.vue';
 import { getDiscountedPriceFromProduct } from '@/utils/pricing';
 import { useCartStore } from '@/store/cart.js';
+import { computed, ref } from 'vue';
 
-export default {
-  name: 'ProductInfo',
-  components: {
-    BaseButton,
-    QuantityControl
-  },
-  setup() {
-    const cartStore = useCartStore()
-    return { cartStore }
-  },   
-  data() {
-    return {
-      quantity: 1
-    };
-  },
-  props: {
-    product: {
-      type: Object,
-      required: true
-    }
-  },
-  computed: {
-    discountedPrice() {
-      if (!this.product) return 0;
-      return getDiscountedPriceFromProduct(this.product).toFixed(2);
-    }
-  },
-  methods: {
-    star,
-    addToCart() {
-      this.cartStore.addToCart({ ...this.product, quantity: this.quantity });
-    },
-    incrementQuantity() {
-      this.quantity++;
-    },
-    decrementQuantity() {
-      if (this.quantity > 1) {
-        this.quantity--;
-      }
-    }
+const cartStore = useCartStore()
+const quantity = ref(1)
+
+const props = defineProps({
+  product: {
+    type: Object,
+    required: true
   }
-};
+})
+
+const discountedPrice = computed(() => {
+  if (!props.product) return 0;
+  return getDiscountedPriceFromProduct(props.product).toFixed(2);
+})
+
+function addToCart() {
+  cartStore.addToCart({ ...props.product, quantity: quantity.value });
+}
+
+function incrementQuantity() {
+  quantity.value++;
+}
+
+function decrementQuantity() {
+  if (quantity.value > 1) {
+    quantity.value--;
+  }
+}
 </script>
 
 <style lang="scss">

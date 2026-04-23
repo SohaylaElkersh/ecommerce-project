@@ -10,17 +10,9 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import AppNavbar from "@/components/layout/Navbar.vue";
 import AppFooter from "@/components/layout/AppFooter.vue";
-
-export default {
-  name: "MainLayout",
-  components: {
-    AppNavbar,
-    AppFooter
-  }
-}
 </script>
 
 <style lang="scss">

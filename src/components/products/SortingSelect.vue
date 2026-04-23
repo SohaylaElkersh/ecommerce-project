@@ -9,34 +9,29 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'SortingSelect',
-  props: {
-    value: {
-      type: String,
-      default: 'nothing'
-    }
-  },
-  data() {
-    return {
-      sortOptions: [
-        { value: "nothing", label: "Default" },
-        { value: "rating", label: "Highest Rating" },
-        { value: "priceLowHigh", label: "Price: Low to High" },
-        { value: "priceHighLow", label: "Price: High to Low" },
-        { value: "discountLowHigh", label: "Discount: Low to High"},
-        { value: "discountHighLow", label: "Discount: High to Low"},
-        { value: "nameAZ", label: "A-Z"},
-        { value: "nameZA", label: "Z-A"}
-      ]
-    }
-  },
-  methods: {
-    onChange(event) {
-      this.$emit('input', event.target.value)
-    }
+<script setup>
+defineProps({
+  value: {
+    type: String,
+    default: 'nothing'
   }
+})
+
+const emit = defineEmits(['update:value'])
+
+const sortOptions = [
+  { value: "nothing", label: "Default" },
+  { value: "rating", label: "Highest Rating" },
+  { value: "priceLowHigh", label: "Price: Low to High" },
+  { value: "priceHighLow", label: "Price: High to Low" },
+  { value: "discountLowHigh", label: "Discount: Low to High"},
+  { value: "discountHighLow", label: "Discount: High to Low"},
+  { value: "nameAZ", label: "A-Z"},
+  { value: "nameZA", label: "Z-A"}
+]
+
+function onChange(event) {
+  emit('input', event.target.value)
 }
 </script>
 

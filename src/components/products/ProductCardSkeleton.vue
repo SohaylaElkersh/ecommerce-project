@@ -28,12 +28,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ProductCardSkeleton',    
-}
-</script>
-
 <style lang="scss">
 @import '@/assets/styles/components/products/ProductCardSkeleton.scss';
 @import '@/assets/styles/components/products/ProductCard.scss';

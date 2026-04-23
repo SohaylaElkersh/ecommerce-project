@@ -25,37 +25,32 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import star from "@/filters/ratingStar.js"; 
 import { getDiscountPercentage, getDiscountedPriceFromProduct } from "@/utils/pricing";
-import { useProductsStore } from '@/store/products.js';
 import { useCartStore } from '@/store/cart.js';
+import { computed } from "vue"
 
-export default {
-  name: "ProductCard",
-  props: ["product"],
-  setup() {
-    const productsStore = useProductsStore()
-    const cartStore = useCartStore()
-    return { productsStore, cartStore }
-  },  
-  methods: {
-    star,
-    addToCart() {
-      this.cartStore.addToCart(this.product);
-    },
-  },
-  computed: {
-    discountPercentage() {
-      if (!this.product) return 0;
-      return getDiscountPercentage(this.product);
-    },
-    discountedPrice() {
-      if (!this.product || !this.product.price) return '0.00';
-      return getDiscountedPriceFromProduct(this.product).toFixed(2);
-    }
-  }
-};
+const props = defineProps({
+  product: Object
+})
+
+const cartStore = useCartStore()
+
+function addToCart() {
+  cartStore.addToCart(props.product)
+}
+
+const discountPercentage = computed(() => {
+  console.log('COMPUTED')
+  if (!props.product) return 0
+  return getDiscountPercentage(props.product)
+})
+
+const discountedPrice = computed(() => {    
+  if (!props.product || !props.product.price) return '0.00';
+  return getDiscountedPriceFromProduct(props.product).toFixed(2);
+})
 </script>
 
 <style lang="scss">
