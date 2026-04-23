@@ -9,7 +9,7 @@
             <QuantityControl  class="cart-card__quantity" :modelValue="product.quantity" 
               @increment="incrementQuantity"  
               @decrement="decrementQuantity"/>
-            <p class="cart-card__price">${{ product.price }}</p>
+            <p class="cart-card__price">${{ discountedPrice }}</p>
         </div>
     </div>
 </template>
@@ -17,6 +17,8 @@
 <script setup>
 import QuantityControl from '@/components/UI/QuantityControl.vue';
 import { useCartStore } from '@/store/cart'
+import { getDiscountedPriceFromProduct } from "@/utils/pricing";
+import { computed } from 'vue';
 
 // Receives an object as a prop (product) from parent.
 const props = defineProps({
@@ -43,6 +45,11 @@ function decrementQuantity() {
 function removeFromCart() {
   cartStore.removeFromCart(props.product.id)
 }
+
+const discountedPrice = computed(() => {    
+  if (!props.product || !props.product.price) return '0.00';
+  return getDiscountedPriceFromProduct(props.product).toFixed(2);
+})
 </script>
 
 <style lang="scss">

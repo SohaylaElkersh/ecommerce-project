@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { getDiscountedPriceFromProduct } from '@/utils/pricing'
 
 export const useCartStore = defineStore("cart", {
   state: () => ({
@@ -9,10 +10,12 @@ export const useCartStore = defineStore("cart", {
     // Returns all items in the cart
     cartProducts: (state) => state.cart,
   
-    // sum of (price × quantity) for all items
+    // sum of (discounted price × quantity) for all items
     cartTotal() {
-      return this.cart.reduce((total, item) =>
-        total + (item.price * item.quantity), 0)
+      return this.cart.reduce((total, item) => {
+        const discountedPrice = getDiscountedPriceFromProduct(item)
+        return total + (discountedPrice * item.quantity)
+      }, 0)
     },
   
     // Calculates total number of items in cart
