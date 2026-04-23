@@ -1,33 +1,30 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
+import { shallowMount } from '@vue/test-utils'
+import { createTestingPinia } from '@pinia/testing'
 import SliderCart from '@/components/layout/SliderCart.vue'
 import CartCard from '@/components/cart/CartCard.vue'
 import PaymentSection from '@/components/cart/PaymentSection.vue'
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
-
 describe('SliderCart.vue', () => {
-  let getters
-  let store
-
   const factory = (cartProductsMock = []) => {
-    getters = {
-      'cart/cartProducts': () => cartProductsMock
-    }
-
-    store = new Vuex.Store({
-      getters
-    })
-
-    return shallowMount(SliderCart, {
-      localVue,
-      store,
-      stubs: {
-        CartCard: true,
-        PaymentSection: true
+    const wrapper = shallowMount(SliderCart, {
+      global: {
+        plugins: [
+          createTestingPinia({
+            createSpy: jest.fn,
+            initialState: {
+              cart: {
+                cartProducts: cartProductsMock
+              }
+            }
+          })
+        ],
+        stubs: {
+          CartCard: true,
+          PaymentSection: true
+        }
       }
     })
+    return wrapper
   }
 
   it('renders header title', () => {

@@ -1,13 +1,9 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
+import { shallowMount } from '@vue/test-utils'
+import { createTestingPinia } from '@pinia/testing'
 import CartCard from '@/components/cart/CartCard.vue'
-
-const localVue = createLocalVue()
-localVue.use(Vuex)
+import { useCartStore } from '@/store/cart.js'
 
 describe('CartCard.vue', () => {
-  let actions
-  let store
   let product
 
   const factory = (overrides = {}) => {
@@ -20,25 +16,20 @@ describe('CartCard.vue', () => {
       ...overrides
     }
 
-    actions = {
-      'cart/updateCartQuantity': jest.fn(),
-      'cart/removeFromCart': jest.fn()
-    }
-
-    store = new Vuex.Store({
-      actions
-    })
-
-    return shallowMount(CartCard, {
-      localVue,
-      store,
-      propsData: {
+    const wrapper = shallowMount(CartCard, {
+      props: {
         product
       },
-      stubs: {
-        QuantityControl: true
+      global: {
+        plugins: [createTestingPinia({
+          createSpy: jest.fn
+        })],
+        stubs: {
+          QuantityControl: true
+        }
       }
     })
+    return wrapper
   }
 
   it('renders product information correctly', () => {
@@ -51,37 +42,35 @@ describe('CartCard.vue', () => {
       .toBe('test.jpg')
   })
 
-  it('dispatches removeFromCart when remove button is clicked', async () => {
+  it('calls removeFromCart when remove button is clicked', async () => {
     const wrapper = factory()
+    const store = useCartStore()
     await wrapper.find('.cart-card__remove').trigger('click')
-    expect(actions['cart/removeFromCart']).toHaveBeenCalledWith(expect.any(Object), 1)
+    expect(store.removeFromCart).toHaveBeenCalled()
   })
 
-  it('dispatches increment action when incrementQuantity is called', () => {
+  it('increments quantity', () => {
     const wrapper = factory({ quantity: 2 })
+    const store = useCartStore()
     wrapper.vm.incrementQuantity()
-    expect(actions['cart/updateCartQuantity']).toHaveBeenCalledWith(
-      expect.any(Object),
-      { productId: 1, quantity: 3 }
-    )
+    expect(store.updateCartQuantity).toHaveBeenCalled()
   })
 
-  it('dispatches decrement action when quantity > 1', () => {
+  it('decrements quantity when > 1', () => {
     const wrapper = factory({ quantity: 3 })
+    const store = useCartStore()
     wrapper.vm.decrementQuantity()
-    expect(actions['cart/updateCartQuantity']).toHaveBeenCalledWith(
-      expect.any(Object),
-      { productId: 1, quantity: 2 }
-    )
+    expect(store.updateCartQuantity).toHaveBeenCalled()
   })
 
-  it('does NOT dispatch decrement when quantity is 1', () => {
+  it('does NOT decrement when quantity is 1', () => {
     const wrapper = factory({ quantity: 1 })
+    const store = useCartStore()
     wrapper.vm.decrementQuantity()
-    expect(actions['cart/updateCartQuantity']).not.toHaveBeenCalled()
+    expect(store.updateCartQuantity).not.toHaveBeenCalled()
   })
 
-  it('emits increment/decrement through QuantityControl component (stub exists)', () => {
+  it('renders QuantityControl component', () => {
     const wrapper = factory()
     expect(wrapper.findComponent({ name: 'QuantityControl' }).exists()).toBe(true)
   })

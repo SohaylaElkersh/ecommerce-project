@@ -1,31 +1,28 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
+import { shallowMount } from '@vue/test-utils'
+import { createTestingPinia } from '@pinia/testing'
 import PaymentSection from '@/components/cart/PaymentSection.vue'
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
-
 describe('PaymentSection.vue', () => {
-  let store
-  let getters
-
   const factory = (cartTotal = 100) => {
-    getters = {
-      'cart/cartTotal': () => cartTotal
-    }
-
-    store = new Vuex.Store({
-      getters
-    })
-
-    return shallowMount(PaymentSection, {
-      localVue,
-      store,
-      stubs: {
-        BaseButton: true,
-        BaseInput: true
+    const wrapper = shallowMount(PaymentSection, {
+      global: {
+        plugins: [
+          createTestingPinia({
+            createSpy: jest.fn,
+            initialState: {
+              cart: {
+                cartTotal
+              }
+            }
+          })
+        ],
+        stubs: {
+          BaseButton: true,
+          BaseInput: true
+        }
       }
     })
+    return wrapper
   }
 
   it('renders payment summary rows correctly', () => {
