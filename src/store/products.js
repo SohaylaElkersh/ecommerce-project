@@ -9,7 +9,7 @@ import {
   fetchCategoriesApi
 } from "@/services/api/products";
 
-export const useProductStore = defineStore("product", {
+export const useProductsStore = defineStore("products", {
   state: () => ({
     products: [],
     product: null,

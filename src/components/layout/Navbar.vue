@@ -36,66 +36,56 @@
   </header>
 </template>
 
-<script>
+<script setup>
+defineOptions({
+  name: 'AppNavbar'
+})
+
 import SliderCart from '@/components/layout/SliderCart.vue'
 import BaseInput from '@/components/UI/BaseInput.vue'
-import { useCartStore } from '@/store/cart'
+import { useCartStore } from '@/store/cart.js'
+import { computed } from 'vue'
+import { ref, watch, onBeforeUnmount } from 'vue'
 
-export default {
-  name: "AppNavbar",
-  components: { 
-    SliderCart, 
-    BaseInput 
-  },
-  setup() {
-    const cartStore = useCartStore()
-    return { cartStore }
-  },  
-  data() {
-    return {
-      cartOpen: false,
-      search: '',
-      navLinks: [
-        { name: "Home", path: "/" },
-        { name: "Explore", path: "/explore" },
-        { name: "Contact Us", path: "/contact" },
-        { name: "About Us", path: "/about" }
-      ]
-    }
-  },
-  computed: {
-    cartItemCount() {
-      return this.cartStore.cartItemCount;
-    }
-  },
-  watch: {
-    cartOpen(open) {
-      document.documentElement.classList.toggle('cart-drawer-open', open)
-      if (open) {
-        document.addEventListener('keydown', this.onEscape)
-      } else {
-        document.removeEventListener('keydown', this.onEscape)
-      }
-    },
-  },
-  beforeDestroy() {
-    document.removeEventListener('keydown', this.onEscape)
-    document.documentElement.classList.remove('cart-drawer-open')
-  },
-  methods: {
-    openCart() {
-      this.cartOpen = true
-    },
-    closeCart() {
-      this.cartOpen = false
-    },
-    onEscape(e) {
-      if (e.key === 'Escape') {
-        this.closeCart()
-      }
-    },
-  },
+const cartStore = useCartStore()
+const cartOpen = ref(false)
+const search = ref('')
+const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "Explore", path: "/explore" },
+  { name: "Contact Us", path: "/contact" },
+  { name: "About Us", path: "/about" }  
+]
+
+const cartItemCount = computed(() => cartStore.cartItemCount)
+
+function openCart() {
+  cartOpen.value = true
 }
+
+function closeCart() {
+  cartOpen.value = false
+}
+
+function onEscape(e) {
+  if (e.key === 'Escape') {
+    closeCart()
+  }
+}
+
+watch(cartOpen, (open) => {
+  document.documentElement.classList.toggle('cart-drawer-open', open)
+  if (open) {
+    document.addEventListener('keydown', onEscape)
+  } else {
+    document.removeEventListener('keydown', onEscape)
+  }
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('keydown', onEscape)
+  document.documentElement.classList.remove('cart-drawer-open')
+})
 </script>
 
 <style lang="scss">

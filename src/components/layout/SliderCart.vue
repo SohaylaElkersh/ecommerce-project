@@ -20,27 +20,14 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import CartCard from '@/components/cart/CartCard.vue'
 import PaymentSection from '@/components/cart/PaymentSection.vue';
-import { useCartStore } from '@/store/cart'
+import { useCartStore } from '@/store/cart.js'
+import { computed } from 'vue';
 
-export default {
-  name: 'SliderCart',
-  components: {
-    CartCard,
-    PaymentSection
-  },
-  setup() {
-    const cartStore = useCartStore()
-    return { cartStore }
-  },   
-  computed: {
-    cartProducts() {
-      return this.cartStore.cartProducts;
-    }
-  }
-}
+const cartStore = useCartStore()
+const cartProducts = computed(() => cartStore.cartProducts)
 </script>
 
 <style lang="scss">

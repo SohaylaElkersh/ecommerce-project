@@ -51,50 +51,44 @@
   </footer>
 </template>
 
-<script>
-export default {
-  name: "AppFooter",
-  data() {
-    return {
-      footerLinks: [
-        {
-          title: "Support",
-          links: [
-            { name: "111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.", url: "#" },
-            { name: "exclusive@gmail.com", url: "#" },
-            { name: "+880 123456789", url: "#" }
-          ]
-        },
-        {
-          title: "Account",
-          links: [
-            { name: "My Account", url: "#" },
-            { name: "Login", url: "#" },
-            { name: "Register", url: "#" },
-            { name: "Cart", url: "#" },
-            { name: "Wishlist", url: "#" },
-            { name: "Shop", url: "#" }
-          ]
-        },
-        {
-          title: "Quick Links",
-          links: [
-            { name: "Privacy Policy", url: "#" },
-            { name: "Terms of Service", url: "#" },
-            { name: "FAQ", url: "#" },
-            { name: "Contact", url: "#" }
-          ]
-        }
-      ],
-      socialLinks: [
-        { icon: "fa-facebook", url: "#" },
-        { icon: "fa-twitter", url: "#" },
-        { icon: "fa-instagram", url: "#" },
-        { icon: "fa-linkedin-in", url: "#" }
-      ]
-    }
-  }
-}
+<script setup>
+const footerLinks = [
+  {
+    title: "Support",
+    links: [
+      { name: "111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.", url: "#" },
+      { name: "exclusive@gmail.com", url: "#" },
+      { name: "+880 123456789", url: "#" }
+    ]
+  },
+  {
+    title: "Account",
+    links: [
+      { name: "My Account", url: "#" },
+      { name: "Login", url: "#" },
+      { name: "Register", url: "#" },
+      { name: "Cart", url: "#" },
+      { name: "Wishlist", url: "#" },
+      { name: "Shop", url: "#" }
+    ]
+  },
+  {
+    title: "Quick Links",
+    links: [
+      { name: "Privacy Policy", url: "#" },
+      { name: "Terms of Service", url: "#" },
+      { name: "FAQ", url: "#" },
+      { name: "Contact", url: "#" }
+    ]
+  }  
+]
+
+const socialLinks = [
+  { icon: "fa-facebook", url: "#" },
+  { icon: "fa-twitter", url: "#" },
+  { icon: "fa-instagram", url: "#" },
+  { icon: "fa-linkedin-in", url: "#" }  
+]
 </script>
 
 <style lang="scss">
