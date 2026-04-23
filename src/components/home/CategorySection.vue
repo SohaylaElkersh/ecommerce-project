@@ -19,7 +19,7 @@
 
 <script setup>
 import HeaderColor from '@/components/UI/HeaderColor.vue';
-import { useProductsStore } from '@/store/products';
+import { useProductsStore } from '@/store/products.js';
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 

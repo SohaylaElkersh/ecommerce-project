@@ -28,7 +28,7 @@
 <script setup>
 import BaseButton from '@/components/UI/BaseButton.vue';
 import BaseInput from '@/components/UI//BaseInput.vue';
-import { useCartStore } from '@/store/cart'
+import { useCartStore } from '@/store/cart.js'
 import { computed } from 'vue'
 
 const cartStore = useCartStore()

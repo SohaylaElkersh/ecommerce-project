@@ -24,7 +24,7 @@ import ProductCard from '@/components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 import ProductCardSkeleton from '@/components/products/ProductCardSkeleton.vue';
-import { useProductsStore } from '@/store/products';
+import { useProductsStore } from '@/store/products.js';
 import { computed } from 'vue';
 
 const productsStore = useProductsStore()

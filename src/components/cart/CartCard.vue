@@ -16,7 +16,7 @@
 
 <script setup>
 import QuantityControl from '@/components/UI/QuantityControl.vue';
-import { useCartStore } from '@/store/cart'
+import { useCartStore } from '@/store/cart.js'
 
 const props = defineProps({
   product: {

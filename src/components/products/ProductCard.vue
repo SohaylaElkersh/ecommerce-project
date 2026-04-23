@@ -28,8 +28,8 @@
 <script>
 import star from "@/filters/ratingStar.js"; 
 import { getDiscountPercentage, getDiscountedPriceFromProduct } from "@/utils/pricing";
-import { useProductsStore } from '@/store/products';
-import { useCartStore } from '@/store/cart';
+import { useProductsStore } from '@/store/products.js';
+import { useCartStore } from '@/store/cart.js';
 
 export default {
   name: "ProductCard",
