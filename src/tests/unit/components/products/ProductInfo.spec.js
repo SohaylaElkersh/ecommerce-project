@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import ProductInfo from '@/components/products/ProductInfo.vue'
 import * as pricing from '@/utils/pricing'
-import { useCartStore } from '@/stores/cart'
+import { useCartStore } from '@/store/cart.js'
 
 describe('ProductInfo.vue', () => {
   let product

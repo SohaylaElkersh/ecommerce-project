@@ -1,5 +1,5 @@
 import { setActivePinia, createPinia } from 'pinia'
-import { useProductsStore } from '@/stores/products'
+import { useProductsStore } from '@/store/products.js'
 import * as api from '@/services/api/products'
 import { getDiscountedPriceFromProduct } from '@/utils/pricing'
 

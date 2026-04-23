@@ -1,5 +1,5 @@
 import { setActivePinia, createPinia } from 'pinia'
-import { useCartStore } from '@/stores/cart'
+import { useCartStore } from '@/store/cart.js'
 
 describe('Cart Store (Pinia)', () => {
   let store
