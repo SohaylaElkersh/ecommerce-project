@@ -1,35 +1,31 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
+import { shallowMount } from '@vue/test-utils'
+import { createTestingPinia } from '@pinia/testing'
 import AppNavbar from '@/components/layout/Navbar.vue'
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
-
 describe('AppNavbar.vue', () => {
-  let store
-  let getters
-
   const factory = (cartCount = 3) => {
-    getters = {
-      'cart/cartItemCount': () => cartCount
-    }
-
-    store = new Vuex.Store({
-      getters
-    })
-
-    return shallowMount(AppNavbar, {
-      localVue,
-      store,
-      stubs: {
-        SliderCart: {
-          template: '<div class="slider-cart-stub" />',
-          methods: {}
-        },
-        BaseInput: true,
-        RouterLink: true
+    const wrapper = shallowMount(AppNavbar, {
+      global: {
+        plugins: [
+          createTestingPinia({
+            createSpy: jest.fn,
+            initialState: {
+              cart: {
+                cartItemCount: cartCount
+              }
+            }
+          })
+        ],
+        stubs: {
+          SliderCart: {
+            template: '<div class="slider-cart-stub" />'
+          },
+          BaseInput: true,
+          RouterLink: true
+        }
       }
     })
+    return wrapper
   }
 
   it('renders navigation links', () => {

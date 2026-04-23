@@ -3,16 +3,18 @@ import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue'
 
 const factory = (route = {}) => {
   return shallowMount(BreadcrumbHeader, {
-    mocks: {
-      $route: {
-        path: '/',
-        name: '',
-        query: {},
-        ...route
+    global: {
+      mocks: {
+        $route: {
+          path: '/',
+          name: '',
+          query: {},
+          ...route
+        }
+      },
+      stubs: {
+        RouterLink: true
       }
-    },
-    stubs: {
-      RouterLink: true
     }
   })
 }
@@ -24,16 +26,12 @@ describe('BreadcrumbHeader.vue', () => {
   })
 
   it('returns empty breadcrumb when root path', () => {
-    const wrapper = factory({
-      path: '/'
-    })
+    const wrapper = factory({ path: '/' })
     expect(wrapper.vm.breadcrumbItems.length).toBe(0)
   })
 
   it('handles normal multi-segment path', () => {
-    const wrapper = factory({
-      path: '/shop/shoes'
-    })
+    const wrapper = factory({ path: '/shop/shoes' })
     const items = wrapper.vm.breadcrumbItems
     expect(items.length).toBe(2)
     expect(items[0].label).toBe('Shop')
@@ -42,9 +40,7 @@ describe('BreadcrumbHeader.vue', () => {
   })
 
   it('formats labels correctly (slug cleanup)', () => {
-    const wrapper = factory({
-      path: '/my-awesome_product'
-    })
+    const wrapper = factory({ path: '/my-awesome_product' })
     const items = wrapper.vm.breadcrumbItems
     expect(items[0].label).toBe('My Awesome Product')
   })
@@ -93,5 +89,4 @@ describe('BreadcrumbHeader.vue', () => {
     const items = wrapper.vm.breadcrumbItems
     expect(items[1].label).toBe('Men Shoes')
   })
-
 })
