@@ -42,7 +42,6 @@ function addToCart() {
 }
 
 const discountPercentage = computed(() => {
-  console.log('COMPUTED')
   if (!props.product) return 0
   return getDiscountPercentage(props.product)
 })
