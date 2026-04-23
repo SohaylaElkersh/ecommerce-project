@@ -33,7 +33,7 @@ import { computed } from 'vue'
 
 const cartStore = useCartStore()
 
-// subtotal: total cart value
+// subtotal: total cart value (discounted price)
 const subtotal = computed(() => cartStore.cartTotal)
 
 // shipping: 10% of subtotal
@@ -58,4 +58,4 @@ const money = computed(() => [
 
 // Component Purpose:
 // Displays the checkout summary and payment options in the cart/checkout page.
-// It calculates and presents pricing details and allows users to proceed with order placement.
+// It calculates and presents pricing details(discounted) and allows users to proceed with order placement.

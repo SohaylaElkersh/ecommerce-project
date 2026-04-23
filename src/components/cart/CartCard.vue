@@ -46,6 +46,7 @@ function removeFromCart() {
   cartStore.removeFromCart(props.product.id)
 }
 
+// Gets discounted price
 const discountedPrice = computed(() => {    
   if (!props.product || !props.product.price) return '0.00';
   return getDiscountedPriceFromProduct(props.product).toFixed(2);
