@@ -23,7 +23,7 @@
 <script setup>
 import CartCard from '@/components/cart/CartCard.vue'
 import PaymentSection from '@/components/cart/PaymentSection.vue';
-import { useCartStore } from '@/store/cart.js'
+import { useCartStore } from '@/store/cart'
 import { computed } from 'vue';
 
 const cartStore = useCartStore()

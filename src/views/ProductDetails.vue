@@ -21,7 +21,7 @@ import ProductCard from '@/components/products/ProductCard.vue';
 import HeaderColor from '@/components/UI/HeaderColor.vue';
 import ProductInfo from '@/components/products/ProductInfo.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
-import { useProductsStore } from '@/store/products.js';
+import { useProductsStore } from '@/store/products';
 import { computed } from 'vue'
 import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router'
 

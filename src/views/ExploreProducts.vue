@@ -28,7 +28,7 @@ import ProductGrid from '@/components/products/ProductGrid.vue';
 import SortingSelect from '@/components/products/SortingSelect.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 import ProductCardSkeleton from '@/components/products/ProductCardSkeleton.vue';
-import { useProductsStore } from '@/store/products.js';
+import { useProductsStore } from '@/store/products';
 import { ref, computed, watch } from 'vue';
 import { useRoute } from 'vue-router'
 

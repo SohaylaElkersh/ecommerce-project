@@ -61,7 +61,7 @@ import BaseButton from '@/components/UI/BaseButton.vue';
 import star from '@/filters/ratingStar.js';
 import QuantityControl from '../UI/QuantityControl.vue';
 import { getDiscountedPriceFromProduct } from '@/utils/pricing';
-import { useCartStore } from '@/store/cart.js';
+import { useCartStore } from '@/store/cart';
 import { computed, ref } from 'vue';
 
 const cartStore = useCartStore()

@@ -28,7 +28,7 @@
 <script setup>
 import star from "@/filters/ratingStar.js"; 
 import { getDiscountPercentage, getDiscountedPriceFromProduct } from "@/utils/pricing";
-import { useCartStore } from '@/store/cart.js';
+import { useCartStore } from '@/store/cart';
 import { computed } from "vue"
 
 const props = defineProps({

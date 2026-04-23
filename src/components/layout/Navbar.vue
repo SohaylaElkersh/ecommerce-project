@@ -43,7 +43,7 @@ defineOptions({
 
 import SliderCart from '@/components/layout/SliderCart.vue'
 import BaseInput from '@/components/UI/BaseInput.vue'
-import { useCartStore } from '@/store/cart.js'
+import { useCartStore } from '@/store/cart'
 import { computed } from 'vue'
 import { ref, watch, onBeforeUnmount } from 'vue'
 
