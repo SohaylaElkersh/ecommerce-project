@@ -9,15 +9,8 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue';
-
-export default {
-  name: 'NotFound',
-  components: {
-    BreadcrumbHeader
-  }
-}
 </script>
 
 <style lang="scss">

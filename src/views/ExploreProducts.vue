@@ -21,7 +21,7 @@
     </div>
 </template>
 
-<script>   
+<script setup>   
 import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue';
 import ProductCard from '@/components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
@@ -29,51 +29,37 @@ import SortingSelect from '@/components/products/SortingSelect.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 import ProductCardSkeleton from '@/components/products/ProductCardSkeleton.vue';
 import { useProductsStore } from '@/store/products.js';
+import { ref, computed, watch } from 'vue';
+import { useRoute } from 'vue-router'
 
-export default {
-  name: 'ExploreProducts',
-  components: {
-    ProductCardSkeleton,
-    BreadcrumbHeader,
-    ProductCard,
-    ProductGrid,
-    BaseButton,
-    SortingSelect
-  },
-  setup() {
-    const productsStore = useProductsStore()
-    return { productsStore }
-  },    
-  data() {
-    return {
-      selectedSort: 'nothing',
-    }
-  },
-  computed: {
-    products() {
-      return this.productsStore.sortedProducts(this.selectedSort)
-    },
-    isLoading() {
-    return this.productsStore.isLoading;
-    },
-    total() {
-      return this.productsStore.total
-    }
-  },
-  methods: {
-    async loadMore() {
-      await this.productsStore.fetchProducts({ category: this.$route.params.slug || null });
-    }
-  },
-  watch: {
-  '$route.params.slug': {
-    immediate: true,
-    handler(slug) {
-      this.productsStore.fetchProducts({ category: slug || null, reset: true });
-    }
-  }
+const productsStore = useProductsStore()
+
+const  selectedSort = ref('nothing')
+
+const route = useRoute()
+    
+const products = computed(() => {
+  return productsStore.sortedProducts(selectedSort.value)
+})
+
+const isLoading = computed(() => { 
+  return productsStore.isLoading;
+})
+
+const total = computed(() => { 
+  return productsStore.total
+})
+
+async function loadMore() {
+  await productsStore.fetchProducts({ category: route.params.slug || null });
 }
-}
+
+watch(() => route.params.slug,
+  (slug) => {
+    productsStore.fetchProducts({ category: slug || null, reset: true })
+  },
+  { immediate: true }
+)
 </script>
 
 <style lang="scss">

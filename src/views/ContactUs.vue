@@ -34,19 +34,10 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 import BaseInput from '@/components/UI/BaseInput.vue';
-
-export default {
-  name: "ContactUs",
-  components: {
-    BreadcrumbHeader,
-    BaseButton,
-    BaseInput
-  }
-}
 </script>
 
 <style lang="scss">  

@@ -10,23 +10,12 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue';
 import StorySection from '@/components/about/StorySection.vue';
 import StatsSection from '@/components/about/StatsSection.vue';
 import TeamSection from '@/components/about/TeamSection.vue';   
 import QualitySection from '@/components/sections/QualitySection.vue';
-
-export default {
-  name: 'AboutUs',
-  components: {
-    BreadcrumbHeader,
-    StorySection,
-    StatsSection,
-    TeamSection,
-    QualitySection,
-  }
-}
 </script>
 
 <style lang="scss">

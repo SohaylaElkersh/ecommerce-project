@@ -15,62 +15,40 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import BreadcrumbHeader from '@/components/navigation/BreadcrumbHeader.vue';
 import ProductCard from '@/components/products/ProductCard.vue';
 import HeaderColor from '@/components/UI/HeaderColor.vue';
 import ProductInfo from '@/components/products/ProductInfo.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
 import { useProductsStore } from '@/store/products.js';
+import { computed } from 'vue'
+import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router'
 
-export default {
-  name: 'ProductDetails',
-  components: {
-    BreadcrumbHeader,
-    ProductCard,
-    HeaderColor,
-    ProductInfo,
-    ProductGrid
-  },
-  setup() {
-    const productsStore = useProductsStore()
-    return { productsStore }
-  },    
-  computed: {
-    product() {
-      return this.productsStore.product;
-    },
-    relatedProducts() {
-      return this.productsStore.relatedProducts;
-    },
-  },
-  methods: {
-    fetchData(id) {
-      return this.productsStore.fetchProduct(id)
-        .then(product => {
-          return this.productsStore.fetchRelatedProducts({
-            category: product.category,
-            productId: product.id
-          });
-        })
-        .catch(() => {
-          if (this.$route.name !== "NotFound") {
-            this.$router.replace({ name: "NotFound" }).catch(() => {});
-          }
-        });
-    }
-  },
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.fetchData(to.params.id);
-    });
-  },
-  beforeRouteUpdate(to, from, next) {
-    this.fetchData(to.params.id)
-      .then(() => next())
-      .catch(() => next());
+const productsStore = useProductsStore()
+const route = useRoute()
+const router = useRouter()
+
+const product = computed(() => productsStore.product)
+const relatedProducts = computed(() => productsStore.relatedProducts)
+
+async function fetchData(id) {
+  try {
+    const product = await productsStore.fetchProduct(id)
+    await productsStore.fetchRelatedProducts({
+      category: product.category,
+      productId: product.id
+    })
+  } catch (err) {
+    router.replace({ name: 'NotFound' }).catch(() => {})
   }
-}
+}  
+
+fetchData(route.params.id)
+
+onBeforeRouteUpdate((to) => {
+  fetchData(to.params.id)
+})  
 </script>
 
 <style lang="scss">
