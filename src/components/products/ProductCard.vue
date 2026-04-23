@@ -37,15 +37,18 @@ const props = defineProps({
 
 const cartStore = useCartStore()
 
+// Adds the product to cart via Pinia cart store
 function addToCart() {
   cartStore.addToCart(props.product)
 }
 
+// Calculates discount percentage using utility function
 const discountPercentage = computed(() => {
   if (!props.product) return 0
   return getDiscountPercentage(props.product)
 })
 
+// Calculates final price after discount using utility function
 const discountedPrice = computed(() => {    
   if (!props.product || !props.product.price) return '0.00';
   return getDiscountedPriceFromProduct(props.product).toFixed(2);
@@ -56,3 +59,8 @@ const discountedPrice = computed(() => {
 @import "@/assets/styles/components/products/ProductCard.scss";
 </style>
 
+
+
+// Component Purpose:
+// Displays a single product in a grid/card layout, including pricing,
+// discount, rating, and quick actions like view or add to cart.

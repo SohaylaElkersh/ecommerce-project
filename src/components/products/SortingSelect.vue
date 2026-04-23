@@ -30,6 +30,7 @@ const sortOptions = [
   { value: "nameZA", label: "Z-A"}
 ]
 
+// Emits selected value to parent component when user changes selection
 function onChange(event) {
   emit('input', event.target.value)
 }
@@ -38,3 +39,9 @@ function onChange(event) {
 <style lang="scss">
 @import "@/assets/styles/components/products/SortingSelect.scss";
 </style>
+
+
+
+// Component Purpose:
+// Provides a dropdown control for sorting products based on different criteria
+// such as price, rating, discount, and alphabetical order.

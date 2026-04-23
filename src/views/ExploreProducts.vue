@@ -38,6 +38,7 @@ const  selectedSort = ref('nothing')
 
 const route = useRoute()
     
+// Returns sorted products from store based on selectedSort
 const products = computed(() => {
   return productsStore.sortedProducts(selectedSort.value)
 })
@@ -46,14 +47,18 @@ const isLoading = computed(() => {
   return productsStore.isLoading;
 })
 
+// Total number of available products (used to disable Load More)
 const total = computed(() => { 
   return productsStore.total
 })
 
+// Fetches more products (optionally filtered by category slug)
 async function loadMore() {
   await productsStore.fetchProducts({ category: route.params.slug || null });
 }
 
+// Refetches products when category changes
+// Resets product list on category switch
 watch(() => route.params.slug,
   (slug) => {
     productsStore.fetchProducts({ category: slug || null, reset: true })
@@ -65,3 +70,9 @@ watch(() => route.params.slug,
 <style lang="scss">
 @import "@/assets/styles/pages/ExploreProducts.scss";
 </style>
+
+
+
+// Component Purpose:
+// Displays the full product catalog with sorting, filtering by category,
+// and incremental loading ("Load More" functionality)

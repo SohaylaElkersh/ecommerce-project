@@ -74,19 +74,23 @@ const props = defineProps({
   }
 })
 
+// Calculates discounted price using utility function
 const discountedPrice = computed(() => {
   if (!props.product) return 0;
   return getDiscountedPriceFromProduct(props.product).toFixed(2);
 })
 
+// Adds product to cart store with selected quantity
 function addToCart() {
   cartStore.addToCart({ ...props.product, quantity: quantity.value });
 }
 
+// Increases quantity by 1
 function incrementQuantity() {
   quantity.value++;
 }
 
+// Decreases quantity (minimum: 1)
 function decrementQuantity() {
   if (quantity.value > 1) {
     quantity.value--;
@@ -97,3 +101,9 @@ function decrementQuantity() {
 <style lang="scss">
 @import "@/assets/styles/components/products/ProductInfo.scss";
 </style>
+
+
+
+// Component Purpose:
+// Displays a detailed view of a single product including images,
+// pricing, stock status, description, and purchase actions.

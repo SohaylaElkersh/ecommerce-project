@@ -32,6 +32,8 @@ const router = useRouter()
 const product = computed(() => productsStore.product)
 const relatedProducts = computed(() => productsStore.relatedProducts)
 
+// 1. Fetches product by ID
+// 2. Fetches related products using product category
 async function fetchData(id) {
   try {
     const product = await productsStore.fetchProduct(id)
@@ -44,8 +46,14 @@ async function fetchData(id) {
   }
 }  
 
+// Error Handling:
+// - If product fetch fails:
+//   Redirects user to NotFound route
+
+//Used to fetch product details
 fetchData(route.params.id)
 
+// Executes fetchData on component mount
 onBeforeRouteUpdate((to) => {
   fetchData(to.params.id)
 })  
@@ -54,3 +62,11 @@ onBeforeRouteUpdate((to) => {
 <style lang="scss">
 @import "@/assets/styles/pages/ProductDetails.scss";
 </style>
+
+
+
+// Component Purpose:
+// Displays a full product detail page including:
+//   Product information
+//   Breadcrumb navigation
+//   Related products from the same category
