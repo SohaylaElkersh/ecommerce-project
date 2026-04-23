@@ -23,11 +23,13 @@ export const useProductsStore = defineStore("products", {
   }),
 
   getters: {
+    // Returns a shuffled subset (4 items) of products
     randomProducts(state) {
       const shuffled = [...state.products].sort(() => Math.random() - 0.5);
       return shuffled.slice(0, 4);
     },
 
+    // Returns products sorted dynamically based on selected option
     sortedProducts: (state) => {
       return (sortBy) => {
         if (sortBy === "nothing") return state.products;
@@ -48,7 +50,10 @@ export const useProductsStore = defineStore("products", {
     }
   },
 
-  actions: {
+  actions: {   
+    // Fetches a single product by ID
+    // Updates `product`
+    // Resets to null on failure
     async fetchProduct(id) {
       try {
         const data = await fetchProductApi(id);
@@ -58,19 +63,28 @@ export const useProductsStore = defineStore("products", {
         this.product = null;
         throw error;
       }
-    },
+    }, 
 
+    // Fetches products from same category
+    // Excludes current product
+    // Limits results to 4 items
     async fetchRelatedProducts({ category, productId }) {
       const data = await fetchRelatedProductsApi(category);
       const filtered = data.products.filter((p) => p.id !== productId).slice(0, 4);
       this.relatedProducts = filtered;
     },
 
+    // Fetches categories from API
+    // Limits to first 8 categories
     async fetchCategories() {
       const data = await fetchCategoriesApi();
       this.categories = data.slice(0, 8);
     },
-
+    
+   // Fetches product list with support for:
+   // Pagination (limit + skip)
+   // Category filtering
+   // Resetting data when category changes
     async fetchProducts({ category = null, reset = false } = {}) {
       this.isLoading = true;
       try {

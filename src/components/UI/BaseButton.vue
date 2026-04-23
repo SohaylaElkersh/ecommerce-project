@@ -3,7 +3,7 @@
     <slot />
   </router-link>
 
-  <button v-else class="base-btn" :class="{ 'base-btn--disabled': disabled }" :type="type" :disabled="disabled" @click="$emit('click')">
+  <button v-else class="base-btn" :class="{ 'base-btn--disabled': disabled }" :type="type" :disabled="disabled" @click="$emit('addhere')">
     <slot />
   </button>
 </template>
@@ -19,7 +19,9 @@ defineProps ({
     default: "button"
   },
   disabled: Boolean
-}) 
+})
+
+defineEmits(['addhere'])
 </script>
 
 <style lang="scss">

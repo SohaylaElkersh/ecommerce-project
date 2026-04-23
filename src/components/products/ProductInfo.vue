@@ -31,7 +31,7 @@
         <div class="product-detail__actions">
           <QuantityControl class="product-detail__quantity" :modelValue="quantity" @increment="incrementQuantity" @decrement="decrementQuantity"/>
           <div>
-            <BaseButton @click="addToCart">Add to Cart</BaseButton>
+            <BaseButton @addhere="addToCart">Add to Cart</BaseButton>
             <button class="product-detail__wishlist"><i class="fa-regular fa-heart"></i></button>
           </div>
         </div>
@@ -82,6 +82,7 @@ const discountedPrice = computed(() => {
 
 // Adds product to cart store with selected quantity
 function addToCart() {
+  console.log('ddddddddfdfgghhjkkkl')
   cartStore.addToCart({ ...props.product, quantity: quantity.value });
 }
 
