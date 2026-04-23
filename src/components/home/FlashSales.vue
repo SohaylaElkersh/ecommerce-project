@@ -31,10 +31,20 @@ import { useProductsStore } from '@/store/products';
 import { computed } from 'vue';
 
 const productsStore = useProductsStore()
+
+// Displays a curated/random subset of products instead of full list
 const products = computed(() => productsStore.randomProducts)
+
+// Tracks loading state from store (`isLoading`)
 const loading = computed(() => productsStore.isLoading)
 </script>
 
 <style scoped lang="scss">
 @import "@/assets/styles/components/home/FlashSales.scss";
 </style>
+
+
+
+// Component Purpose:
+// Displays a "Flash Sales" promotional section on the homepage,
+// highlighting a limited set of discounted products.

@@ -39,10 +39,12 @@ const categoryIcons = ref([
 
 const categories = computed(() => productsStore.categories)
 
+// Triggers `fetchCategories()` from products store
 onMounted(() => {
   productsStore.fetchCategories()
 })
 
+// Navigates user to `/explore/:categorySlug`
 function selectedCategory(categorySlug) {
   router.push(`/explore/${categorySlug}`)
 }
@@ -51,3 +53,9 @@ function selectedCategory(categorySlug) {
 <style lang="scss">
 @import "@/assets/styles/components/home/CategorySection.scss";
 </style>
+
+
+
+// Component Purpose:
+// Displays a grid of product categories that users can browse and select.
+// Each category navigates the user to a filtered explore page.

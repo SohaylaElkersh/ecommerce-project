@@ -28,10 +28,21 @@ import { useProductsStore } from '@/store/products';
 import { computed } from 'vue';
 
 const productsStore = useProductsStore()
+
+// First 8 products from Pinia products store
 const products = computed(() => productsStore.products.slice(0,8))
+
+// Tracks loading state from store (`isLoading`)
 const loading = computed(() => productsStore.isLoading)
 </script>
 
 <style lang="scss">
 @import "@/assets/styles/components/home/ExploreSection.scss";
 </style>
+
+
+
+// Component Purpose:
+// Displays a preview section of products on the homepage,
+// allowing users to quickly browse featured products and navigate
+// to the full product listing page.

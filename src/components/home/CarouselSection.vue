@@ -35,6 +35,8 @@ import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
 
 const currentIndex = ref(1)
 const interval = ref(null)
+
+// Controls CSS transition enabling/disabling for seamless looping
 const isTransitioning = ref(true)
 
 const slides = ref([
@@ -117,3 +119,10 @@ watch(currentIndex, (newIndex) => {
 <style lang="scss">
 @import "@/assets/styles/components/home/CarouselSection.scss";
 </style>
+
+
+
+// Behavior:
+//   Auto-slides every 10 seconds
+//   Manual navigation via next/prev buttons
+//   Infinite looping implemented using cloned slides + index reset logic

@@ -21,6 +21,7 @@ import { computed, onMounted } from 'vue';
 
 const productsStore = useProductsStore()
 
+// Triggers `fetchProducts({ reset: true })` to load homepage data
 onMounted(() => {
   productsStore.fetchProducts({ reset: true });
 })
