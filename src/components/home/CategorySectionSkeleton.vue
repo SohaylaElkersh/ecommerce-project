@@ -17,15 +17,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import HeaderColor from '@/components/UI/HeaderColor.vue';
-
-export default {
-  name: "CategorySectionSkeleton",
-  components: {
-    HeaderColor
-  }
-};
 </script>
 
 <style lang="scss">

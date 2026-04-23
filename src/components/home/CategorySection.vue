@@ -17,46 +17,34 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import HeaderColor from '@/components/UI/HeaderColor.vue';
 import { useProductsStore } from '@/store/products';
+import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
-export default {   
-  name: 'CategorySection',
-  components: {
-    HeaderColor
-  },
-  setup() {
-    const productsStore = useProductsStore()
-    return { productsStore }
-  },
-  data() {
-    return {
-        categoryIcons: [
-            {icon: 'fa-solid fa-spa'},
-            {icon: 'fa-solid fa-spray-can-sparkles'},
-            {icon: 'fa-solid fa-chair'},
-            {icon: 'fa-solid fa-shopping-bag'},
-            {icon: 'fa-solid fa-paint-roller'},
-            {icon: 'fa-solid fa-blender'},
-            {icon: 'fa-solid fa-laptop'},
-            {icon: 'fa-solid fa-shirt'},
-        ]
-    }
-  }, 
-  computed: {
-    categories() {
-      return this.productsStore.categories
-    }
-  },
-  mounted() {
-    this.productsStore.fetchCategories()
-  },   
-  methods: {
-    selectedCategory(categorySlug) {
-      this.$router.push(`/explore/${categorySlug}`);
-    }
-  },
+const productsStore = useProductsStore()
+const router = useRouter()
+
+const categoryIcons = ref([
+  {icon: 'fa-solid fa-spa'},
+  {icon: 'fa-solid fa-spray-can-sparkles'},
+  {icon: 'fa-solid fa-chair'},
+  {icon: 'fa-solid fa-shopping-bag'},
+  {icon: 'fa-solid fa-paint-roller'},
+  {icon: 'fa-solid fa-blender'},
+  {icon: 'fa-solid fa-laptop'},
+  {icon: 'fa-solid fa-shirt'}
+])
+
+const categories = computed(() => productsStore.categories)
+
+onMounted(() => {
+  productsStore.fetchCategories()
+})
+
+function selectedCategory(categorySlug) {
+  router.push(`/explore/${categorySlug}`)
 }
 </script>
 

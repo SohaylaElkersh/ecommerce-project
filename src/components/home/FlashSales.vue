@@ -21,36 +21,18 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import HeaderColor from '@/components/UI/HeaderColor.vue';
 import ProductCard from '@/components/products/ProductCard.vue';
 import ProductGrid from '@/components/products/ProductGrid.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 import ProductCardSkeleton from '@/components/products/ProductCardSkeleton.vue';
 import { useProductsStore } from '@/store/products';
+import { computed } from 'vue';
 
-export default {
-  name: 'FlashSales',
-  components: {
-    ProductCardSkeleton,
-      HeaderColor,
-      ProductCard,
-      ProductGrid,
-      BaseButton
-  },
-  setup() {
-    const productsStore = useProductsStore()
-    return { productsStore }
-  },  
-  computed: {
-    products() {
-      return this.productsStore.randomProducts;
-    },
-    loading() {
-      return this.productsStore.isLoading; 
-    }      
-  }
-}
+const productsStore = useProductsStore()
+const products = computed(() => productsStore.randomProducts)
+const loading = computed(() => productsStore.isLoading)
 </script>
 
 <style scoped lang="scss">
