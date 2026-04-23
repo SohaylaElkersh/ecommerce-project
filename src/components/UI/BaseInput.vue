@@ -9,19 +9,16 @@
   />
 </template>
 
-<script>
-export default {
-  name: "BaseInput",
-  props: {
-    modelValue: String,
-    type: {
-      type: String,
-      default: "text"
-    },
-    placeholder: String,
-    disabled: Boolean
-  }
-};
+<script setup>
+defineProps({
+  modelValue: String,
+  type: {
+    type: String,
+    default: "text"
+  },
+  placeholder: String,
+  disabled: Boolean
+})
 </script>
 
 <style lang="scss">

@@ -8,18 +8,15 @@
   </button>
 </template>
 
-<script>
-export default {
-  name: "BaseButton",
-  props: {
-    to: String, 
-    type: {
-      type: String,
-      default: "button"
-    },
-    disabled: Boolean
-  }
-};
+<script setup>
+defineProps ({
+  to: String, 
+  type: {
+    type: String,
+    default: "button"
+  },
+  disabled: Boolean
+}) 
 </script>
 
 <style lang="scss">

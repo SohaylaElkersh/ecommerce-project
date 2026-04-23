@@ -14,16 +14,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "QuantityControl",
-  props: {
-    modelValue: {
-      type: Number,
-      required: true
-    }
+<script setup>
+defineProps ({
+  modelValue: {
+    type: Number,
+    required: true
   }
-}
+})
 </script>
 
 <style lang="scss">

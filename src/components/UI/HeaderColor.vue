@@ -12,12 +12,6 @@
   </div>
 </template>
 
-<script>
-export default {
-    name: 'HeaderColor'
-}
-</script>
-
 <style lang="scss">
 @import "@/assets/styles/components/UI/HeaderColor.scss"
 </style>

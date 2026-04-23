@@ -12,35 +12,29 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import deliveryIcon from '@/assets/images/quality-section/icons8-delivery-50.png'
 import customerServiceIcon from '@/assets/images/quality-section/icons8-customer-service-50.png'
 import guaranteeIcon from '@/assets/images/quality-section/icons8-guarantee-50.png'
 
-export default {
-  name: "QualitySection",
-  data() {
-    return {
-      qualities: [
-        {
-          img: deliveryIcon,
-          title: 'FREE AND FAST DELIVERY',
-          description: 'Free delivery for all orders over $140'
-        },
-        {
-          img: customerServiceIcon,
-          title: '24/7 CUSTOMER SERVICE', 
-          description: 'Friendly 24/7 customer support'
-        },
-        {
-          img: guaranteeIcon,
-          title: 'MONEY BACK GUARANTEE',
-          description: 'We return money within 30 days'
-        },
-      ]
-    }
+
+const qualities = [
+  {
+    img: deliveryIcon,
+    title: 'FREE AND FAST DELIVERY',
+    description: 'Free delivery for all orders over $140'
   },
-}
+  {
+    img: customerServiceIcon,
+    title: '24/7 CUSTOMER SERVICE', 
+    description: 'Friendly 24/7 customer support'
+  },
+  {
+    img: guaranteeIcon,
+    title: 'MONEY BACK GUARANTEE',
+    description: 'We return money within 30 days'
+  },
+]
 </script>
 
 <style lang="scss">
