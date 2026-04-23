@@ -6,7 +6,7 @@ describe('SortingSelect.vue', () => {
 
   beforeEach(() => {
     wrapper = shallowMount(SortingSelect, {
-      propsData: {
+      props: {
         value: 'nothing'
       }
     })

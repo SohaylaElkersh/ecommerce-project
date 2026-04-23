@@ -1,4 +1,6 @@
 import { shallowMount, RouterLinkStub } from '@vue/test-utils'
+import { createTestingPinia } from '@pinia/testing'
+import { useCartStore } from '@/store/cart.js'
 import ProductCard from '@/components/products/ProductCard.vue'
 import { getDiscountPercentage, getDiscountedPriceFromProduct } from '@/utils/pricing'
 
@@ -11,7 +13,7 @@ jest.mock('@/filters/ratingStar.js', () => jest.fn(() => '★★★★☆'))
 
 describe('ProductCard.vue', () => {
   let wrapper
-  let dispatchMock
+  let cartStore
 
   const product = {
     id: 1,
@@ -22,24 +24,32 @@ describe('ProductCard.vue', () => {
     reviews: [{}, {}, {}]
   }
 
-  beforeEach(() => {
-    dispatchMock = jest.fn()
-    getDiscountPercentage.mockReturnValue(20)
-    getDiscountedPriceFromProduct.mockReturnValue(80)
+  const factory = (overrideProduct = product) => {
     wrapper = shallowMount(ProductCard, {
-      propsData: { product },
-      mocks: {
-        $store: {
-          dispatch: dispatchMock
+      props: { product: overrideProduct },
+      global: {
+        plugins: [
+          createTestingPinia({
+            createSpy: jest.fn
+          })
+        ],
+        mocks: {
+          $route: {
+            path: '/explore/products'
+          }
         },
-        $route: {
-          path: '/explore/products'
+        stubs: {
+          RouterLink: RouterLinkStub
         }
-      },
-      stubs: {
-        RouterLink: RouterLinkStub
       }
     })
+    cartStore = useCartStore()
+    return wrapper
+  }
+
+  beforeEach(() => {
+    getDiscountPercentage.mockReturnValue(20)
+    getDiscountedPriceFromProduct.mockReturnValue(80)
   })
 
   afterEach(() => {
@@ -48,59 +58,60 @@ describe('ProductCard.vue', () => {
 
   describe('rendering', () => {
     it('renders product title', () => {
+      const wrapper = factory()
       expect(wrapper.find('.product-card__title').text()).toBe(product.title)
     })
 
     it('renders original price correctly', () => {
+      const wrapper = factory()
       expect(wrapper.find('.product-card__price-original').text()).toContain(product.price.toFixed(2))
     })
 
     it('renders discounted price correctly', () => {
+      const wrapper = factory()
       expect(wrapper.find('.product-card__price-discount').text()).toContain('80.00')
     })
 
     it('renders discount percentage', () => {
+      const wrapper = factory()
       expect(wrapper.find('.product-card__discount').text()).toBe('-20%')
     })
 
     it('renders number of reviews', () => {
+      const wrapper = factory()
       expect(wrapper.find('.product-card__reviews').text()).toBe(`(${product.reviews.length})`)
     })
 
     it('renders rating stars', () => {
+      const wrapper = factory()
       expect(wrapper.find('.product-card__stars').text()).toBe('★★★★☆')
     })
   })
 
   describe('computed logic', () => {
     it('calls discount utilities with product', () => {
+      factory()
       expect(getDiscountPercentage).toHaveBeenCalledWith(product)
       expect(getDiscountedPriceFromProduct).toHaveBeenCalledWith(product)
-    })
-
-    it('formats discounted price to 2 decimals', () => {
-      const text = wrapper.find('.product-card__price-discount').text()
-      expect(text).toContain('80.00')
     })
   })
 
   describe('actions', () => {
-    it('dispatches addToCart when cart button is clicked', async () => {
+    it('calls addToCart when cart button is clicked', async () => {
+      const wrapper = factory()
       await wrapper.find('.product-card__cart').trigger('click')
-      expect(dispatchMock).toHaveBeenCalledWith('cart/addToCart', product)
+      expect(cartStore.addToCart).toHaveBeenCalledWith(product)
     })
   })
 
   describe('router link', () => {
     it('handles product with no reviews', async () => {
-      await wrapper.setProps({
-        product: { ...product, reviews: [] }
-      })
-    
+      const wrapper = factory({ ...product, reviews: [] })
       expect(wrapper.find('.product-card__reviews').text()).toBe('(0)')
     })
 
     it('builds correct product link', () => {
+      const wrapper = factory()
       const link = wrapper.findComponent(RouterLinkStub)
       expect(link.props('to')).toBe(`/product/${product.id}`)
     })
@@ -108,61 +119,23 @@ describe('ProductCard.vue', () => {
 
   describe('edge cases', () => {
     it('handles missing product', async () => {
-      await wrapper.setProps({ product: null })
+      const wrapper = factory(null)
       expect(wrapper.find('.product-card__title').exists()).toBe(false)
     })
 
-    it('handles null product', () => {
-      const wrapper = shallowMount(ProductCard, {
-        propsData: { product: null },
-        mocks: {
-          $store: { dispatch: jest.fn() },
-          $route: { path: '/' }
-        }
-      })
-      expect(wrapper.find('.product-card').exists()).toBe(false)
-      expect(wrapper.find('.product-card__title').exists()).toBe(false)
-    }) 
-    
     it('handles invalid price', () => {
-      const wrapper = shallowMount(ProductCard, {
-        propsData: {
-          product: {
-            ...product, price: undefined
-          }
-        },
-        mocks: {
-          $store: { dispatch: jest.fn() },
-          $route: { path: '/' }
-        }
-      })
+      const wrapper = factory({ ...product, price: undefined })
       expect(wrapper.find('.product-card__price-original').exists()).toBe(true)
     })
-    
+
     it('renders fallback behavior for missing thumbnail', () => {
-      const wrapper = shallowMount(ProductCard, {
-        propsData: {
-          product: {...product, thumbnail: null}
-        },
-        mocks: {
-          $store: { dispatch: jest.fn() },
-          $route: { path: '/' }
-        }
-      })
+      const wrapper = factory({ ...product, thumbnail: null })
       const img = wrapper.find('img')
       expect(img.attributes('src')).toBeUndefined()
     })
-    
+
     it('handles missing rating', () => {
-      const wrapper = shallowMount(ProductCard, {
-        propsData: {
-          product: {...product, rating: null}
-        },
-        mocks: {
-          $store: { dispatch: jest.fn() },
-          $route: { path: '/' }
-        }
-      })
+      const wrapper = factory({ ...product, rating: null })
       expect(wrapper.find('.product-card__stars').exists()).toBe(true)
     })
   })

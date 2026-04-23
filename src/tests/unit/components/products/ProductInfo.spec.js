@@ -1,15 +1,12 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
-import Vuex from 'vuex'
+import { shallowMount } from '@vue/test-utils'
+import { createTestingPinia } from '@pinia/testing'
 import ProductInfo from '@/components/products/ProductInfo.vue'
 import * as pricing from '@/utils/pricing'
-
-const localVue = createLocalVue()
-localVue.use(Vuex)
+import { useCartStore } from '@/stores/cart'
 
 describe('ProductInfo.vue', () => {
-  let store
-  let actions
   let product
+  let cartStore
 
   const factory = (overrides = {}) => {
     product = {
@@ -25,50 +22,44 @@ describe('ProductInfo.vue', () => {
       ...overrides
     }
 
-    actions = {
-      'cart/addToCart': jest.fn()
-    }
-
-    store = new Vuex.Store({
-      actions
-    })
-
-    return shallowMount(ProductInfo, {
-      localVue,
-      store,
-      propsData: { product },
-      stubs: {
-        BaseButton: true,
-        QuantityControl: true,
-        RouterLink: true
+    const wrapper = shallowMount(ProductInfo, {
+      props: { product },
+      global: {
+        plugins: [
+          createTestingPinia({
+            createSpy: jest.fn
+          })
+        ],
+        stubs: {
+          BaseButton: true,
+          QuantityControl: true,
+          RouterLink: true
+        }
       }
     })
+    cartStore = useCartStore()
+    return wrapper
   }
 
   it('renders product title and description', () => {
     const wrapper = factory()
-    expect(wrapper.find('.product-detail__title').text())
-      .toBe('Test Product')
-    expect(wrapper.find('.product-detail__description').text())
-      .toBe('Great product')
+    expect(wrapper.find('.product-detail__title').text()).toBe('Test Product')
+    expect(wrapper.find('.product-detail__description').text()).toBe('Great product')
   })
 
   it('renders correct number of images', () => {
     const wrapper = factory()
-    expect(wrapper.findAll('.product-detail__thumbs img').length)
-      .toBe(2)
+    expect(wrapper.findAll('.product-detail__thumbs img').length).toBe(2)
   })
 
   it('shows correct stock status (in stock)', () => {
     const wrapper = factory({ stock: 5 })
-    expect(wrapper.find('.product-detail__stock').text())
-      .toContain('In Stock')
+    expect(wrapper.find('.product-detail__stock').text()).toContain('In Stock')
   })
 
   it('shows out of stock when stock is 0', () => {
     const wrapper = factory({ stock: 0 })
-    expect(wrapper.find('.product-detail__stock').text())
-      .toContain('Out of Stock')
+    expect(wrapper.find('.product-detail__stock').text()).toContain('Out of Stock')
   })
 
   it('formats original price with toFixed', () => {
@@ -99,12 +90,12 @@ describe('ProductInfo.vue', () => {
     expect(wrapper.vm.quantity).toBe(1)
   })
 
-  it('dispatches addToCart with correct payload', () => {
+  it('adds product to cart with correct payload', () => {
     const wrapper = factory()
     wrapper.vm.quantity = 3
     wrapper.vm.addToCart()
-    expect(actions['cart/addToCart']).toHaveBeenCalledWith(
-      expect.any(Object),
+
+    expect(cartStore.addToCart).toHaveBeenCalledWith(
       expect.objectContaining({
         title: 'Test Product',
         quantity: 3
@@ -117,36 +108,36 @@ describe('ProductInfo.vue', () => {
       const wrapper = factory({ images: [] })
       expect(wrapper.findAll('.product-detail__thumbs img').length).toBe(0)
     })
-  
+
     it('handles missing reviews array', () => {
       const wrapper = factory({ reviews: [] })
       expect(wrapper.find('.product-detail__reviews').text()).toContain('(0 Reviews)')
     })
-  
+
     it('handles missing price', () => {
       const wrapper = factory({ price: 0 })
       expect(wrapper.find('.product-detail__price-original').text()).toBe('$0.00')
     })
-  
+
     it('prevents quantity going below 1', () => {
       const wrapper = factory()
       wrapper.vm.decrementQuantity()
       wrapper.vm.decrementQuantity()
       expect(wrapper.vm.quantity).toBe(1)
     })
-  
+
     it('handles large quantity values correctly', () => {
       const wrapper = factory()
       wrapper.vm.quantity = 999
       wrapper.vm.incrementQuantity()
       expect(wrapper.vm.quantity).toBe(1000)
     })
-  
+
     it('handles invalid discount output', () => {
       jest.spyOn(pricing, 'getDiscountedPriceFromProduct')
         .mockReturnValue(NaN)
       const wrapper = factory()
       expect(wrapper.vm.discountedPrice).toBe('NaN')
     })
-  })  
+  })
 })
